@@ -203,7 +203,7 @@ require("./layoutsidebar/sidebar.php");
                             </div>
 
                             <div class="print d-flex justify-content-end m-3 ">
-                                <a href="./records/health.php" target="_self">
+                                <a href="./records/social_development_sector.php" target="_self">
                                     <button class="py-2 px-3 shadow m-2" id="print" type="button">
                                         <p> records <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
                                                 viewBox="0 0 24 24">

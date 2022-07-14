@@ -203,7 +203,7 @@ require("./layoutsidebar/sidebar.php");
                             </div>
 
                             <div class="print d-flex justify-content-end m-3 ">
-                                <a href="./records/health.php" target="_self">
+                                <a href="./records/social_development_sector.php" target="_self">
                                     <button class="py-2 px-3 shadow m-2" id="print" type="button">
                                         <p> records <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
                                                 viewBox="0 0 24 24">
@@ -227,14 +227,13 @@ require("./layoutsidebar/sidebar.php");
 
 
                     <div class="row mt-3 " id="parent_accordion">
-                        <div class="accordion mb-3" id="demography">
+                        <div class="accordion  mb-3" id="parent_accordion">
                             <div class="accordion-item">
                                 <h2 class="accordion-header" id="headingOne">
                                     <button class="accordion-button d-flex justify-content-between shadow" type="button"
-                                        data-bs-toggle="collapse" data-bs-target="#accordionone" aria-expanded="false"
-                                        aria-controls="accordionone">
-                                        <h6 class="p-0"> Number of senior citizens provided support services (MCW_IRR
-                                            Sec 36-A) </h6>
+                                        data-bs-toggle="collapse" data-bs-target="#accordionsix" aria-expanded="false"
+                                        aria-controls="accordionsix">
+                                        <h6 class="p-0">Functional VAW desks (MCW_IRR Sec. 12 D)</h6>
                                         <span><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
                                                 viewBox="0 0 24 24">
                                                 <path
@@ -243,17 +242,21 @@ require("./layoutsidebar/sidebar.php");
                                     </button>
 
                                 </h2>
-                                <div id="accordionone" class="accordion-collapse collapse show"
+                                <div id="accordionsix" class="accordion-collapse collapse show"
                                     aria-labelledby="headingOne" data-bs-parent="#parent_accordion">
+                                    <div class="d-flex justify-content-center py-3 align-items-center w-100">
+                                        <div>
+                                            <select class="form-select w-auto" aria-label="Default select example"
+                                                name="logintype">
+                                                <option selected value="No">No</option>
+                                                <option value="Yes">Yes</option>
+
+                                            </select>
+                                        </div>
+
+                                    </div>
 
 
-                                    <table class="w-25 m-auto mb-3 my-3  p-4 " id="printcontent">
-                                        <tr>
-                                            <td class="text-center"><input type="text" value="0" name="householdaverage"
-                                                    id="" />
-                                            </td>
-                                        </tr>
-                                    </table>
                                 </div>
                             </div>
 
@@ -267,9 +270,7 @@ require("./layoutsidebar/sidebar.php");
                                     <button class="accordion-button d-flex justify-content-between shadow" type="button"
                                         data-bs-toggle="collapse" data-bs-target="#accordiontwo" aria-expanded="false"
                                         aria-controls="accordiontwo">
-                                        <h6 class="p-0"> Number and types support services to senior citizens (MCW-IRR
-                                            Sec. 36 A)
-                                        </h6>
+                                        <h6 class="p-0">Presence of women's desk in police stations</h6>
                                         <span><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
                                                 viewBox="0 0 24 24">
                                                 <path
@@ -280,17 +281,131 @@ require("./layoutsidebar/sidebar.php");
                                 </h2>
                                 <div id="accordiontwo" class="accordion-collapse collapse show"
                                     aria-labelledby="headingOne" data-bs-parent="#parent_accordion">
+                                    <div class="d-flex justify-content-center py-3 align-items-center w-100">
+                                        <div>
+                                            <select class="form-select w-auto" aria-label="Default select example"
+                                                name="logintype">
+                                                <option selected value="No">No</option>
+                                                <option value="Yes">Yes</option>
+
+                                            </select>
+                                        </div>
+
+                                    </div>
 
 
-                                    <table class="w-25 m-auto mb-3 my-3  p-4 " id="printcontent">
+                                </div>
+                            </div>
 
+
+
+
+                        </div>
+                        <div class="accordion  mb-3" id="parent_accordion">
+                            <div class="accordion-item">
+                                <h2 class="accordion-header" id="headingOne">
+                                    <button class="accordion-button d-flex justify-content-between shadow" type="button"
+                                        data-bs-toggle="collapse" data-bs-target="#accordionthree" aria-expanded="false"
+                                        aria-controls="accordionthree">
+                                        <h6 class="p-0">Presence of adequate lightning in streets publick places to
+                                            defer crime</h6>
+                                        <span><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                                                viewBox="0 0 24 24">
+                                                <path
+                                                    d="M0 7.33l2.829-2.83 9.175 9.339 9.167-9.339 2.829 2.83-11.996 12.17z" />
+                                            </svg></span>
+                                    </button>
+
+                                </h2>
+                                <div id="accordionthree" class="accordion-collapse collapse show"
+                                    aria-labelledby="headingOne" data-bs-parent="#parent_accordion">
+                                    <div class="d-flex justify-content-center py-3 align-items-center w-100">
+                                        <div>
+                                            <select class="form-select w-auto" aria-label="Default select example"
+                                                name="logintype">
+                                                <option selected value="No">No</option>
+                                                <option value="Yes">Yes</option>
+
+                                            </select>
+                                        </div>
+
+                                    </div>
+
+
+                                </div>
+                            </div>
+
+
+
+
+                        </div>
+                        <div class="accordion  mb-3" id="parent_accordion">
+                            <div class="accordion-item">
+                                <h2 class="accordion-header" id="headingOne">
+                                    <button class="accordion-button d-flex justify-content-between shadow" type="button"
+                                        data-bs-toggle="collapse" data-bs-target="#accordionfour" aria-expanded="false"
+                                        aria-controls="accordionfour">
+                                        <h6 class="p-0">Presence of VAW referral system</h6>
+                                        <span><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                                                viewBox="0 0 24 24">
+                                                <path
+                                                    d="M0 7.33l2.829-2.83 9.175 9.339 9.167-9.339 2.829 2.83-11.996 12.17z" />
+                                            </svg></span>
+                                    </button>
+
+                                </h2>
+                                <div id="accordionfour" class="accordion-collapse collapse show"
+                                    aria-labelledby="headingOne" data-bs-parent="#parent_accordion">
+                                    <div class="d-flex justify-content-center py-3 align-items-center w-100">
+                                        <div>
+                                            <select class="form-select w-auto" aria-label="Default select example"
+                                                name="logintype">
+                                                <option selected value="No">No</option>
+                                                <option value="Yes">Yes</option>
+
+                                            </select>
+                                        </div>
+
+                                    </div>
+
+
+                                </div>
+                            </div>
+
+
+
+
+                        </div>
+                        <div class="accordion  mb-3" id="parent_accordion">
+                            <div class="accordion-item">
+                                <h2 class="accordion-header" id="headingOne">
+                                    <button class="accordion-button d-flex justify-content-between shadow" type="button"
+                                        data-bs-toggle="collapse" data-bs-target="#accordionfive" aria-expanded="false"
+                                        aria-controls="accordionfive">
+                                        <h6 class="p-0"> Availability of local facilities or offices support services as
+                                            councelling, temporary shelter and child care for VAW victims, ( latest
+                                            available at least 2 years )
+                                        </h6>
+                                        <span><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                                                viewBox="0 0 24 24">
+                                                <path
+                                                    d="M0 7.33l2.829-2.83 9.175 9.339 9.167-9.339 2.829 2.83-11.996 12.17z" />
+                                            </svg></span>
+                                    </button>
+
+                                </h2>
+                                <div id="accordionfive" class="accordion-collapse collapse show"
+                                    aria-labelledby="headingOne" data-bs-parent="#parent_accordion">
+
+
+                                    <table class="w-75 m-auto mb-3 my-3  p-4 " id="printcontent">
 
                                         <tr>
 
                                             <td class="text-center ">
-                                                <textarea type="text" name="householdaverage" class="py-2 px-3"
-                                                    style="width:500px;min-height:200px"
-                                                    placeholder="Enter text"> </textarea>
+                                                <textarea name="householdaverage" class="py-2 px-3"
+                                                    style="width:100%;min-height:200px"
+                                                    placeholder="Enter texts..."> </textarea>
                                             </td>
                                         </tr>
                                     </table>

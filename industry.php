@@ -19,7 +19,7 @@ $popu_age_result = $dbconnection->query("SELECT * FROM soc_dev_demography_popula
     <link rel="stylesheet" href="./assets/css/bootstrap.min.css">
     <link rel="stylesheet" href="./layout/main.css">
     <link rel="icon" href="./assets/images/santacruz.png">
-    <title>Education</title>
+    <title>Media and Film</title>
 </head>
 
 
@@ -112,6 +112,7 @@ $popu_age_result = $dbconnection->query("SELECT * FROM soc_dev_demography_popula
     }
     </style>
 
+
     <?php
 
 $show_edit_population_by_age_input = false;
@@ -168,7 +169,7 @@ require("./layoutsidebar/sidebar.php");
                 <div>
                     <div class="header position-sticky top-0 shadow">
                         <div class="title text-center  py-2" style="background:black;color:white;">
-                            <h5 class="m-0"> Social Development Sector / Social welfare sinior citizen</h5>
+                            <h5 class="m-0"> Economic Development Sector / Industry</h5>
                         </div>
                         <div class=" d-flex my-2 align-items-center justify-content-between ">
 
@@ -226,49 +227,18 @@ require("./layoutsidebar/sidebar.php");
                     </div>
 
 
-                    <div class="row mt-3 " id="parent_accordion">
-                        <div class="accordion mb-3" id="demography">
+                    <div class="row mt-3 " id="industry">
+                        <div class="accordion" id="industry">
+
+
+
+
                             <div class="accordion-item">
                                 <h2 class="accordion-header" id="headingOne">
                                     <button class="accordion-button d-flex justify-content-between shadow" type="button"
                                         data-bs-toggle="collapse" data-bs-target="#accordionone" aria-expanded="false"
                                         aria-controls="accordionone">
-                                        <h6 class="p-0"> Number of senior citizens provided support services (MCW_IRR
-                                            Sec 36-A) </h6>
-                                        <span><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
-                                                viewBox="0 0 24 24">
-                                                <path
-                                                    d="M0 7.33l2.829-2.83 9.175 9.339 9.167-9.339 2.829 2.83-11.996 12.17z" />
-                                            </svg></span>
-                                    </button>
-
-                                </h2>
-                                <div id="accordionone" class="accordion-collapse collapse show"
-                                    aria-labelledby="headingOne" data-bs-parent="#parent_accordion">
-
-
-                                    <table class="w-25 m-auto mb-3 my-3  p-4 " id="printcontent">
-                                        <tr>
-                                            <td class="text-center"><input type="text" value="0" name="householdaverage"
-                                                    id="" />
-                                            </td>
-                                        </tr>
-                                    </table>
-                                </div>
-                            </div>
-
-
-
-
-                        </div>
-                        <div class="accordion  mb-3" id="parent_accordion">
-                            <div class="accordion-item">
-                                <h2 class="accordion-header" id="headingOne">
-                                    <button class="accordion-button d-flex justify-content-between shadow" type="button"
-                                        data-bs-toggle="collapse" data-bs-target="#accordiontwo" aria-expanded="false"
-                                        aria-controls="accordiontwo">
-                                        <h6 class="p-0"> Number and types support services to senior citizens (MCW-IRR
-                                            Sec. 36 A)
+                                        <h6 class="p-0"> Credits programs accessible to women
                                         </h6>
                                         <span><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
                                                 viewBox="0 0 24 24">
@@ -278,7 +248,7 @@ require("./layoutsidebar/sidebar.php");
                                     </button>
 
                                 </h2>
-                                <div id="accordiontwo" class="accordion-collapse collapse show"
+                                <div id="accordionone" class="accordion-collapse collapse show"
                                     aria-labelledby="headingOne" data-bs-parent="#parent_accordion">
 
 
@@ -296,28 +266,134 @@ require("./layoutsidebar/sidebar.php");
                                     </table>
                                 </div>
                             </div>
+                            </br>
+
+                        </div>
+
+                        <!--  -->
+
+                        <div class="accordion  mb-3" id="industry">
+                            <div class="accordion-item">
+                                <h2 class="accordion-header" id="headingOne">
+                                    <button class="accordion-button d-flex justify-content-between shadow" type="button"
+                                        data-bs-toggle="collapse" data-bs-target="#accordionthree" aria-expanded="false"
+                                        aria-controls="accordionthree">
+                                        <h6 class="p-0">Number of women who own business enterprisses</h6>
+                                        <span><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                                                viewBox="0 0 24 24">
+                                                <path
+                                                    d="M0 7.33l2.829-2.83 9.175 9.339 9.167-9.339 2.829 2.83-11.996 12.17z" />
+                                            </svg></span>
+                                    </button>
+
+                                </h2>
+                                <div id="accordionthree" class="accordion-collapse collapse show"
+                                    aria-labelledby="headingOne" data-bs-parent="#industry">
+                                    <table class="w-25 m-auto mb-3 my-3  p-4 " id="printcontent">
+                                        <tr>
+                                            <td class="text-center"><input type="text" value="0" name="householdaverage"
+                                                    id="" />
+                                            </td>
+                                        </tr>
+                                    </table>
+                                </div>
+                            </div>
 
 
 
 
                         </div>
+
+                        <!--  -->
+
+                        <div class="accordion  mb-3" id="industry">
+                            <div class="accordion-item">
+                                <h2 class="accordion-header" id="headingOne">
+                                    <button class="accordion-button d-flex justify-content-between shadow" type="button"
+                                        data-bs-toggle="collapse" data-bs-target="#accordionthree" aria-expanded="false"
+                                        aria-controls="accordionthree">
+                                        <h6 class="p-0">Increased number of women in viable micro enterprises</h6>
+                                        <span><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                                                viewBox="0 0 24 24">
+                                                <path
+                                                    d="M0 7.33l2.829-2.83 9.175 9.339 9.167-9.339 2.829 2.83-11.996 12.17z" />
+                                            </svg></span>
+                                    </button>
+
+                                </h2>
+                                <div id="accordionthree" class="accordion-collapse collapse show"
+                                    aria-labelledby="headingOne" data-bs-parent="#industry">
+                                    <table class="w-25 m-auto mb-3 my-3  p-4 " id="printcontent">
+                                        <tr>
+                                            <td class="text-center"><input type="text" value="0" name="householdaverage"
+                                                    id="" />
+                                            </td>
+                                        </tr>
+                                    </table>
+                                </div>
+                            </div>
+
+
+
+
+                        </div>
+
+                        <!--  -->
+
+
+                        <div class="accordion  mb-3" id="industry">
+                            <div class="accordion-item">
+                                <h2 class="accordion-header" id="headingOne">
+                                    <button class="accordion-button d-flex justify-content-between shadow" type="button"
+                                        data-bs-toggle="collapse" data-bs-target="#accordionthree" aria-expanded="false"
+                                        aria-controls="accordionthree">
+                                        <h6 class="p-0">Average monthly income of women micro enterprises</h6>
+                                        <span><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                                                viewBox="0 0 24 24">
+                                                <path
+                                                    d="M0 7.33l2.829-2.83 9.175 9.339 9.167-9.339 2.829 2.83-11.996 12.17z" />
+                                            </svg></span>
+                                    </button>
+
+                                </h2>
+                                <div id="accordionthree" class="accordion-collapse collapse show"
+                                    aria-labelledby="headingOne" data-bs-parent="#industry">
+                                    <table class="w-25 m-auto mb-3 my-3  p-4 " id="printcontent">
+                                        <tr>
+                                            <td class="text-center"><input type="text" value="0" name="householdaverage"
+                                                    id="" />
+                                            </td>
+                                        </tr>
+                                    </table>
+                                </div>
+                            </div>
+
+
+
+
+                        </div>
+
+                        <!--  -->
+
+
 
                     </div>
-                    <div class=" d-flex justify-content-center my-3">
-                        <div class="mx-2">
-                            <label>Prepared By:</label> <input
-                                style="border:none;border-bottom:1px solid black;outline:none;" class="px-2 py-1"
-                                type="text" name="preparedby" placeholder="type name..." />
-                        </div>
-
-                        <div class="mx-2">
-
-                            <label>Reviewed By:</label> <input
-                                style="border:none;border-bottom:1px solid black;outline:none;" class="px-2 py-1"
-                                type="text" name="reviewedby" placeholder="type name..." />
-                        </div>
-
+                </div>
+                <div class="d-flex justify-content-center my-3">
+                    <div class="mx-2">
+                        <label>Prepared By:</label> <input
+                            style="border:none;border-bottom:1px solid black;outline:none;" class="px-2 py-1"
+                            type="text" name="preparedby" placeholder="type name..." />
                     </div>
+
+                    <div class="mx-2">
+
+                        <label>Reviewed By:</label> <input
+                            style="border:none;border-bottom:1px solid black;outline:none;" class="px-2 py-1"
+                            type="text" name="reviewedby" placeholder="type name..." />
+                    </div>
+
+                </div>
 
 
 

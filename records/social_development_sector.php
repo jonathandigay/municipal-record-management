@@ -36,10 +36,9 @@ $popu_age_result = $dbconnection->query("SELECT * FROM soc_dev_demography_popula
         /* border-bottom: 3px solid black; */
     }
 
-    button {
+    td button {
         background: black;
         color: white;
-        border-radius: 20px;
     }
 
     .header {
@@ -104,7 +103,7 @@ require("../layoutsidebar/sidebar.php");
             <div class="container-fluid p-0 py-3 px-3 col-md-9 ">
                 <div class="header position-sticky top-0 shadow">
                     <div class="title text-center  py-2" style="background:black;color:white;">
-                        <h5 class="m-0">Demography Records</h5>
+                        <h5 class="m-0">Social Development Records</h5>
                     </div>
                     <div class=" d-flex my-2 align-items-center justify-content-center ">
 

@@ -38,6 +38,16 @@
                 </ul>
             </div>
 
+            <div class="my-3">
+                <select class="form-select" aria-label="Default select example" name="menu">
+                    <option selected value="barangay">Barangay Form</option>
+                    <option value="school">School Form</option>
+                    <option value="department">Department Form</option>
+
+                </select>
+            </div>
+
+
             <div class="search">
                 <input type="text" placeholder="search..">
                 <button>Search</button>
@@ -63,7 +73,7 @@
                                 </svg></span>
                         </button>
                     </h2>
-                    <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne"
+                    <div id="collapseOne" class="accordion-collapse collapse " aria-labelledby="headingOne"
                         data-bs-parent="#accordionExample">
                         <ul>
                             <a href="http://localhost/barangay/demography.php"
@@ -95,9 +105,18 @@
                                     Gender-Based Violence
                                 </li>
                             </a>
-                            <li>
-                                Social Protecttion
-                            </li>
+                            <a href="http://localhost/barangay/media_and_film.php"
+                                style="color: white;text-decoration:none;">
+                                <li>
+                                    Media and Film
+                                </li>
+                            </a>
+                            <a href="http://localhost/barangay/social_protection.php"
+                                style="color: white;text-decoration:none;">
+                                <li>
+                                    Social Protection
+                                </li>
+                            </a>
                         </ul>
                     </div>
                 </div>
@@ -119,21 +138,36 @@
                     <div id="collapseTwo" class="accordion-collapse collapse " aria-labelledby="headingOne"
                         data-bs-parent="#accordionExample">
                         <ul>
-                            <li>
-                                Income and Poverty
-                            </li>
-                            <li>
-                                Labor and Employment
-                            </li>
-                            <li>
-                                Fishery
-                            </li>
-                            <li>
-                                Forestry
-                            </li>
-                            <li>
-                                Industry
-                            </li>
+                            <a href="http://localhost/barangay/income_and_poverty.php"
+                                style="color: white;text-decoration:none;">
+                                <li>
+                                    Income and Poverty
+                                </li>
+                            </a>
+                            <a href="http://localhost/barangay/labor_and_employment.php"
+                                style="color: white;text-decoration:none;">
+                                <li>
+                                    Labor and Employment
+                                </li>
+                            </a>
+                            <a href="http://localhost/barangay/fishery.php" style="color: white;text-decoration:none;">
+
+                                <li>
+                                    Fishery
+                                </li>
+                            </a>
+                            <a href="http://localhost/barangay/forestry.php" style="color: white;text-decoration:none;">
+
+                                <li>
+                                    Forestry
+                                </li>
+                            </a>
+                            <a href="http://localhost/barangay/industry.php" style="color: white;text-decoration:none;">
+
+                                <li>
+                                    Industry
+                                </li>
+                            </a>
                         </ul>
                     </div>
                 </div>
@@ -155,15 +189,27 @@
                     <div id="collapseThree" class="accordion-collapse collapse " aria-labelledby="headingOne"
                         data-bs-parent="#accordionExample">
                         <ul>
-                            <li>
-                                Resources Base and Land Use
-                            </li>
-                            <li>
-                                Tenure and Management
-                            </li>
-                            <li>
-                                Land Use and Land Productivity
-                            </li>
+                            <a href="http://localhost/barangay/resources_base_and_land_use.php"
+                                style="color: white;text-decoration:none;">
+
+                                <li>
+                                    Resources Base and Land Use
+                                </li>
+                            </a>
+                            <a href="http://localhost/barangay/tenure_management.php"
+                                style="color: white;text-decoration:none;">
+
+                                <li>
+                                    Tenure and Management
+                                </li>
+                            </a>
+                            <a href="http://localhost/barangay/land_use_and_land_productivity.php"
+                                style="color: white;text-decoration:none;">
+                                <li>
+                                    Land Use and Land Productivity
+                                </li>
+                            </a>
+
 
                         </ul>
                     </div>

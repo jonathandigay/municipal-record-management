@@ -19,7 +19,7 @@ $popu_age_result = $dbconnection->query("SELECT * FROM soc_dev_demography_popula
     <link rel="stylesheet" href="./assets/css/bootstrap.min.css">
     <link rel="stylesheet" href="./layout/main.css">
     <link rel="icon" href="./assets/images/santacruz.png">
-    <title>Education</title>
+    <title>Media and Film</title>
 </head>
 
 
@@ -168,7 +168,7 @@ require("./layoutsidebar/sidebar.php");
                 <div>
                     <div class="header position-sticky top-0 shadow">
                         <div class="title text-center  py-2" style="background:black;color:white;">
-                            <h5 class="m-0"> Social Development Sector / Social welfare sinior citizen</h5>
+                            <h5 class="m-0"> Economic Development Sector / Income and Poverty</h5>
                         </div>
                         <div class=" d-flex my-2 align-items-center justify-content-between ">
 
@@ -233,8 +233,11 @@ require("./layoutsidebar/sidebar.php");
                                     <button class="accordion-button d-flex justify-content-between shadow" type="button"
                                         data-bs-toggle="collapse" data-bs-target="#accordionone" aria-expanded="false"
                                         aria-controls="accordionone">
-                                        <h6 class="p-0"> Number of senior citizens provided support services (MCW_IRR
-                                            Sec 36-A) </h6>
+                                        <h6 class="p-0"> Proportion of household whose eat less than 3 full meals a days
+                                            (
+                                            <span style=";color:red;">please use percentage ,
+                                                ex:50%</span> )
+                                        </h6>
                                         <span><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
                                                 viewBox="0 0 24 24">
                                                 <path
@@ -261,14 +264,14 @@ require("./layoutsidebar/sidebar.php");
 
 
                         </div>
-                        <div class="accordion  mb-3" id="parent_accordion">
+                        <div class="accordion mb-3" id="demography">
                             <div class="accordion-item">
                                 <h2 class="accordion-header" id="headingOne">
                                     <button class="accordion-button d-flex justify-content-between shadow" type="button"
                                         data-bs-toggle="collapse" data-bs-target="#accordiontwo" aria-expanded="false"
                                         aria-controls="accordiontwo">
-                                        <h6 class="p-0"> Number and types support services to senior citizens (MCW-IRR
-                                            Sec. 36 A)
+                                        <h6 class="p-0"> Percentage of households with one main source of income only to
+                                            total number of households
                                         </h6>
                                         <span><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
                                                 viewBox="0 0 24 24">
@@ -283,14 +286,9 @@ require("./layoutsidebar/sidebar.php");
 
 
                                     <table class="w-25 m-auto mb-3 my-3  p-4 " id="printcontent">
-
-
                                         <tr>
-
-                                            <td class="text-center ">
-                                                <textarea type="text" name="householdaverage" class="py-2 px-3"
-                                                    style="width:500px;min-height:200px"
-                                                    placeholder="Enter text"> </textarea>
+                                            <td class="text-center"><input type="text" value="0" name="householdaverage"
+                                                    id="" />
                                             </td>
                                         </tr>
                                     </table>
@@ -301,9 +299,8 @@ require("./layoutsidebar/sidebar.php");
 
 
                         </div>
-
                     </div>
-                    <div class=" d-flex justify-content-center my-3">
+                    <div class="d-flex justify-content-center my-3">
                         <div class="mx-2">
                             <label>Prepared By:</label> <input
                                 style="border:none;border-bottom:1px solid black;outline:none;" class="px-2 py-1"
