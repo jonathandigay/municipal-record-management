@@ -1,4 +1,5 @@
 <nav id="sidebarMenu" class="col-md-3 col-lg-3   d-md-block bg-light sidebar collapse border-3 px-2">
+
     <div class="sidebar-sticky ">
 
         <div class="shadow sidebar-brand ">
@@ -38,14 +39,6 @@
                 </ul>
             </div>
 
-            <div class="my-3">
-                <select class="form-select" aria-label="Default select example" name="menu">
-                    <option selected value="barangay">Barangay Form</option>
-                    <option value="school">School Form</option>
-                    <option value="department">Department Form</option>
-
-                </select>
-            </div>
 
 
             <div class="search">
@@ -54,6 +47,25 @@
             </div>
         </div>
 
+        <div class="my-3 shadow forms">
+
+            <div class=" d-flex justify-content-center" style="background:black;color:white;">
+                <h5>Forms</h5>
+            </div>
+            <div class="gad_form_btns d-flex justify-content-center">
+                <a href="?current_sector=barangay"><button name="barangay"
+                        class="py-2 px-3 m-2 active shadow gad_form_btn" shadow>Barangay </button></a>
+
+                <button name="school" class="py-2 px-3 m-2 shadow gad_form_btn">School </button>
+                <button name="department" class="py-2 px-3 m-2 shadow gad_form_btn">Department </button>
+            </div>
+
+
+
+
+
+
+        </div>
 
 
         <ul class="nav flex-column mt-3">

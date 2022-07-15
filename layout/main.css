@@ -147,9 +147,25 @@ button {
 .sidebar-sticky .accordion .accordion-item a {
   color: black;
 }
+
 .sidebar-sticky .accordion .accordion-item ul li:hover {
   background: rgb(70, 70, 70);
   font-weight: bold;
+}
+
+.sidebar-sticky .forms .gad-form button {
+  border: 2px solid rgba(204, 204, 204, 0.5) !important;
+}
+.sidebar-sticky .forms .gad-form button:hover {
+  background: rgb(79, 79, 79);
+  color: white;
+  border: 2px solid rgba(204, 204, 204, 0.5) !important;
+}
+.sidebar-sticky .forms .gad_form_btns .active {
+  background: black;
+  font-weight: bold;
+  color: white;
+  border: 2px solid rgba(204, 204, 204, 0.5) !important;
 }
 /*
  * main

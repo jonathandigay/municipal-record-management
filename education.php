@@ -163,7 +163,8 @@ require("./layoutsidebar/sidebar.php");
 
 
 
-            <form action="./process/demography.php" method="POST" class="container-fluid p-0 py-3 px-3 col-md-9 ">
+            <form action="./process/soc_development_sector.php" method="POST"
+                class="container-fluid p-0 py-3 px-3 col-md-9 ">
 
 
                 <div>
@@ -265,7 +266,8 @@ require("./layoutsidebar/sidebar.php");
                                             </tr>
                                             <tr>
                                                 <td>Not currently attending</td>
-                                                <td><input type="text" name="m30" id="" value="0" /> </td>
+                                                <td><input type="text" name="current_attending" id="" value="45" />
+                                                </td>
                                                 <td><input type="text" name="f30" id="" value="0" /> </td>
                                                 <td> </td>
                                             </tr>

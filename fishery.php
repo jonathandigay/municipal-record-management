@@ -163,7 +163,8 @@ require("./layoutsidebar/sidebar.php");
 
 
 
-            <form action="./process/demography.php" method="POST" class="container-fluid p-0 py-3 px-3 col-md-9 ">
+            <form action="./process/./process/soc_dev_demography.php.php" method="POST"
+                class="container-fluid p-0 py-3 px-3 col-md-9 ">
 
 
                 <div>

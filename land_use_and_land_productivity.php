@@ -19,7 +19,7 @@ $popu_age_result = $dbconnection->query("SELECT * FROM soc_dev_demography_popula
     <link rel="stylesheet" href="./assets/css/bootstrap.min.css">
     <link rel="stylesheet" href="./layout/main.css">
     <link rel="icon" href="./assets/images/santacruz.png">
-    <title>Media and Film</title>
+    <title>Land Use and land productivity</title>
 </head>
 
 

@@ -163,7 +163,8 @@ require("./layoutsidebar/sidebar.php");
 
 
 
-            <form action="./process/demography.php" method="POST" class="container-fluid p-0 py-3 px-3 col-md-9 ">
+            <form action="./process/soc_development_sector.php" method="POST"
+                class="container-fluid p-0 py-3 px-3 col-md-9 ">
 
 
                 <div>
@@ -204,7 +205,7 @@ require("./layoutsidebar/sidebar.php");
                             </div>
 
                             <div class="print d-flex justify-content-end m-3 ">
-                                <a href="./records/demography.php" target="_self">
+                                <a href="./records/social_development_sector.php" target="_self">
                                     <button class="py-2 px-3 shadow m-2" id="print" type="button">
                                         <p> records <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
                                                 viewBox="0 0 24 24">
