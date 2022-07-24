@@ -21,9 +21,17 @@ button {
   border: none !important;
   box-shadow: none !important;
 }
+ul {
+  list-style: none;
+  padding: 0;
+}
 /*
  * Sidebar
  */
+
+a {
+  text-decoration: none;
+}
 
 .sidebar {
   position: sticky;
@@ -31,6 +39,17 @@ button {
   height: 100vh;
   overflow: auto;
   left: 0;
+  animation: sidebar ease-in 300ms 1;
+}
+@keyframes sidebar {
+  0% {
+    transform: translateX(-50%);
+    opacity: 0;
+  }
+  100% {
+    transform: translateX(0);
+    opacity: 1;
+  }
 }
 
 .sidebar::-webkit-scrollbar {
@@ -70,6 +89,21 @@ button {
 .sidebar-sticky .search {
   display: flex;
   width: 100%;
+  position: relative;
+}
+.sidebar-sticky .search .search_results {
+  position: absolute;
+  bottom: 0;
+  transform: translateY(105%);
+  background: white;
+}
+.sidebar-sticky .search .search_results ul li {
+  padding: 8px 0;
+  cursor: pointer;
+}
+.sidebar-sticky .search .search_results ul li:hover {
+  color: white;
+  background: rgb(255, 62, 143);
 }
 .sidebar-sticky .search input {
   flex: 1;
@@ -81,6 +115,15 @@ button {
   background: black;
   color: white;
   padding: 5px 10px;
+}
+
+.soc_dev_form_btns button:hover {
+  background: gray;
+  color: white;
+}
+.soc_dev_form_btns .active {
+  background: black;
+  color: white;
 }
 
 .sidebar .nav-link {
@@ -106,7 +149,7 @@ button {
   font-size: 0.75rem;
 }
 
-.sidebar-sticky .navbar-brand {
+.sidebar .navbar-brand {
   width: 100%;
   margin: 0;
   background-color: black;
@@ -119,16 +162,17 @@ button {
   word-break: break-all;
 }
 
+.sidebar-sticky .search input:active {
+  border: 1px solid black;
+}
+
 .sidebar .sidebar-sticky .accordion button {
-  color: rgb(255, 255, 255);
-  background: rgb(0, 0, 0);
+  color: rgb(0, 0, 0);
 }
 .sidebar .sidebar-sticky .accordion button:hover {
   opacity: 0.8;
 }
 .sidebar .sidebar-sticky .accordion button::after {
-  fill: white;
-  display: none;
 }
 
 .sidebar-sticky .accordion .accordion-item {
@@ -165,8 +209,8 @@ button {
   background: black;
   font-weight: bold;
   color: white;
-  border: 2px solid rgba(204, 204, 204, 0.5) !important;
 }
+
 /*
  * main
  */
@@ -217,4 +261,125 @@ button {
   padding-right: 5px;
 
   margin-bottom: 10px;
+}
+
+.pop_up_modal {
+  position: fixed;
+
+  z-index: 2000;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  position: fixed;
+
+  z-index: 2000;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.4);
+  padding: 0 20px;
+}
+.pop_up_modal .box {
+  background: white;
+  max-width: 500px;
+  margin: auto;
+  margin-top: 20px;
+}
+
+.pop_up_modal .box .action {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.pop_up_modal .box button {
+  background: black;
+  color: white;
+  padding: 10px 15px;
+  margin: 10px;
+}
+
+.pop_up_modal .show {
+  transform: translateY(0);
+  animation: modal linear 300ms 1;
+}
+
+.loader_container {
+  position: fixed;
+  z-index: 2000;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(255, 255, 255, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.powered {
+  position: fixed;
+  top: 0;
+  right: 0;
+  max-width: 180px;
+  z-index: 5000;
+}
+
+.santa_cruz_gad {
+  position: fixed;
+  top: 0;
+  right: 0;
+  left: 0;
+  bottom: 0;
+  background: white;
+}
+.santa_cruz_gad .img {
+  max-width: 700px;
+}
+
+.burger_menu {
+  position: fixed;
+  width: max-content;
+  top: 20px;
+  left: 20px;
+  background: black;
+  cursor: pointer;
+  z-index: 5000;
+}
+
+.burger_menu :hover {
+  opacity: 0.8;
+}
+
+@media screen and (max-width: 768px) {
+  .powered {
+    max-width: 150px;
+  }
+}
+
+.page_title {
+  animation: page_title ease-in 300ms 1;
+}
+
+@keyframes page_title {
+  0% {
+    transform: translateY(-50%);
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+@keyframes modal {
+  0% {
+    transform: translateY(-200px);
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
 }

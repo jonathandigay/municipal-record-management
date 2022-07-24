@@ -2,12 +2,13 @@
 
 require("./middleware/checklogin.php");
 require("database/connection.php");
-$popu_age_result = $dbconnection->query("SELECT * FROM soc_dev_demography_population_age_sex");
 
 
 
 
 ?>
+<?php  require("./process/retrieve_soc_developement.php"); ?>
+<?php  require("./process/soc_development_sector.php"); ?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -76,6 +77,7 @@ $popu_age_result = $dbconnection->query("SELECT * FROM soc_dev_demography_popula
     }
 
     .accordion-item {
+        border: none;
         background: rgb(165, 165, 165);
     }
 
@@ -156,74 +158,51 @@ VALUES ( $ages,  $male,  $male')";
 ?>
         <div class="row">
 
+
+            <?php
+
+if(isset($_COOKIE["popup_modal"])){
+    if($_COOKIE["popup_modal"]==="saverecord")
+require("./modal/success.php");
+
+}
+
+
+?>
             <?php
 require("./layoutsidebar/sidebar.php");
 
 ?>
 
 
+            <div class="powered">
+                <img src="./assets/images/gad.png" alt="">
+            </div>
 
+            <div class="burger_menu p-2 shadow" style="border-radius:50px;">
+                <button class="navbar-toggler p-0 collapsed" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#sidebarMenu" aria-controls="sidebarMenu" aria-expanded="false"
+                    aria-label="Toggle navigation">
+                    <svg clip-rule="evenodd" fill-rule="evenodd" stroke-linejoin="round" stroke-miterlimit="2"
+                        width="50px" fill="#fff" height="50px" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path
+                            d="m13 16.745c0-.414-.336-.75-.75-.75h-9.5c-.414 0-.75.336-.75.75s.336.75.75.75h9.5c.414 0 .75-.336.75-.75zm9-5c0-.414-.336-.75-.75-.75h-18.5c-.414 0-.75.336-.75.75s.336.75.75.75h18.5c.414 0 .75-.336.75-.75zm-4-5c0-.414-.336-.75-.75-.75h-14.5c-.414 0-.75.336-.75.75s.336.75.75.75h14.5c.414 0 .75-.336.75-.75z"
+                            fill-rule="nonzero" />
+                    </svg>
+                </button>
 
-            <form action="./process/demography.php" method="POST" class="container-fluid p-0 py-3 px-3 col-md-9 ">
+            </div>
+
+            <form action="labor_and_employment.php" method="POST" class="container-fluid p-0 w-100  px-3 col ">
 
 
                 <div>
                     <div class="header position-sticky top-0 shadow">
                         <div class="title text-center  py-2" style="background:black;color:white;">
-                            <h5 class="m-0"> Economic Development Sector / Labor and Employment</h5>
+                            <h5 class="m-0 py-3 page_title"> Economic Development Sector / Labor and Employment</h5>
                         </div>
-                        <div class=" d-flex my-2 align-items-center justify-content-between ">
+                        <?php require("./layout/soc_dev_header.php"); ?>
 
-                            <div class="d-flex my-2 align-items-center ">
-                                <div class=" d-flex align-items-center mx-2">
-                                    <h6 class="m-0 mx-1">BARANGAY:</h6>
-                                    <select class="form-select" aria-label="Default select example" name="barangay"
-                                        name="barangay" onchange="barangaySession(this)">
-
-                                        <?php
-                                    require("./arrays/barangay.php");
-                                       $count =count($barangay);
-                                       $i =0;
-                                       for($i; $i < $count; $i++){
-                                       ?>
-                                        <option value=<?php echo $barangay[$i]   ?>><?php echo $barangay[$i]   ?>
-                                        </option>
-                                        <?php  };?>
-                                    </select>
-
-                                </div>
-                                <div class="d-flex align-items-center mx-2">
-                                    <h6 class="m-0 mx-1">YEAR:</h6>
-                                    <select class="form-select" aria-label="Default select example" name="year">
-                                        <option selected value="2020-2022">2020-2022</option>
-                                        <option value="2018-2019">2018-2019</option>
-                                        <option value="2017-2018">2017-2018</option>
-                                        <option value="2016-2017">2016-2017</option>
-
-                                    </select>
-                                </div>
-                            </div>
-
-                            <div class="print d-flex justify-content-end m-3 ">
-                                <a href="./records/social_development_sector.php" target="_self">
-                                    <button class="py-2 px-3 shadow m-2" id="print" type="button">
-                                        <p> records <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
-                                                viewBox="0 0 24 24">
-                                                <path
-                                                    d="M7.972 2h-6.972l.714 5h2.021l-.429-3h3.694c1.112 1.388 1.952 2 4.277 2h9.283l-.2 1h2.04l.6-3h-11.723c-1.978 0-2.041-.417-3.305-2zm16.028 7h-24l2 13h20l2-13z" />
-                                            </svg></p>
-                                    </button>
-                                </a>
-                                <button class="py-2 px-3 m-2 shadow" name="demography" type="submit">
-                                    <p>Save <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
-                                            viewBox="0 0 24 24">
-                                            <path
-                                                d="M14 3h2.997v5h-2.997v-5zm9 1v20h-22v-24h17.997l4.003 4zm-17 5h12v-7h-12v7zm14 4h-16v9h16v-9z" />
-                                        </svg>
-                                </button>
-                            </div>
-
-                        </div>
 
                     </div>
 
@@ -237,7 +216,7 @@ require("./layoutsidebar/sidebar.php");
                                     <button class="accordion-button d-flex justify-content-between shadow" type="button"
                                         data-bs-toggle="collapse" data-bs-target="#accordionone" aria-expanded="false"
                                         aria-controls="accordionone">
-                                        <h6 class="p-0"> Percent of labor force employed by sex,and age</h6>
+                                        <h6 class="p-0 "> Percent of labor force employed by sex,and age</h6>
                                         <span><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
                                                 viewBox="0 0 24 24">
                                                 <path
@@ -259,73 +238,97 @@ require("./layoutsidebar/sidebar.php");
                                             <th>Ages</th>
                                             <th>Male</th>
                                             <th>Female</th>
-                                            <th>Total</th>
                                         </tr>
-                                        <tr>
-                                            <td>All ages</td>
-                                            <td><input type="text" name="m23" id="" value="0" /> </td>
-                                            <td><input type="text" name="f23" id="" value="0" /> </td>
-                                            <td> </td>
-                                        </tr>
+
                                         <tr>
                                             <td>15-19</td>
-                                            <td><input type="text" name="m24" id="" value="0" /> </td>
-                                            <td><input type="text" name="f24" id="" value="0" /> </td>
-                                            <td> </td>
+                                            <td><input type="text" name="m46" id=""
+                                                    value="<?php  echo  isset($rowresult) ?  $rowresult["m46"] : 0;  ?>" />
+                                            </td>
+                                            <td><input type="text" name="f46" id=""
+                                                    value="<?php  echo  isset($rowresult) ?  $rowresult["f46"] : 0;  ?>" />
+                                            </td>
                                         </tr>
                                         <tr>
                                             <td>20-24</td>
-                                            <td><input type="text" name="m25" id="" value="0" /> </td>
-                                            <td><input type="text" name="f25" id="" value="0" /> </td>
-                                            <td></td>
+                                            <td><input type="text" name="m47" id=""
+                                                    value="<?php  echo  isset($rowresult) ?  $rowresult["m47"] : 0;  ?>" />
+                                            </td>
+                                            <td><input type="text" name="f47" id=""
+                                                    value="<?php  echo  isset($rowresult) ?  $rowresult["f47"] : 0;  ?>" />
+                                            </td>
                                         </tr>
                                         <tr>
                                             <td>25-29</td>
-                                            <td><input type="text" name="m26" id="" value="0" /> </td>
-                                            <td><input type="text" name="f26" id="" value="0" /> </td>
-                                            <td> </td>
+                                            <td><input type="text" name="m48" id=""
+                                                    value="<?php  echo  isset($rowresult) ?  $rowresult["m48"] : 0;  ?>" />
+                                            </td>
+                                            <td><input type="text" name="f48" id=""
+                                                    value="<?php  echo  isset($rowresult) ?  $rowresult["f48"] : 0;  ?>" />
+                                            </td>
                                         </tr>
                                         <tr>
                                             <td>30-34</td>
-                                            <td><input type="text" name="m27" id="" value="0" /> </td>
-                                            <td><input type="text" name="f27" id="" value="0" /> </td>
-                                            <td> </td>
+                                            <td><input type="text" name="m49" id=""
+                                                    value="<?php  echo  isset($rowresult) ?  $rowresult["m49"] : 0;  ?>" />
+                                            </td>
+                                            <td><input type="text" name="f49" id=""
+                                                    value="<?php  echo  isset($rowresult) ?  $rowresult["f49"] : 0;  ?>" />
+                                            </td>
                                         </tr>
                                         <tr>
                                             <td>35-39</td>
-                                            <td><input type="text" name="m28" id="" value="0" /> </td>
-                                            <td><input type="text" name="f28" id="" value="0" /> </td>
-                                            <td></td>
+                                            <td><input type="text" name="m50" id=""
+                                                    value="<?php  echo  isset($rowresult) ?  $rowresult["m50"] : 0;  ?>" />
+                                            </td>
+                                            <td><input type="text" name="f50" id=""
+                                                    value="<?php  echo  isset($rowresult) ?  $rowresult["f50"] : 0;  ?>" />
+                                            </td>
                                         </tr>
                                         <tr>
                                             <td>40-44</td>
-                                            <td><input type="text" name="m29" id="" value="0" /> </td>
-                                            <td><input type="text" name="f29" id="" value="0" /> </td>
-                                            <td>0</td>
+                                            <td><input type="text" name="m51" id=""
+                                                    value="<?php  echo  isset($rowresult) ?  $rowresult["m51"] : 0;  ?>" />
+                                            </td>
+                                            <td><input type="text" name="f51" id=""
+                                                    value="<?php  echo  isset($rowresult) ?  $rowresult["f51"] : 0;  ?>" />
+                                            </td>
                                         </tr>
                                         <tr>
                                             <td>45-49</td>
-                                            <td><input type="text" name="m29" id="" value="0" /> </td>
-                                            <td><input type="text" name="f29" id="" value="0" /> </td>
-                                            <td>0</td>
+                                            <td><input type="text" name="m52" id=""
+                                                    value="<?php  echo  isset($rowresult) ?  $rowresult["m52"] : 0;  ?>" />
+                                            </td>
+                                            <td><input type="text" name="f52" id=""
+                                                    value="<?php  echo  isset($rowresult) ?  $rowresult["f52"] : 0;  ?>" />
+                                            </td>
                                         </tr>
                                         <tr>
                                             <td>50-54</td>
-                                            <td><input type="text" name="m29" id="" value="0" /> </td>
-                                            <td><input type="text" name="f29" id="" value="0" /> </td>
-                                            <td>0</td>
+                                            <td><input type="text" name="m53" id=""
+                                                    value="<?php  echo  isset($rowresult) ?  $rowresult["m53"] : 0;  ?>" />
+                                            </td>
+                                            <td><input type="text" name="f53" id=""
+                                                    value="<?php  echo  isset($rowresult) ?  $rowresult["f53"] : 0;  ?>" />
+                                            </td>
                                         </tr>
                                         <tr>
                                             <td>55-59</td>
-                                            <td><input type="text" name="m29" id="" value="0" /> </td>
-                                            <td><input type="text" name="f29" id="" value="0" /> </td>
-                                            <td>0</td>
+                                            <td><input type="text" name="m54" id=""
+                                                    value="<?php  echo  isset($rowresult) ?  $rowresult["m54"] : 0;  ?>" />
+                                            </td>
+                                            <td><input type="text" name="f54" id=""
+                                                    value="<?php  echo  isset($rowresult) ?  $rowresult["f54"] : 0;  ?>" />
+                                            </td>
                                         </tr>
                                         <tr>
                                             <td>60-65</td>
-                                            <td><input type="text" name="m29" id="" value="0" /> </td>
-                                            <td><input type="text" name="f29" id="" value="0" /> </td>
-                                            <td>0</td>
+                                            <td><input type="text" name="m55" id=""
+                                                    value="<?php  echo  isset($rowresult) ?  $rowresult["m55"] : 0;  ?>" />
+                                            </td>
+                                            <td><input type="text" name="f55" id=""
+                                                    value="<?php  echo  isset($rowresult) ?  $rowresult["f55"] : 0;  ?>" />
+                                            </td>
                                         </tr>
                                     </table>
                                 </div>
@@ -360,13 +363,15 @@ require("./layoutsidebar/sidebar.php");
 
                                                 <th>Male</th>
                                                 <th>Female</th>
-                                                <th>Total</th>
                                             </tr>
                                             <tr>
 
-                                                <td> <input type="text" name="m22" id="" value="0" /> </td>
-                                                <td> <input type="text" name="f22" id="" value="0" /> </td>
-                                                <td>0</td>
+                                                <td> <input type="text" name="m56" id=""
+                                                        value="<?php  echo  isset($rowresult) ?  $rowresult["m56"] : 0;  ?>" />
+                                                </td>
+                                                <td> <input type="text" name="f56" id=""
+                                                        value="<?php  echo  isset($rowresult) ?  $rowresult["f56"] : 0;  ?>" />
+                                                </td>
                                             </tr>
                                         </table>
                                     </div>
@@ -404,13 +409,15 @@ require("./layoutsidebar/sidebar.php");
 
                                                 <th>Male</th>
                                                 <th>Female</th>
-                                                <th>Total</th>
                                             </tr>
                                             <tr>
 
-                                                <td> <input type="text" name="m22" id="" value="0" /> </td>
-                                                <td> <input type="text" name="f22" id="" value="0" /> </td>
-                                                <td>0</td>
+                                                <td> <input type="text" name="m57" id=""
+                                                        value="<?php  echo  isset($rowresult) ?  $rowresult["m57"] : 0;  ?>" />
+                                                </td>
+                                                <td> <input type="text" name="f57" id=""
+                                                        value="<?php  echo  isset($rowresult) ?  $rowresult["f57"] : 0;  ?>" />
+                                                </td>
                                             </tr>
                                         </table>
                                     </div>
@@ -447,13 +454,15 @@ require("./layoutsidebar/sidebar.php");
 
                                                 <th>Male</th>
                                                 <th>Female</th>
-                                                <th>Total</th>
                                             </tr>
                                             <tr>
 
-                                                <td> <input type="text" name="m22" id="" value="0" /> </td>
-                                                <td> <input type="text" name="f22" id="" value="0" /> </td>
-                                                <td>0</td>
+                                                <td> <input type="text" name="m58" id=""
+                                                        value="<?php  echo  isset($rowresult) ?  $rowresult["m58"] : 0;  ?>" />
+                                                </td>
+                                                <td> <input type="text" name="f58" id=""
+                                                        value="<?php  echo  isset($rowresult) ?  $rowresult["f58"] : 0;  ?>" />
+                                                </td>
                                             </tr>
                                         </table>
                                     </div>
@@ -491,13 +500,15 @@ require("./layoutsidebar/sidebar.php");
 
                                                 <th>Male</th>
                                                 <th>Female</th>
-                                                <th>Total</th>
                                             </tr>
                                             <tr>
 
-                                                <td> <input type="text" name="m22" id="" value="0" /> </td>
-                                                <td> <input type="text" name="f22" id="" value="0" /> </td>
-                                                <td>0</td>
+                                                <td> <input type="text" name="m59" id=""
+                                                        value="<?php  echo  isset($rowresult) ?  $rowresult["m59"] : 0;  ?>" />
+                                                </td>
+                                                <td> <input type="text" name="f59" id=""
+                                                        value="<?php  echo  isset($rowresult) ?  $rowresult["f59"] : 0;  ?>" />
+                                                </td>
                                             </tr>
                                         </table>
                                     </div>
@@ -510,21 +521,8 @@ require("./layoutsidebar/sidebar.php");
                         </div>
                     </div>
                 </div>
-                <div class="d-flex justify-content-center my-3">
-                    <div class="mx-2">
-                        <label>Prepared By:</label> <input
-                            style="border:none;border-bottom:1px solid black;outline:none;" class="px-2 py-1"
-                            type="text" name="preparedby" placeholder="type name..." />
-                    </div>
+                <?php  require("./layout/soc_dev_footer.php");  ?>
 
-                    <div class="mx-2">
-
-                        <label>Reviewed By:</label> <input
-                            style="border:none;border-bottom:1px solid black;outline:none;" class="px-2 py-1"
-                            type="text" name="reviewedby" placeholder="type name..." />
-                    </div>
-
-                </div>
 
 
 
@@ -537,38 +535,8 @@ require("./layoutsidebar/sidebar.php");
 
     <script src="./assets/js/bootstrap.bundle.min.js"></script>
 
-    <script>
-    function onlyNumberKey(evt) {
+    <script src="./script/script.js"></script>
 
-        // Only ASCII character in that range allowed
-        var ASCIICode = (evt.which) ? evt.which : evt.keyCode
-        if (ASCIICode > 31 && (ASCIICode < 48 || ASCIICode > 57))
-            return false;
-        return true;
-    }
-
-
-    function printDiv() {
-        var divContents = document.getElementById("printcontent").innerHTML;
-        var a = window.open('', '', '');
-        a.document.write('<html>');
-        a.document.write('<body >');
-        a.document.write(
-            '<h5 style="text-align:center;">Total Household Polpulation by Age and sex (psa.gov.ph) </h5>',
-            divContents,
-        );
-        a.document.write('</body> </html>');
-        a.document.close();
-        a.print();
-    }
-
-    function barangaySession(e) {
-        console.log(e.value)
-
-        document.cookie = `barangay = ${e.value}`;
-
-    }
-    </script>
 
 
 

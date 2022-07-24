@@ -2,12 +2,13 @@
 
 require("./middleware/checklogin.php");
 require("database/connection.php");
-$popu_age_result = $dbconnection->query("SELECT * FROM soc_dev_demography_population_age_sex");
 
 
 
 
 ?>
+<?php  require("./process/retrieve_soc_developement.php"); ?>
+<?php  require("./process/soc_development_sector.php"); ?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -75,6 +76,7 @@ $popu_age_result = $dbconnection->query("SELECT * FROM soc_dev_demography_popula
     }
 
     .accordion-item {
+        border: none;
         background: rgb(165, 165, 165);
     }
 
@@ -154,74 +156,51 @@ VALUES ( $ages,  $male,  $male')";
 ?>
         <div class="row">
 
+
+            <?php
+
+if(isset($_COOKIE["popup_modal"])){
+    if($_COOKIE["popup_modal"]==="saverecord")
+require("./modal/success.php");
+
+}
+
+
+?>
+
+
             <?php
 require("./layoutsidebar/sidebar.php");
 
 ?>
 
+            <div class="powered">
+                <img src="./assets/images/gad.png" alt="">
+            </div>
+            <div class="burger_menu p-2 shadow" style="border-radius:50px;">
+                <button class="navbar-toggler p-0 collapsed" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#sidebarMenu" aria-controls="sidebarMenu" aria-expanded="false"
+                    aria-label="Toggle navigation">
+                    <svg clip-rule="evenodd" fill-rule="evenodd" stroke-linejoin="round" stroke-miterlimit="2"
+                        width="50px" fill="#fff" height="50px" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path
+                            d="m13 16.745c0-.414-.336-.75-.75-.75h-9.5c-.414 0-.75.336-.75.75s.336.75.75.75h9.5c.414 0 .75-.336.75-.75zm9-5c0-.414-.336-.75-.75-.75h-18.5c-.414 0-.75.336-.75.75s.336.75.75.75h18.5c.414 0 .75-.336.75-.75zm-4-5c0-.414-.336-.75-.75-.75h-14.5c-.414 0-.75.336-.75.75s.336.75.75.75h14.5c.414 0 .75-.336.75-.75z"
+                            fill-rule="nonzero" />
+                    </svg>
+                </button>
 
+            </div>
 
-
-            <form action="./process/demography.php" method="POST" class="container-fluid p-0 py-3 px-3 col-md-9 ">
+            <form action="health.php" method="POST" class="container-fluid p-0 w-100  px-3 col ">
 
 
                 <div>
                     <div class="header position-sticky top-0 shadow">
                         <div class="title text-center  py-2" style="background:black;color:white;">
-                            <h5 class="m-0"> Social Development Sector / Health</h5>
+                            <h5 class="m-0 py-3 page_title"> Social Development Sector / Health</h5>
                         </div>
-                        <div class=" d-flex my-2 align-items-center justify-content-between ">
+                        <?php require("./layout/soc_dev_header.php"); ?>
 
-                            <div class="d-flex my-2 align-items-center ">
-                                <div class=" d-flex align-items-center mx-2">
-                                    <h6 class="m-0 mx-1">BARANGAY:</h6>
-                                    <select class="form-select" aria-label="Default select example" name="barangay"
-                                        name="barangay" onchange="barangaySession(this)">
-
-                                        <?php
-                                    require("./arrays/barangay.php");
-                                       $count =count($barangay);
-                                       $i =0;
-                                       for($i; $i < $count; $i++){
-                                       ?>
-                                        <option value=<?php echo $barangay[$i]   ?>><?php echo $barangay[$i]   ?>
-                                        </option>
-                                        <?php  };?>
-                                    </select>
-
-                                </div>
-                                <div class="d-flex align-items-center mx-2">
-                                    <h6 class="m-0 mx-1">YEAR:</h6>
-                                    <select class="form-select" aria-label="Default select example" name="year">
-                                        <option selected value="2020-2022">2020-2022</option>
-                                        <option value="2018-2019">2018-2019</option>
-                                        <option value="2017-2018">2017-2018</option>
-                                        <option value="2016-2017">2016-2017</option>
-
-                                    </select>
-                                </div>
-                            </div>
-
-                            <div class="print d-flex justify-content-end m-3 ">
-                                <a href="./records/social_development_sector.php" target="_self">
-                                    <button class="py-2 px-3 shadow m-2" id="print" type="button">
-                                        <p> records <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
-                                                viewBox="0 0 24 24">
-                                                <path
-                                                    d="M7.972 2h-6.972l.714 5h2.021l-.429-3h3.694c1.112 1.388 1.952 2 4.277 2h9.283l-.2 1h2.04l.6-3h-11.723c-1.978 0-2.041-.417-3.305-2zm16.028 7h-24l2 13h20l2-13z" />
-                                            </svg></p>
-                                    </button>
-                                </a>
-                                <button class="py-2 px-3 m-2 shadow" name="demography" type="submit">
-                                    <p>Save <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
-                                            viewBox="0 0 24 24">
-                                            <path
-                                                d="M14 3h2.997v5h-2.997v-5zm9 1v20h-22v-24h17.997l4.003 4zm-17 5h12v-7h-12v7zm14 4h-16v9h16v-9z" />
-                                        </svg>
-                                </button>
-                            </div>
-
-                        </div>
 
                     </div>
 
@@ -248,8 +227,8 @@ require("./layoutsidebar/sidebar.php");
 
                                     <table class="w-25 m-auto mb-3 my-3  p-4 " id="printcontent">
                                         <tr>
-                                            <td class="text-center"><input type="text" value="0" name="householdaverage"
-                                                    id="" />
+                                            <td class="text-center"><input type="text" name="num2" id=""
+                                                    value="<?php  echo  isset($rowresult) ?  $rowresult["num2"] : 0;  ?>" />
                                             </td>
                                         </tr>
                                     </table>
@@ -285,8 +264,9 @@ require("./layoutsidebar/sidebar.php");
 
                                         <tr>
 
-                                            <td class="text-center"><input type="text" value="0" name="householdaverage"
-                                                    id="" />
+                                            <td class="text-center"><input type="text"
+                                                    value="<?php  echo  isset($rowresult) ?  $rowresult["num3"] : 0;  ?>"
+                                                    name="num3" id="" />
                                             </td>
                                         </tr>
                                     </table>
@@ -317,7 +297,8 @@ require("./layoutsidebar/sidebar.php");
                                     aria-labelledby="headingOne" data-bs-parent="#parent_accordion">
                                     <table class="w-25 m-auto mb-3 my-3  p-4 " id="printcontent">
                                         <tr>
-                                            <td class="text-center"><input type="text" value="0" name="householdaverage"
+                                            <td class="text-center"><input type="text" name="num4"
+                                                    value="<?php  echo  isset($rowresult) ?  $rowresult["num4"] : 0;  ?>"
                                                     id="" />
                                             </td>
                                         </tr>
@@ -349,8 +330,8 @@ require("./layoutsidebar/sidebar.php");
                                     aria-labelledby="headingOne" data-bs-parent="#parent_accordion">
                                     <table class="w-25 m-auto mb-3 my-3  p-4 " id="printcontent">
                                         <tr>
-                                            <td class="text-center"><input type="text" value="0" name="householdaverage"
-                                                    id="" />
+                                            <td class="text-center"><input type="text" name="num5" id=""
+                                                    value="<?php  echo  isset($rowresult) ?  $rowresult["num5"] : 0;  ?>" />
                                             </td>
                                         </tr>
                                     </table>
@@ -381,8 +362,8 @@ require("./layoutsidebar/sidebar.php");
                                     aria-labelledby="headingOne" data-bs-parent="#parent_accordion">
                                     <table class="w-25 m-auto mb-3 my-3  p-4 " id="printcontent">
                                         <tr>
-                                            <td class="text-center"><input type="text" value="0" name="householdaverage"
-                                                    id="" />
+                                            <td class="text-center"><input type="text" name="num6" id=""
+                                                    value="<?php  echo  isset($rowresult) ?  $rowresult["num6"] : 0;  ?>" />
                                             </td>
                                         </tr>
                                     </table>
@@ -412,10 +393,23 @@ require("./layoutsidebar/sidebar.php");
                                     aria-labelledby="headingOne" data-bs-parent="#parent_accordion">
                                     <div class="d-flex justify-content-center py-3 align-items-center w-100">
                                         <div>
-                                            <select class="form-select w-auto" aria-label="Default select example"
-                                                name="logintype">
-                                                <option selected value="No">No</option>
-                                                <option value="Yes">Yes</option>
+                                            <select class="form-select w-auto" aria-label="Default select example "
+                                                name="bol1">
+                                                <option selected hidden value=" <?php
+                                                    if(isset($rowresult)){
+                                                        if($rowresult["bol1"]==0){
+                                                        echo "false";
+                                                        }else{ echo "true";}
+                                                    }
+                                                    ?> "> <?php
+                                                    if(isset($rowresult)){
+                                                        if($rowresult["bol1"]==0){
+                                                        echo "false";
+                                                        }else{ echo "true";}
+                                                    }
+                                                    ?> </option>
+                                                <option value="false">false</option>
+                                                <option value="true">true</option>
 
                                             </select>
                                         </div>
@@ -436,7 +430,7 @@ require("./layoutsidebar/sidebar.php");
                                     <button class="accordion-button d-flex justify-content-between shadow" type="button"
                                         data-bs-toggle="collapse" data-bs-target="#accordionfive" aria-expanded="false"
                                         aria-controls="accordionfive">
-                                        <h6 class="p-0">Presence of garbage disposal system</h6>
+                                        <h6 class="p-0 ">Presence of garbage disposal system</h6>
                                         <span><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
                                                 viewBox="0 0 24 24">
                                                 <path
@@ -450,9 +444,22 @@ require("./layoutsidebar/sidebar.php");
                                     <div class="d-flex justify-content-center py-3 align-items-center w-100">
                                         <div>
                                             <select class="form-select w-auto" aria-label="Default select example"
-                                                name="logintype">
-                                                <option selected value="No">No</option>
-                                                <option value="Yes">Yes</option>
+                                                name="bol2">
+                                                <option selected hidden value=" <?php
+                                                    if(isset($rowresult)){
+                                                        if($rowresult["bol2"]==0){
+                                                        echo "false";
+                                                        }else{ echo "true";}
+                                                    }
+                                                    ?> "> <?php
+                                                    if(isset($rowresult)){
+                                                        if($rowresult["bol2"]==0){
+                                                        echo "false";
+                                                        }else{ echo "true";}
+                                                    }
+                                                    ?> </option>
+                                                <option value="false">false</option>
+                                                <option value="true">true</option>
 
                                             </select>
                                         </div>
@@ -462,9 +469,6 @@ require("./layoutsidebar/sidebar.php");
 
                                 </div>
                             </div>
-
-
-
 
                         </div>
                         <div class="accordion" id="parent_accordion">
@@ -499,9 +503,22 @@ require("./layoutsidebar/sidebar.php");
                                         <tr>
                                             <td>Councilling services for women </td>
                                             <td><select class="form-select w-auto" aria-label="Default select example"
-                                                    name="logintype">
-                                                    <option selected value="No">No</option>
-                                                    <option value="Yes">Yes</option>
+                                                    name="bol3">
+                                                    <option selected hidden value=" <?php
+                                                    if(isset($rowresult)){
+                                                        if($rowresult["bol3"]==0){
+                                                        echo "false";
+                                                        }else{ echo "true";}
+                                                    }
+                                                    ?> "> <?php
+                                                    if(isset($rowresult)){
+                                                        if($rowresult["bol3"]==0){
+                                                        echo "false";
+                                                        }else{ echo "true";}
+                                                    }
+                                                    ?> </option>
+                                                    <option value="false">false</option>
+                                                    <option value="true">true</option>
 
                                                 </select></td>
 
@@ -509,9 +526,22 @@ require("./layoutsidebar/sidebar.php");
                                         <tr>
                                             <td>Pap smear</td>
                                             <td><select class="form-select w-auto" aria-label="Default select example"
-                                                    name="logintype">
-                                                    <option selected value="No">No</option>
-                                                    <option value="Yes">Yes</option>
+                                                    name="bol4">
+                                                    <option selected hidden value=" <?php
+                                                    if(isset($rowresult)){
+                                                        if($rowresult["bol4"]==0){
+                                                        echo "false";
+                                                        }else{ echo "true";}
+                                                    }
+                                                    ?> "> <?php
+                                                    if(isset($rowresult)){
+                                                        if($rowresult["bol4"]==0){
+                                                        echo "false";
+                                                        }else{ echo "true";}
+                                                    }
+                                                    ?> </option>
+                                                    <option value="false">false</option>
+                                                    <option value="true">true</option>
 
                                                 </select></td>
 
@@ -519,107 +549,39 @@ require("./layoutsidebar/sidebar.php");
                                         <tr>
                                             <td>Breast cancer exam (including mammogram)</td>
                                             <td><select class="form-select w-auto" aria-label="Default select example"
-                                                    name="logintype">
-                                                    <option selected value="No">No</option>
-                                                    <option value="Yes">Yes</option>
-
+                                                    name="bol5">
+                                                    <option selected hidden value=" <?php
+                                                    if(isset($rowresult)){
+                                                        if($rowresult["bol5"]==0){
+                                                        echo "false";
+                                                        }else{ echo "true";}
+                                                    }
+                                                    ?> "> <?php
+                                                    if(isset($rowresult)){
+                                                        if($rowresult["bol5"]==0){
+                                                        echo "false";
+                                                        }else{ echo "true";}
+                                                    }
+                                                    ?> </option>
+                                                    <option value="false">false</option>
+                                                    <option value="true">true</option>
                                                 </select></td>
 
                                         </tr>
-                                        <tr>
-                                            <td>Elementary</td>
-                                            <td><select class="form-select w-auto" aria-label="Default select example"
-                                                    name="logintype">
-                                                    <option selected value="No">No</option>
-                                                    <option value="Yes">Yes</option>
 
-                                                </select></td>
-
-
-                                        </tr>
 
                                     </table>
                                 </div>
                             </div>
                         </div>
-                        <div class="accordion mb-3" id="demography">
-                            <div class="accordion-item">
-                                <h2 class="accordion-header" id="headingOne">
-                                    <button class="accordion-button d-flex justify-content-between shadow" type="button"
-                                        data-bs-toggle="collapse" data-bs-target="#accordionine" aria-expanded="false"
-                                        aria-controls="accordionine">
-                                        <h6 class="p-0"> Number of women who reported equalfull access of women to
-                                            comprehensive , quality and affordable health services (including and
-                                            treatment of diseases; sexual reproductive health services ) , latest </h6>
-                                        <span><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
-                                                viewBox="0 0 24 24">
-                                                <path
-                                                    d="M0 7.33l2.829-2.83 9.175 9.339 9.167-9.339 2.829 2.83-11.996 12.17z" />
-                                            </svg></span>
-                                    </button>
 
-                                </h2>
-                                <div id="accordionine" class="accordion-collapse collapse show"
-                                    aria-labelledby="headingOne" data-bs-parent="#parent_accordion">
-
-
-                                    <table class="w-25 m-auto mb-3 my-3  p-4 " id="printcontent">
-                                        <tr>
-                                            <td class="text-center"><input type="text" value="0" name="householdaverage"
-                                                    id="" />
-                                            </td>
-                                        </tr>
-                                    </table>
-                                </div>
-                            </div>
-
-
-
-
-                        </div>
-                        <div class="accordion mb-3" id="demography">
-                            <div class="accordion-item">
-                                <h2 class="accordion-header" id="headingOne">
-                                    <button class="accordion-button d-flex justify-content-between shadow" type="button"
-                                        data-bs-toggle="collapse" data-bs-target="#accordionone" aria-expanded="false"
-                                        aria-controls="accordionone">
-                                        <h6 class="p-0"> Number of women who reported equalfull access of women to
-                                            comprehensive , quality and affordable health services (including and
-                                            treatment of diseases; sexual reproductive health services ) , latest </h6>
-                                        <span><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
-                                                viewBox="0 0 24 24">
-                                                <path
-                                                    d="M0 7.33l2.829-2.83 9.175 9.339 9.167-9.339 2.829 2.83-11.996 12.17z" />
-                                            </svg></span>
-                                    </button>
-
-                                </h2>
-                                <div id="accordionone" class="accordion-collapse collapse show"
-                                    aria-labelledby="headingOne" data-bs-parent="#parent_accordion">
-
-
-                                    <table class="w-25 m-auto mb-3 my-3  p-4 " id="printcontent">
-                                        <tr>
-                                            <td class="text-center"><input type="text" value="0" name="householdaverage"
-                                                    id="" />
-                                            </td>
-                                        </tr>
-                                    </table>
-                                </div>
-                            </div>
-
-
-
-
-                        </div>
                         <div class="accordion  mb-3" id="parent_accordion">
                             <div class="accordion-item">
                                 <h2 class="accordion-header" id="headingOne">
                                     <button class="accordion-button d-flex justify-content-between shadow" type="button"
-                                        data-bs-toggle="collapse" data-bs-target="#accordionten" aria-expanded="false"
-                                        aria-controls="accordionten">
-                                        <h6 class="p-0">Percentage of Population that accessed secondary and tertiary
-                                            health services by sex</h6>
+                                        data-bs-toggle="collapse" data-bs-target="#accordionsix" aria-expanded="false"
+                                        aria-controls="accordionsix">
+                                        <h6 class="p-0 ">Availabiliy of public comfort rooms</h6>
                                         <span><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
                                                 viewBox="0 0 24 24">
                                                 <path
@@ -628,16 +590,30 @@ require("./layoutsidebar/sidebar.php");
                                     </button>
 
                                 </h2>
-                                <div id="accordionten" class="accordion-collapse collapse show"
+                                <div id="accordionsix" class="accordion-collapse collapse show"
                                     aria-labelledby="headingOne" data-bs-parent="#parent_accordion">
                                     <div class="d-flex justify-content-center py-3 align-items-center w-100">
-                                        <table class="w-25 m-auto mb-3 my-2  p-4 " id="printcontent">
-                                            <tr>
-                                                <td class="text-center"><input type="text" value="0"
-                                                        name="householdaverage" id="" />
-                                                </td>
-                                            </tr>
-                                        </table>
+                                        <div>
+                                            <select class="form-select w-auto" aria-label="Default select example"
+                                                name="bol6">
+                                                <option selected hidden value=" <?php
+                                                    if(isset($rowresult)){
+                                                        if($rowresult["bol6"]==0){
+                                                        echo "false";
+                                                        }else{ echo "true";}
+                                                    }
+                                                    ?> "> <?php
+                                                    if(isset($rowresult)){
+                                                        if($rowresult["bol6"]==0){
+                                                        echo "false";
+                                                        }else{ echo "true";}
+                                                    }
+                                                    ?> </option>
+                                                <option value="false">false</option>
+                                                <option value="true">true</option>
+
+                                            </select>
+                                        </div>
 
                                     </div>
 
@@ -645,47 +621,8 @@ require("./layoutsidebar/sidebar.php");
                                 </div>
                             </div>
 
-
-
-
                         </div>
-                        <div class="accordion  mb-3" id="parent_accordion">
-                            <div class="accordion-item">
-                                <h2 class="accordion-header" id="headingOne">
-                                    <button class="accordion-button d-flex justify-content-between shadow" type="button"
-                                        data-bs-toggle="collapse" data-bs-target="#accordioneleven"
-                                        aria-expanded="false" aria-controls="accordioneleven">
-                                        <h6 class="p-0">Number of women who accessed quality material, and post-patrum
-                                            care and services from health facilities and qualified health personnel</h6>
-                                        <span><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
-                                                viewBox="0 0 24 24">
-                                                <path
-                                                    d="M0 7.33l2.829-2.83 9.175 9.339 9.167-9.339 2.829 2.83-11.996 12.17z" />
-                                            </svg></span>
-                                    </button>
 
-                                </h2>
-                                <div id="accordioneleven" class="accordion-collapse collapse show"
-                                    aria-labelledby="headingOne" data-bs-parent="#parent_accordion">
-                                    <div class="d-flex justify-content-center py-3 align-items-center w-100">
-                                        <table class="w-25 m-auto mb-3 my-2  p-4 " id="printcontent">
-                                            <tr>
-                                                <td class="text-center"><input type="text" value="0"
-                                                        name="householdaverage" id="" />
-                                                </td>
-                                            </tr>
-                                        </table>
-
-                                    </div>
-
-
-                                </div>
-                            </div>
-
-
-
-
-                        </div>
                         <div class="accordion  mb-3" id="parent_accordion">
                             <div class="accordion-item">
                                 <h2 class="accordion-header" id="headingOne">
@@ -707,9 +644,22 @@ require("./layoutsidebar/sidebar.php");
                                     <div class="d-flex justify-content-center py-3 align-items-center w-100">
                                         <div>
                                             <select class="form-select w-auto" aria-label="Default select example"
-                                                name="logintype">
-                                                <option selected value="No">No</option>
-                                                <option value="Yes">Yes</option>
+                                                name="bol7">
+                                                <option selected hidden value=" <?php
+                                                    if(isset($rowresult)){
+                                                        if($rowresult["bol7"]==0){
+                                                        echo "false";
+                                                        }else{ echo "true";}
+                                                    }
+                                                    ?> "> <?php
+                                                    if(isset($rowresult)){
+                                                        if($rowresult["bol7"]==0){
+                                                        echo "false";
+                                                        }else{ echo "true";}
+                                                    }
+                                                    ?> </option>
+                                                <option value="false">false</option>
+                                                <option value="true">true</option>
 
                                             </select>
                                         </div>
@@ -724,176 +674,272 @@ require("./layoutsidebar/sidebar.php");
 
 
                         </div>
-                        <div class="accordion  mb-3" id="parent_accordion">
-                            <div class="accordion-item">
-                                <h2 class="accordion-header" id="headingOne">
-                                    <button class="accordion-button d-flex justify-content-between shadow" type="button"
-                                        data-bs-toggle="collapse" data-bs-target="#accordionthirtine"
-                                        aria-expanded="false" aria-controls="accordionthirtine">
-                                        <h6 class="p-0">Percentage of women who reported to have equal decision on the
-                                            number of children of years between pregnancies over number of women
-                                            interviewed, latest</h6>
-                                        <span><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
-                                                viewBox="0 0 24 24">
-                                                <path
-                                                    d="M0 7.33l2.829-2.83 9.175 9.339 9.167-9.339 2.829 2.83-11.996 12.17z" />
-                                            </svg></span>
-                                    </button>
-
-                                </h2>
-                                <div id="accordionthirtine" class="accordion-collapse collapse show"
-                                    aria-labelledby="headingOne" data-bs-parent="#parent_accordion">
-                                    <div class="d-flex justify-content-center  align-items-center w-100">
-                                        <table class="w-25 m-auto mb-3 my-2  p-4 " id="printcontent">
-                                            <tr>
-                                                <td class="text-center"><input type="text" value="0"
-                                                        name="householdaverage" id="" />
-                                                </td>
-                                            </tr>
-                                        </table>
-
-                                    </div>
-
-
-                                </div>
-                            </div>
 
 
 
 
-                        </div>
-                        <div class="accordion  mb-3" id="parent_accordion">
-                            <div class="accordion-item">
-                                <h2 class="accordion-header" id="headingOne">
-                                    <button class="accordion-button d-flex justify-content-between shadow" type="button"
-                                        data-bs-toggle="collapse" data-bs-target="#accordiontfourthin"
-                                        aria-expanded="false" aria-controls="accordiontfourthin">
-                                        <h6 class="p-0">Number of adolescents who reported attendance to orientation of
-                                            the prevention to early pregnancies and STDS, lates</h6>
-                                        <span><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
-                                                viewBox="0 0 24 24">
-                                                <path
-                                                    d="M0 7.33l2.829-2.83 9.175 9.339 9.167-9.339 2.829 2.83-11.996 12.17z" />
-                                            </svg></span>
-                                    </button>
-
-                                </h2>
-                                <div id="accordiontfourthin" class="accordion-collapse collapse show"
-                                    aria-labelledby="headingOne" data-bs-parent="#parent_accordion">
-                                    <div class="d-flex justify-content-center  align-items-center w-100">
-                                        <table class="w-25 m-auto mb-3 my-2  p-4 " id="printcontent">
-                                            <tr>
-                                                <td class="text-center"><input type="text" value="0"
-                                                        name="householdaverage" id="" />
-                                                </td>
-                                            </tr>
-                                        </table>
-
-                                    </div>
-
-
-                                </div>
-                            </div>
-
-
-
-
-                        </div>
-                        <div class="accordion  mb-3" id="parent_accordion">
-                            <div class="accordion-item">
-                                <h2 class="accordion-header" id="headingOne">
-                                    <button class="accordion-button d-flex justify-content-between shadow" type="button"
-                                        data-bs-toggle="collapse" data-bs-target="#accordiontfourthin"
-                                        aria-expanded="false" aria-controls="accordiontfourthin">
-                                        <h6 class="p-0">Proportion of households who are informal settlers by sex (
-                                            <span style=";color:red;">please use percentage ,
-                                                ex:50%</span> )
-                                        </h6>
-                                        <span><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
-                                                viewBox="0 0 24 24">
-                                                <path
-                                                    d="M0 7.33l2.829-2.83 9.175 9.339 9.167-9.339 2.829 2.83-11.996 12.17z" />
-                                            </svg></span>
-                                    </button>
-
-                                </h2>
-                                <div id="accordiontfourthin" class="accordion-collapse collapse show"
-                                    aria-labelledby="headingOne" data-bs-parent="#parent_accordion">
-                                    <div class="d-flex justify-content-center  align-items-center w-100">
-                                        <table class="w-25 m-auto mb-3 my-2  p-4 " id="printcontent">
-                                            <tr>
-                                                <td class="text-center"><input type="text" value="0"
-                                                        name="householdaverage" id="" />
-                                                </td>
-                                            </tr>
-                                        </table>
-
-                                    </div>
-
-
-                                </div>
-                            </div>
-
-
-
-
-                        </div>
-                        <div class="accordion  mb-3" id="parent_accordion">
-                            <div class="accordion-item">
-                                <h2 class="accordion-header" id="headingOne">
-                                    <button class="accordion-button d-flex justify-content-between shadow" type="button"
-                                        data-bs-toggle="collapse" data-bs-target="#accordiontfourthin"
-                                        aria-expanded="false" aria-controls="accordiontfourthin">
-                                        <h6 class="p-0">Proportion of household with dwelling structures unable to
-                                            protect them from the elenents (
-                                            <span style=";color:red;">please use percentage ,
-                                                ex:50%</span> )
-                                        </h6>
-                                        <span><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
-                                                viewBox="0 0 24 24">
-                                                <path
-                                                    d="M0 7.33l2.829-2.83 9.175 9.339 9.167-9.339 2.829 2.83-11.996 12.17z" />
-                                            </svg></span>
-                                    </button>
-
-                                </h2>
-                                <div id="accordiontfourthin" class="accordion-collapse collapse show"
-                                    aria-labelledby="headingOne" data-bs-parent="#parent_accordion">
-                                    <div class="d-flex justify-content-center  align-items-center w-100">
-                                        <table class="w-25 m-auto mb-3 my-2  p-4 " id="printcontent">
-                                            <tr>
-                                                <td class="text-center"><input type="text" value="0"
-                                                        name="householdaverage" id="" />
-                                                </td>
-                                            </tr>
-                                        </table>
-
-                                    </div>
-
-
-                                </div>
-                            </div>
-
-
-
-
-                        </div>
-                    </div>
-                    <div class="d-flex justify-content-center my-3">
-                        <div class="mx-2">
-                            <label>Prepared By:</label> <input
-                                style="border:none;border-bottom:1px solid black;outline:none;" class="px-2 py-1"
-                                type="text" name="preparedby" placeholder="type name..." />
-                        </div>
-
-                        <div class="mx-2">
-
-                            <label>Reviewed By:</label> <input
-                                style="border:none;border-bottom:1px solid black;outline:none;" class="px-2 py-1"
-                                type="text" name="reviewedby" placeholder="type name..." />
-                        </div>
 
                     </div>
+                    <div class="accordion mb-3" id="demography">
+                        <div class="accordion-item">
+                            <h2 class="accordion-header" id="headingOne">
+                                <button class="accordion-button d-flex justify-content-between shadow" type="button"
+                                    data-bs-toggle="collapse" data-bs-target="#accordionone" aria-expanded="false"
+                                    aria-controls="accordionone">
+                                    <h6 class="p-0"> Number of women who reported equalfull access of women to
+                                        comprehensive , quality and affordable health services (including and
+                                        treatment of diseases; sexual reproductive health services ) , latest </h6>
+                                    <span><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                                            viewBox="0 0 24 24">
+                                            <path
+                                                d="M0 7.33l2.829-2.83 9.175 9.339 9.167-9.339 2.829 2.83-11.996 12.17z" />
+                                        </svg></span>
+                                </button>
+
+                            </h2>
+                            <div id="accordionone" class="accordion-collapse collapse show" aria-labelledby="headingOne"
+                                data-bs-parent="#parent_accordion">
+
+
+                                <table class="w-25 m-auto mb-3 my-3  p-4 " id="printcontent">
+                                    <tr>
+                                        <td class="text-center"><input type="text" value="0" name="num7" id="" />
+                                        </td>
+                                    </tr>
+                                </table>
+                            </div>
+                        </div>
+
+
+
+
+                    </div>
+                    <div class="accordion  mb-3" id="parent_accordion">
+                        <div class="accordion-item">
+                            <h2 class="accordion-header" id="headingOne">
+                                <button class="accordion-button d-flex justify-content-between shadow" type="button"
+                                    data-bs-toggle="collapse" data-bs-target="#accordionten" aria-expanded="false"
+                                    aria-controls="accordionten">
+                                    <h6 class="p-0">Percentage of Population that accessed secondary and tertiary
+                                        health services by sex</h6>
+                                    <span><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                                            viewBox="0 0 24 24">
+                                            <path
+                                                d="M0 7.33l2.829-2.83 9.175 9.339 9.167-9.339 2.829 2.83-11.996 12.17z" />
+                                        </svg></span>
+                                </button>
+
+                            </h2>
+                            <div id="accordionten" class="accordion-collapse collapse show" aria-labelledby="headingOne"
+                                data-bs-parent="#parent_accordion">
+                                <div class="d-flex justify-content-center py-3 align-items-center w-100">
+                                    <table class="w-25 m-auto mb-3 my-2  p-4 " id="printcontent">
+                                        <tr>
+                                            <td class="text-center"><input type="text" value="0" name="num8" id="" />
+                                            </td>
+                                        </tr>
+                                    </table>
+
+                                </div>
+
+
+                            </div>
+                        </div>
+
+
+
+
+                    </div>
+                    <div class="accordion  mb-3" id="parent_accordion">
+                        <div class="accordion-item">
+                            <h2 class="accordion-header" id="headingOne">
+                                <button class="accordion-button d-flex justify-content-between shadow" type="button"
+                                    data-bs-toggle="collapse" data-bs-target="#accordioneleven" aria-expanded="false"
+                                    aria-controls="accordioneleven">
+                                    <h6 class="p-0">Number of women who accessed quality material, and post-patrum
+                                        care and services from health facilities and qualified health personnel</h6>
+                                    <span><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                                            viewBox="0 0 24 24">
+                                            <path
+                                                d="M0 7.33l2.829-2.83 9.175 9.339 9.167-9.339 2.829 2.83-11.996 12.17z" />
+                                        </svg></span>
+                                </button>
+
+                            </h2>
+                            <div id="accordioneleven" class="accordion-collapse collapse show"
+                                aria-labelledby="headingOne" data-bs-parent="#parent_accordion">
+                                <div class="d-flex justify-content-center py-3 align-items-center w-100">
+                                    <table class="w-25 m-auto mb-3 my-2  p-4 " id="printcontent">
+                                        <tr>
+                                            <td class="text-center"><input type="text" value="0" name="num9" id="" />
+                                            </td>
+                                        </tr>
+                                    </table>
+
+                                </div>
+
+
+                            </div>
+                        </div>
+
+
+
+
+                    </div>
+
+                    <div class="accordion  mb-3" id="parent_accordion">
+                        <div class="accordion-item">
+                            <h2 class="accordion-header" id="headingOne">
+                                <button class="accordion-button d-flex justify-content-between shadow" type="button"
+                                    data-bs-toggle="collapse" data-bs-target="#accordionthirtine" aria-expanded="false"
+                                    aria-controls="accordionthirtine">
+                                    <h6 class="p-0">Percentage of women who reported to have equal decision on the
+                                        number of children of years between pregnancies over number of women
+                                        interviewed, latest</h6>
+                                    <span><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                                            viewBox="0 0 24 24">
+                                            <path
+                                                d="M0 7.33l2.829-2.83 9.175 9.339 9.167-9.339 2.829 2.83-11.996 12.17z" />
+                                        </svg></span>
+                                </button>
+
+                            </h2>
+                            <div id="accordionthirtine" class="accordion-collapse collapse show"
+                                aria-labelledby="headingOne" data-bs-parent="#parent_accordion">
+                                <div class="d-flex justify-content-center  align-items-center w-100">
+                                    <table class="w-25 m-auto mb-3 my-2  p-4 " id="printcontent">
+                                        <tr>
+                                            <td class="text-center"><input type="text" value="0" name="num10" id="" />
+                                            </td>
+                                        </tr>
+                                    </table>
+
+                                </div>
+
+
+                            </div>
+                        </div>
+
+
+
+
+                    </div>
+                    <div class="accordion  mb-3" id="parent_accordion">
+                        <div class="accordion-item">
+                            <h2 class="accordion-header" id="headingOne">
+                                <button class="accordion-button d-flex justify-content-between shadow" type="button"
+                                    data-bs-toggle="collapse" data-bs-target="#accordiontfourthin" aria-expanded="false"
+                                    aria-controls="accordiontfourthin">
+                                    <h6 class="p-0">Number of adolescents who reported attendance to orientation of
+                                        the prevention to early pregnancies and STDS, lates</h6>
+                                    <span><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                                            viewBox="0 0 24 24">
+                                            <path
+                                                d="M0 7.33l2.829-2.83 9.175 9.339 9.167-9.339 2.829 2.83-11.996 12.17z" />
+                                        </svg></span>
+                                </button>
+
+                            </h2>
+                            <div id="accordiontfourthin" class="accordion-collapse collapse show"
+                                aria-labelledby="headingOne" data-bs-parent="#parent_accordion">
+                                <div class="d-flex justify-content-center  align-items-center w-100">
+                                    <table class="w-25 m-auto mb-3 my-2  p-4 " id="printcontent">
+                                        <tr>
+                                            <td class="text-center"><input type="text" value="0" name="num11" id="" />
+                                            </td>
+                                        </tr>
+                                    </table>
+
+                                </div>
+
+
+                            </div>
+                        </div>
+
+
+
+
+                    </div>
+                    <div class="accordion  mb-3" id="parent_accordion">
+                        <div class="accordion-item">
+                            <h2 class="accordion-header" id="headingOne">
+                                <button class="accordion-button d-flex justify-content-between shadow" type="button"
+                                    data-bs-toggle="collapse" data-bs-target="#accordiontfourthin" aria-expanded="false"
+                                    aria-controls="accordiontfourthin">
+                                    <h6 class="p-0">Proportion of households who are informal settlers by sex (
+                                        <span style=";color:red;">please use percentage ,
+                                            ex:50%</span> )
+                                    </h6>
+                                    <span><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                                            viewBox="0 0 24 24">
+                                            <path
+                                                d="M0 7.33l2.829-2.83 9.175 9.339 9.167-9.339 2.829 2.83-11.996 12.17z" />
+                                        </svg></span>
+                                </button>
+
+                            </h2>
+                            <div id="accordiontfourthin" class="accordion-collapse collapse show"
+                                aria-labelledby="headingOne" data-bs-parent="#parent_accordion">
+                                <div class="d-flex justify-content-center  align-items-center w-100">
+                                    <table class="w-25 m-auto mb-3 my-2  p-4 " id="printcontent">
+                                        <tr>
+                                            <td class="text-center"><input type="text" value="0" name="num12" id="" />
+                                            </td>
+                                        </tr>
+                                    </table>
+
+                                </div>
+
+
+                            </div>
+                        </div>
+
+
+
+
+                    </div>
+                    <div class="accordion  mb-3" id="parent_accordion">
+                        <div class="accordion-item">
+                            <h2 class="accordion-header" id="headingOne">
+                                <button class="accordion-button d-flex justify-content-between shadow" type="button"
+                                    data-bs-toggle="collapse" data-bs-target="#accordiontfourthin" aria-expanded="false"
+                                    aria-controls="accordiontfourthin">
+                                    <h6 class="p-0">Proportion of household with dwelling structures unable to
+                                        protect them from the elenents (
+                                        <span style=";color:red;">please use percentage ,
+                                            ex:50%</span> )
+                                    </h6>
+                                    <span><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                                            viewBox="0 0 24 24">
+                                            <path
+                                                d="M0 7.33l2.829-2.83 9.175 9.339 9.167-9.339 2.829 2.83-11.996 12.17z" />
+                                        </svg></span>
+                                </button>
+
+                            </h2>
+                            <div id="accordiontfourthin" class="accordion-collapse collapse show"
+                                aria-labelledby="headingOne" data-bs-parent="#parent_accordion">
+                                <div class="d-flex justify-content-center  align-items-center w-100">
+                                    <table class="w-25 m-auto mb-3 my-2  p-4 " id="printcontent">
+                                        <tr>
+                                            <td class="text-center"><input type="text" value="0" name="num13" id="" />
+                                            </td>
+                                        </tr>
+                                    </table>
+
+                                </div>
+
+
+                            </div>
+                        </div>
+
+
+
+
+                    </div>
+                </div>
+                <?php  require("./layout/soc_dev_footer.php");  ?>
+
 
 
 
@@ -906,38 +952,8 @@ require("./layoutsidebar/sidebar.php");
 
     <script src="./assets/js/bootstrap.bundle.min.js"></script>
 
-    <script>
-    function onlyNumberKey(evt) {
+    <script src="./script/script.js"></script>
 
-        // Only ASCII character in that range allowed
-        var ASCIICode = (evt.which) ? evt.which : evt.keyCode
-        if (ASCIICode > 31 && (ASCIICode < 48 || ASCIICode > 57))
-            return false;
-        return true;
-    }
-
-
-    function printDiv() {
-        var divContents = document.getElementById("printcontent").innerHTML;
-        var a = window.open('', '', '');
-        a.document.write('<html>');
-        a.document.write('<body >');
-        a.document.write(
-            '<h5 style="text-align:center;">Total Household Polpulation by Age and sex (psa.gov.ph) </h5>',
-            divContents,
-        );
-        a.document.write('</body> </html>');
-        a.document.close();
-        a.print();
-    }
-
-    function barangaySession(e) {
-        console.log(e.value)
-
-        document.cookie = `barangay = ${e.value}`;
-
-    }
-    </script>
 
 
 

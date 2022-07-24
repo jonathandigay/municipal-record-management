@@ -2,12 +2,13 @@
 
 require("./middleware/checklogin.php");
 require("database/connection.php");
-$popu_age_result = $dbconnection->query("SELECT * FROM soc_dev_demography_population_age_sex");
 
 
 
 
 ?>
+<?php  require("./process/retrieve_soc_developement.php"); ?>
+<?php  require("./process/soc_development_sector.php"); ?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -75,6 +76,7 @@ $popu_age_result = $dbconnection->query("SELECT * FROM soc_dev_demography_popula
     }
 
     .accordion-item {
+        border: none;
         background: rgb(165, 165, 165);
     }
 
@@ -155,74 +157,51 @@ VALUES ( $ages,  $male,  $male')";
 ?>
         <div class="row">
 
+
+            <?php
+
+if(isset($_COOKIE["popup_modal"])){
+    if($_COOKIE["popup_modal"]==="saverecord")
+require("./modal/success.php");
+
+}
+
+
+?>
             <?php
 require("./layoutsidebar/sidebar.php");
 
 ?>
 
 
+            <div class="powered">
+                <img src="./assets/images/gad.png" alt="">
+            </div>
 
+            <div class="burger_menu p-2 shadow" style="border-radius:50px;">
+                <button class="navbar-toggler p-0 collapsed" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#sidebarMenu" aria-controls="sidebarMenu" aria-expanded="false"
+                    aria-label="Toggle navigation">
+                    <svg clip-rule="evenodd" fill-rule="evenodd" stroke-linejoin="round" stroke-miterlimit="2"
+                        width="50px" fill="#fff" height="50px" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path
+                            d="m13 16.745c0-.414-.336-.75-.75-.75h-9.5c-.414 0-.75.336-.75.75s.336.75.75.75h9.5c.414 0 .75-.336.75-.75zm9-5c0-.414-.336-.75-.75-.75h-18.5c-.414 0-.75.336-.75.75s.336.75.75.75h18.5c.414 0 .75-.336.75-.75zm-4-5c0-.414-.336-.75-.75-.75h-14.5c-.414 0-.75.336-.75.75s.336.75.75.75h14.5c.414 0 .75-.336.75-.75z"
+                            fill-rule="nonzero" />
+                    </svg>
+                </button>
 
-            <form action="./process/demography.php" method="POST" class="container-fluid p-0 py-3 px-3 col-md-9 ">
+            </div>
+
+            <form action="industry.php" method="POST" class="container-fluid p-0 w-100  px-3 col ">
 
 
                 <div>
                     <div class="header position-sticky top-0 shadow">
                         <div class="title text-center  py-2" style="background:black;color:white;">
-                            <h5 class="m-0"> Economic Development Sector / Industry</h5>
+                            <h5 class="m-0 py-3 page_title"> Economic Development Sector / Industry</h5>
                         </div>
-                        <div class=" d-flex my-2 align-items-center justify-content-between ">
+                        <?php require("./layout/soc_dev_header.php"); ?>
 
-                            <div class="d-flex my-2 align-items-center ">
-                                <div class=" d-flex align-items-center mx-2">
-                                    <h6 class="m-0 mx-1">BARANGAY:</h6>
-                                    <select class="form-select" aria-label="Default select example" name="barangay"
-                                        name="barangay" onchange="barangaySession(this)">
-
-                                        <?php
-                                    require("./arrays/barangay.php");
-                                       $count =count($barangay);
-                                       $i =0;
-                                       for($i; $i < $count; $i++){
-                                       ?>
-                                        <option value=<?php echo $barangay[$i]   ?>><?php echo $barangay[$i]   ?>
-                                        </option>
-                                        <?php  };?>
-                                    </select>
-
-                                </div>
-                                <div class="d-flex align-items-center mx-2">
-                                    <h6 class="m-0 mx-1">YEAR:</h6>
-                                    <select class="form-select" aria-label="Default select example" name="year">
-                                        <option selected value="2020-2022">2020-2022</option>
-                                        <option value="2018-2019">2018-2019</option>
-                                        <option value="2017-2018">2017-2018</option>
-                                        <option value="2016-2017">2016-2017</option>
-
-                                    </select>
-                                </div>
-                            </div>
-
-                            <div class="print d-flex justify-content-end m-3 ">
-                                <a href="./records/social_development_sector.php" target="_self">
-                                    <button class="py-2 px-3 shadow m-2" id="print" type="button">
-                                        <p> records <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
-                                                viewBox="0 0 24 24">
-                                                <path
-                                                    d="M7.972 2h-6.972l.714 5h2.021l-.429-3h3.694c1.112 1.388 1.952 2 4.277 2h9.283l-.2 1h2.04l.6-3h-11.723c-1.978 0-2.041-.417-3.305-2zm16.028 7h-24l2 13h20l2-13z" />
-                                            </svg></p>
-                                    </button>
-                                </a>
-                                <button class="py-2 px-3 m-2 shadow" name="demography" type="submit">
-                                    <p>Save <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
-                                            viewBox="0 0 24 24">
-                                            <path
-                                                d="M14 3h2.997v5h-2.997v-5zm9 1v20h-22v-24h17.997l4.003 4zm-17 5h12v-7h-12v7zm14 4h-16v9h16v-9z" />
-                                        </svg>
-                                </button>
-                            </div>
-
-                        </div>
 
                     </div>
 
@@ -258,9 +237,9 @@ require("./layoutsidebar/sidebar.php");
                                         <tr>
 
                                             <td class="text-center ">
-                                                <textarea type="text" name="householdaverage" class="py-2 px-3"
+                                                <textarea type="text" name="text10" class="py-2 px-3"
                                                     style="width:500px;min-height:200px"
-                                                    placeholder="Enter text"> </textarea>
+                                                    placeholder="Enter text"> <?php  echo  isset($rowresult) ?  $rowresult["text10"] : '';  ?></textarea>
                                             </td>
                                         </tr>
                                     </table>
@@ -276,8 +255,8 @@ require("./layoutsidebar/sidebar.php");
                             <div class="accordion-item">
                                 <h2 class="accordion-header" id="headingOne">
                                     <button class="accordion-button d-flex justify-content-between shadow" type="button"
-                                        data-bs-toggle="collapse" data-bs-target="#accordionthree" aria-expanded="false"
-                                        aria-controls="accordionthree">
+                                        data-bs-toggle="collapse" data-bs-target="#accordiontwo" aria-expanded="false"
+                                        aria-controls="accordiontwo">
                                         <h6 class="p-0">Number of women who own business enterprisses</h6>
                                         <span><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
                                                 viewBox="0 0 24 24">
@@ -287,12 +266,12 @@ require("./layoutsidebar/sidebar.php");
                                     </button>
 
                                 </h2>
-                                <div id="accordionthree" class="accordion-collapse collapse show"
+                                <div id="accordiontwo" class="accordion-collapse collapse show"
                                     aria-labelledby="headingOne" data-bs-parent="#industry">
                                     <table class="w-25 m-auto mb-3 my-3  p-4 " id="printcontent">
                                         <tr>
-                                            <td class="text-center"><input type="text" value="0" name="householdaverage"
-                                                    id="" />
+                                            <td class="text-center"><input type="text" name="num18" id=""
+                                                    value="<?php  echo  isset($rowresult) ?  $rowresult["num18"] : 0;  ?> " />
                                             </td>
                                         </tr>
                                     </table>
@@ -325,8 +304,9 @@ require("./layoutsidebar/sidebar.php");
                                     aria-labelledby="headingOne" data-bs-parent="#industry">
                                     <table class="w-25 m-auto mb-3 my-3  p-4 " id="printcontent">
                                         <tr>
-                                            <td class="text-center"><input type="text" value="0" name="householdaverage"
-                                                    id="" />
+                                            <td class="text-center"><input type="text"
+                                                    value="<?php  echo  isset($rowresult) ?  $rowresult["num19"] : 0;  ?>"
+                                                    name="num19" id="" />
                                             </td>
                                         </tr>
                                     </table>
@@ -345,8 +325,8 @@ require("./layoutsidebar/sidebar.php");
                             <div class="accordion-item">
                                 <h2 class="accordion-header" id="headingOne">
                                     <button class="accordion-button d-flex justify-content-between shadow" type="button"
-                                        data-bs-toggle="collapse" data-bs-target="#accordionthree" aria-expanded="false"
-                                        aria-controls="accordionthree">
+                                        data-bs-toggle="collapse" data-bs-target="#accordiontfour" aria-expanded="false"
+                                        aria-controls="accordiontfour">
                                         <h6 class="p-0">Average monthly income of women micro enterprises</h6>
                                         <span><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
                                                 viewBox="0 0 24 24">
@@ -356,12 +336,12 @@ require("./layoutsidebar/sidebar.php");
                                     </button>
 
                                 </h2>
-                                <div id="accordionthree" class="accordion-collapse collapse show"
+                                <div id="accordiontfour" class="accordion-collapse collapse show"
                                     aria-labelledby="headingOne" data-bs-parent="#industry">
                                     <table class="w-25 m-auto mb-3 my-3  p-4 " id="printcontent">
                                         <tr>
-                                            <td class="text-center"><input type="text" value="0" name="householdaverage"
-                                                    id="" />
+                                            <td class="text-center"><input type="text" name="num20" id=""
+                                                    value="<?php  echo  isset($rowresult) ?  $rowresult["num20"] : 0;  ?> " />
                                             </td>
                                         </tr>
                                     </table>
@@ -379,21 +359,8 @@ require("./layoutsidebar/sidebar.php");
 
                     </div>
                 </div>
-                <div class="d-flex justify-content-center my-3">
-                    <div class="mx-2">
-                        <label>Prepared By:</label> <input
-                            style="border:none;border-bottom:1px solid black;outline:none;" class="px-2 py-1"
-                            type="text" name="preparedby" placeholder="type name..." />
-                    </div>
 
-                    <div class="mx-2">
-
-                        <label>Reviewed By:</label> <input
-                            style="border:none;border-bottom:1px solid black;outline:none;" class="px-2 py-1"
-                            type="text" name="reviewedby" placeholder="type name..." />
-                    </div>
-
-                </div>
+                <?php  require("./layout/soc_dev_footer.php");  ?>
 
 
 
@@ -406,38 +373,10 @@ require("./layoutsidebar/sidebar.php");
 
     <script src="./assets/js/bootstrap.bundle.min.js"></script>
 
-    <script>
-    function onlyNumberKey(evt) {
-
-        // Only ASCII character in that range allowed
-        var ASCIICode = (evt.which) ? evt.which : evt.keyCode
-        if (ASCIICode > 31 && (ASCIICode < 48 || ASCIICode > 57))
-            return false;
-        return true;
-    }
+    <script src="./script/script.js"></script>
 
 
-    function printDiv() {
-        var divContents = document.getElementById("printcontent").innerHTML;
-        var a = window.open('', '', '');
-        a.document.write('<html>');
-        a.document.write('<body >');
-        a.document.write(
-            '<h5 style="text-align:center;">Total Household Polpulation by Age and sex (psa.gov.ph) </h5>',
-            divContents,
-        );
-        a.document.write('</body> </html>');
-        a.document.close();
-        a.print();
-    }
 
-    function barangaySession(e) {
-        console.log(e.value)
-
-        document.cookie = `barangay = ${e.value}`;
-
-    }
-    </script>
 
 
 

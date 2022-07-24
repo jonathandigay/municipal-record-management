@@ -6,7 +6,7 @@ $login = $_SESSION["user"];
 
 
 if(!$login){
-    header('Location: http://localhost/barangay/auth/login.php');
+    header('Location: /barangay/auth/login.php');
 }
 
 ?>

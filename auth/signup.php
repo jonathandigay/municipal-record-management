@@ -8,7 +8,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../assets/css/bootstrap.min.css">
     <link rel="stylesheet" href="./layout.css">
-    <title>Log in</title>
+    <link rel="icon" href="../assets/images/santacruz.png">
+
+    <title>Create account</title>
 </head>
 
 
@@ -36,9 +38,16 @@
         min-height: 100vh;
     }
 
-    .gad_login_main .side img {
-        max-width: 400px;
+    .img {}
+
+    label {
+        font-size: 20px;
+    }
+
+
+    img {
         /* animation: fromtop linear 300ms 1; */
+        max-width: 100px;
 
     }
 
@@ -47,27 +56,37 @@
 
     }
 
-    .gad_login_main .side .mission {
-        /* animation: frombottom linear 600ms 1; */
-
-    }
-
-    .gad_login_main .side .vission {
-        /* animation: frombottom linear 600ms 1; */
-
-    }
 
     .gad_login_main .form {
         width: 100%;
         height: 100%;
         display: flex;
         align-items: center;
+        justify-content: center;
+        flex-direction: column;
         min-height: 100vh;
 
     }
 
+    .gad_login_main .form form {
+        max-width: 600px;
+        background: white;
+        position: relative;
+        z-index: 3;
+    }
+
     .gad_login_main .form .text {
-        /* animation: fromtop linear 300ms 1; */
+        animation: fromtop linear 300ms 1;
+
+    }
+
+    .gad_login_main .side .mission {
+        animation: frombottom linear 600ms 1;
+
+    }
+
+    .gad_login_main .side .vission {
+        animation: frombottom linear 600ms 1;
 
     }
 
@@ -126,10 +145,10 @@
 
     .gad_login_main .form .error_message {
         width: 100%;
-        padding: 3px 10px;
+        padding: 5px 10px;
         font-size: 14px;
 
-        background: rgba(255, 0, 0, .1);
+        background: rgba(255, 0, 0, .2);
     }
 
     .gad_login_main .form .action button:hover {
@@ -139,6 +158,7 @@
         box-shadow: 0 10px 5px rgba(0, 0, 0, 0.2);
         ;
     }
+
 
     @keyframes fromtop {
         0% {
@@ -164,6 +184,7 @@
         }
     }
     </style>
+
 
     <?php
 
@@ -197,9 +218,6 @@ if(isset($_POST["signup"])){
      if( !empty($inputpassword) && !empty($inputconfirmpassword) && $inputpassword !== $inputconfirmpassword){
         $passwordmatch_err ="password must match!";
      }
-     if($inputpassword === $password OR $inputusername === $username){
-
-     }
 
 }
 
@@ -210,7 +228,7 @@ if(isset($_POST["signup"])){
 
 
     <div class="gad_login_main d-flex flex-column-reverse flex-md-row ">
-        <div class="side px-3 col-md-4 ">
+        <!-- <div class="side px-3 col-md-4 ">
 
             <div class="img">
                 <img src="../assets/images/santacruz.png" alt="">
@@ -230,13 +248,17 @@ if(isset($_POST["signup"])){
                 <p> Lorem ipsum dolor, sit amet consectetur adipisicing elit. Tenetur quod sint animi magnam nobis cum
                     nisi labore corrupti cumque similique adipisci ipsam. Officiis eos porro asperiores eaque. </p>
             </div>
-        </div>
+        </div> -->
 
 
 
 
         <div class=" form">
-            <form action="signup.php" method="POST">
+            <div class="img">
+                <img src="../assets/images/santacruz.png" alt="">
+            </div>
+
+            <form action="signup.php" method="POST" class="m-0">
                 <h1 class="text-center p-2 text">Create Account</h1>
                 <div class="form-group d-flex flex-column my-3 ">
                     <label for="username">Username</label>
@@ -248,7 +270,8 @@ if(isset($_POST["signup"])){
 
                 <div class="form-group d-flex flex-column my-3  ">
                     <label for="username">Password</label>
-                    <input type="password" name="password" placeholder="password" value=<?php echo  $inputpassword ;?>>
+                    <input type="password" name="password" placeholder="password..."
+                        value=<?php echo  $inputpassword ;?>>
                     <?php  if($password_err){
                     echo ' <div class="error_message">' . $password_err  . ' </div>';
                 }  ?>
@@ -256,7 +279,7 @@ if(isset($_POST["signup"])){
 
                 <div class="form-group d-flex flex-column my-3 ">
                     <label for="username">Confirm Password</label>
-                    <input type="password" name="confirmpassword" placeholder="confirm password"
+                    <input type="password" name="confirmpassword" placeholder="confirm password..."
                         value=<?php echo  $inputconfirmpassword ;?>>
                     <?php  if($confirmpassword_err){
                     echo ' <div class="error_message">' . $confirmpassword_err  . ' </div>';
@@ -266,8 +289,8 @@ if(isset($_POST["signup"])){
                     echo ' <div class="error_message">' . $passwordmatch_err  . ' </div>';
                 }  ?>
 
-                <div class="text-end my-3">
-                    <label>Already have an account?</label> <span><a href="login.php">login in</a></span>
+                <div class="text-end my-4">
+                    <h6>Already have an account? <span><a href="login.php">login in</a></span></h6>
 
                 </div>
 

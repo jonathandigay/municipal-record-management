@@ -18,6 +18,8 @@
                                        ?>
                      <option value=<?php echo $barangay[$i]   ?>><?php echo $barangay[$i]   ?>
                      </option>
+
+
                      <?php  };?>
                  </select>
 
@@ -25,7 +27,7 @@
              <div class="d-flex align-items-center mx-2">
                  <h6 class="m-0 mx-1">YEAR:</h6>
                  <select class="form-select" aria-label="Default select example" name="year">
-                     <option selected value="2020-2022">2020-2022</option>
+                     <option selected value="2020-2022">2020-2622</option>
                      <option value="2018-2019">2018-2019</option>
                      <option value="2017-2018">2017-2018</option>
                      <option value="2016-2017">2016-2017</option>

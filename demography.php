@@ -1,13 +1,11 @@
 <?php  
-
 require("./middleware/checklogin.php");
-require("database/connection.php");
-$popu_age_result = $dbconnection->query("SELECT * FROM soc_dev_demography_population_age_sex");
-
-
-
-
+require("./database/connection.php");
 ?>
+<?php  require("./process/retrieve_soc_developement.php"); ?>
+<?php  require("./process/soc_development_sector.php"); ?>
+
+
 
 <!DOCTYPE html>
 <html lang="en">
@@ -45,8 +43,8 @@ $popu_age_result = $dbconnection->query("SELECT * FROM soc_dev_demography_popula
 
     table tr th {
         padding: 7px 15px;
-        border-left: 1px solid black;
-        border-top: 1px solid black;
+        border: 1px solid black;
+
         background: black;
         color: white;
     }
@@ -77,6 +75,8 @@ $popu_age_result = $dbconnection->query("SELECT * FROM soc_dev_demography_popula
 
     .accordion-item {
         background: rgb(165, 165, 165);
+        border: none;
+
     }
 
     .print button:hover {
@@ -111,122 +111,111 @@ $popu_age_result = $dbconnection->query("SELECT * FROM soc_dev_demography_popula
         fill: white;
         display: none;
     }
-    </style>
 
-    <?php
-
-$show_edit_population_by_age_input = false;
-
-if(isset($_GET["edit_population_by_age"])){
-    
-}
-if(isset($_POST["create_population_by_age"])){
-
-    $ages= $_POST["ages"];
-    $male= $_POST["male"];
-    $female= $_POST["female"];
-
-
-    $success =null;
-
-
-    $sql = "INSERT INTO soc_dev_demography_age_sex (ages, male, female)
-VALUES ( $ages,  $male,  $male')";
-
-    if($dbconnection->query(  $sql)){
- $success="added";
- exit();
-    }else{
+    .santa_cruz_gad {
+        position: fixed;
+        top: 0;
+        right: 0;
+        left: 0;
+        bottom: 0;
+        background: white;
+        z-index: 5000;
+        display: none;
+        justify-content: center;
+        align-items: center;
 
     }
 
+    .santa_cruz_gad .show {
+        display: flex
+    }
+
+    .santa_cruz_gad .img {
+        max-width: 700px;
+    }
+
+    .burger_menu {
+        position: fixed;
+        width: max-content;
+        top: 20px;
+        left: 20px;
+        background: black;
+        cursor: pointer;
+        z-index: 5000;
+    }
+
+    .burger_menu :hover {
+        opacity: .8
+    }
+    </style>
 
 
-    
-}
-
-
-
-?>
 
     <div class="container-fluid">
         <?php
+?>
+
+        <?php
+
+if(isset($_COOKIE["popup_modal"])){
+    if($_COOKIE["popup_modal"]==="saverecord")
+require("./modal/success.php");
+
+}
+
 
 ?>
-        <div class="row">
 
+        <?php
+
+require("./layout/logo.php");
+
+?>
+
+
+        <!-- <?php
+require("./loader/loader.php");
+?> -->
+
+
+        <div class="row">
             <?php
 require("./layoutsidebar/sidebar.php");
 
 ?>
 
+            <div class="powered">
+                <img src="./assets/images/gad.png" alt="">
+            </div>
+
+            <div class="burger_menu p-2 shadow" style="border-radius:50px;">
+                <button class="navbar-toggler p-0 collapsed" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#sidebarMenu" aria-controls="sidebarMenu" aria-expanded="false"
+                    aria-label="Toggle navigation">
+                    <svg clip-rule="evenodd" fill-rule="evenodd" stroke-linejoin="round" stroke-miterlimit="2"
+                        width="50px" fill="#fff" height="50px" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path
+                            d="m13 16.745c0-.414-.336-.75-.75-.75h-9.5c-.414 0-.75.336-.75.75s.336.75.75.75h9.5c.414 0 .75-.336.75-.75zm9-5c0-.414-.336-.75-.75-.75h-18.5c-.414 0-.75.336-.75.75s.336.75.75.75h18.5c.414 0 .75-.336.75-.75zm-4-5c0-.414-.336-.75-.75-.75h-14.5c-.414 0-.75.336-.75.75s.336.75.75.75h14.5c.414 0 .75-.336.75-.75z"
+                            fill-rule="nonzero" />
+                    </svg>
+                </button>
+
+            </div>
 
 
-
-            <form action="./process/soc_development_sector.php" method="POST"
-                class="container-fluid p-0 py-3 px-3 col-md-9 ">
-
-
-                <div>
+            <form action="demography.php" method="POST" class="container-fluid p-0 w-100  px-3 col ">
+                <div name="http:localhost/barangay/demography.php">
                     <div class="header position-sticky top-0 shadow">
-                        <div class="title text-center  py-2" style="background:black;color:white;">
-                            <h5 class="m-0">Social Development Sector / Demography</h5>
-                        </div>
-                        <div class=" d-flex my-2 align-items-center justify-content-between ">
-
-                            <div class="d-flex my-2 align-items-center ">
-                                <div class=" d-flex align-items-center mx-2">
-                                    <h6 class="m-0 mx-1">BARANGAY:</h6>
-                                    <select class="form-select" aria-label="Default select example" name="barangay"
-                                        name="barangay" onchange="barangaySession(this)">
-
-                                        <?php
-                                    require("./arrays/barangay.php");
-                                       $count =count($barangay);
-                                       $i =0;
-                                       for($i; $i < $count; $i++){
-                                       ?>
-                                        <option value=<?php echo $barangay[$i]   ?>><?php echo $barangay[$i]   ?>
-                                        </option>
-                                        <?php  };?>
-                                    </select>
-
-                                </div>
-                                <div class="d-flex align-items-center mx-2">
-                                    <h6 class="m-0 mx-1">YEAR:</h6>
-                                    <select class="form-select" aria-label="Default select example" name="year">
-                                        <option selected value="2020-2022">2020-2022</option>
-                                        <option value="2018-2019">2018-2019</option>
-                                        <option value="2017-2018">2017-2018</option>
-                                        <option value="2016-2017">2016-2017</option>
-
-                                    </select>
-                                </div>
-                            </div>
-
-                            <div class="print d-flex justify-content-end m-3 ">
-                                <a href="./records/social_development_sector.php" target="_self">
-                                    <button class="py-2 px-3 shadow m-2" id="print" type="button">
-                                        <p> records <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
-                                                viewBox="0 0 24 24">
-                                                <path
-                                                    d="M7.972 2h-6.972l.714 5h2.021l-.429-3h3.694c1.112 1.388 1.952 2 4.277 2h9.283l-.2 1h2.04l.6-3h-11.723c-1.978 0-2.041-.417-3.305-2zm16.028 7h-24l2 13h20l2-13z" />
-                                            </svg></p>
-                                    </button>
-                                </a>
-                                <button class="py-2 px-3 m-2 shadow" name="demography" type="submit">
-                                    <p>Save <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
-                                            viewBox="0 0 24 24">
-                                            <path
-                                                d="M14 3h2.997v5h-2.997v-5zm9 1v20h-22v-24h17.997l4.003 4zm-17 5h12v-7h-12v7zm14 4h-16v9h16v-9z" />
-                                        </svg>
-                                </button>
-
-                            </div>
-
+                        <div class="title text-center  py-2 px-5 " style="background:black;color:white;">
+                            <h5 class="m-0 py-3 page_title">Social Development Sector / Demography
+                            </h5>
                         </div>
 
+                        <?php require("./layout/soc_dev_header.php"); ?>
                     </div>
+
+
+
 
 
                     <div class="row mt-3">
@@ -245,56 +234,255 @@ require("./layoutsidebar/sidebar.php");
                                     </button>
 
                                 </h2>
-                                <div id="totalhouseholdbyageandsex" class="accordion-collapse collapse "
+                                <div id="totalhouseholdbyageandsex" class="accordion-collapse collapse show"
                                     aria-labelledby="headingOne" data-bs-parent="#demography">
 
 
 
                                     <div id="printcontent">
-                                        <table class="w-75 m-auto mb-3 my-4 p-4 ">
+                                        <table class="w-75 m-auto mb-3 my-3 p-4 " id="printcontent">
 
                                             <tr>
+
                                                 <th>Ages</th>
                                                 <th>Male</th>
                                                 <th>Female</th>
-                                                <th>Total</th>
                                             </tr>
-
                                             <tr>
-                                                <td>all ages</td>
-                                                <td>
+                                                <td>1-4</td>
+                                                <td><input type="text" name="m1" id=""
+                                                        onkeypress="return onlyNumberKey(event)"
+                                                        value="<?php  echo  isset($rowresult) ?  $rowresult["m1"] : 0;  ?>" />
                                                 </td>
-                                                <td>
+                                                <td><input type="text" name="f1" id=""
+                                                        onkeypress="return onlyNumberKey(event)"
+                                                        value="<?php  echo  isset($rowresult) ?  $rowresult["f1"] : 0;  ?>" />
                                                 </td>
-                                                <td>
-                                                </td>
-
                                             </tr>
-
-                                            <?php
-
-                                            require("./arrays/allages.php");
-
-                                            $count =count($all_ages);
-                                            $i =0;
-                                            for($i; $i < $count; $i++){
-                                            ?> <tr>
-                                                <td><?php echo $all_ages[$i] ; ?></td>
-                                                <td> <input class="w-100" type="text" class="px-2"
-                                                        name="m<?php echo $i +1 ; ?>" value="0"
-                                                        onkeypress="return onlyNumberKey(event)" />
+                                            <tr>
+                                                <td>5-9 </td>
+                                                <td><input type="text" name="m2" id=""
+                                                        onkeypress="return onlyNumberKey(event)"
+                                                        value="<?php  echo  isset($rowresult) ?  $rowresult["m2"] : 0;  ?>" />
                                                 </td>
-                                                <td><input class="w-100" type="text" class="px-2"
-                                                        name="f<?php echo $i +1 ; ?>" value="0"
-                                                        onkeypress="return onlyNumberKey(event)" />
+                                                <td><input type="text" name="f2" id=""
+                                                        onkeypress="return onlyNumberKey(event)"
+                                                        value="<?php  echo  isset($rowresult) ?  $rowresult["f2"] : 0;  ?>" />
                                                 </td>
-                                                <td>
-                                                </td>
-
                                             </tr>
-                                            <?php  };?>
+                                            <tr>
+                                                <td>10 - 14</td>
+                                                <td><input type="text" name="m3" id=""
+                                                        onkeypress="return onlyNumberKey(event)"
+                                                        value="<?php  echo  isset($rowresult) ?  $rowresult["m3"] : 0;  ?>" />
+                                                </td>
+                                                <td><input type="text" name="f3" id=""
+                                                        onkeypress="return onlyNumberKey(event)"
+                                                        value="<?php  echo  isset($rowresult) ?  $rowresult["f3"] : 0;  ?>" />
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>15 - 19 </td>
+                                                <td><input type="text" name="m4" id=""
+                                                        onkeypress="return onlyNumberKey(event)"
+                                                        value="<?php  echo  isset($rowresult) ?  $rowresult["m4"] : 0;  ?>" />
+                                                </td>
+                                                <td><input type="text" name="f4" id=""
+                                                        onkeypress="return onlyNumberKey(event)"
+                                                        value="<?php  echo  isset($rowresult) ?  $rowresult["f4"] : 0;  ?>" />
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>20 - 24</td>
+                                                <td><input type="text" name="m5" id=""
+                                                        onkeypress="return onlyNumberKey(event)"
+                                                        value="<?php  echo  isset($rowresult) ?  $rowresult["m5"] : 0;  ?>" />
+                                                </td>
+                                                <td><input type="text" name="f5" id=""
+                                                        onkeypress="return onlyNumberKey(event)"
+                                                        value="<?php  echo  isset($rowresult) ?  $rowresult["f5"] : 0;  ?>" />
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>25 - 29</td>
+                                                <td><input type="text" name="m6" id=""
+                                                        onkeypress="return onlyNumberKey(event)"
+                                                        value="<?php  echo  isset($rowresult) ?  $rowresult["m6"] : 0;  ?>" />
+                                                </td>
+                                                <td><input type="text" name="f6" id=""
+                                                        onkeypress="return onlyNumberKey(event)"
+                                                        value="<?php  echo  isset($rowresult) ?  $rowresult["f6"] : 0;  ?>" />
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>30 - 34</td>
+                                                <td><input type="text" name="m7" id=""
+                                                        onkeypress="return onlyNumberKey(event)"
+                                                        value="<?php  echo  isset($rowresult) ?  $rowresult["m7"] : 0;  ?>" />
+                                                </td>
+                                                <td><input type="text" name="f7" id=""
+                                                        onkeypress="return onlyNumberKey(event)"
+                                                        value="<?php  echo  isset($rowresult) ?  $rowresult["f7"] : 0;  ?>" />
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>35 - 39</td>
+                                                <td><input type="text" name="m8" id=""
+                                                        onkeypress="return onlyNumberKey(event)"
+                                                        value="<?php  echo  isset($rowresult) ?  $rowresult["m8"] : 0;  ?>" />
+                                                </td>
+                                                <td><input type="text" name="f8" id=""
+                                                        onkeypress="return onlyNumberKey(event)"
+                                                        value="<?php  echo  isset($rowresult) ?  $rowresult["f8"] : 0;  ?>" />
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>40 - 44</td>
+                                                <td><input type="text" name="m9" id=""
+                                                        onkeypress="return onlyNumberKey(event)"
+                                                        value="<?php  echo  isset($rowresult) ?  $rowresult["m9"] : 0;  ?>" />
+                                                </td>
+                                                <td><input type="text" name="f9" id=""
+                                                        onkeypress="return onlyNumberKey(event)"
+                                                        value="<?php  echo  isset($rowresult) ?  $rowresult["f9"] : 0;  ?>" />
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>45 - 49</td>
+                                                <td><input type="text" name="m10" id=""
+                                                        onkeypress="return onlyNumberKey(event)"
+                                                        value="<?php  echo  isset($rowresult) ?  $rowresult["m10"] : 0;  ?>" />
+                                                </td>
+                                                <td><input type="text" name="f10" id=""
+                                                        onkeypress="return onlyNumberKey(event)"
+                                                        value="<?php  echo  isset($rowresult) ?  $rowresult["f10"] : 0;  ?>" />
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>50 - 54</td>
+                                                <td><input type="text" name="m11" id=""
+                                                        onkeypress="return onlyNumberKey(event)"
+                                                        value="<?php  echo  isset($rowresult) ?  $rowresult["m11"] : 0;  ?>" />
+                                                </td>
+                                                <td><input type="text" name="f11" id=""
+                                                        onkeypress="return onlyNumberKey(event)"
+                                                        value="<?php  echo  isset($rowresult) ?  $rowresult["f11"] : 0;  ?>" />
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>55 - 59</td>
+                                                <td><input type="text" name="m12" id=""
+                                                        onkeypress="return onlyNumberKey(event)"
+                                                        value="<?php  echo  isset($rowresult) ?  $rowresult["m12"] : 0;  ?>" />
+                                                </td>
+                                                <td><input type="text" name="f12" id=""
+                                                        onkeypress="return onlyNumberKey(event)"
+                                                        value="<?php  echo  isset($rowresult) ?  $rowresult["f12"] : 0;  ?>" />
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>60 - 64</td>
+                                                <td><input type="text" name="m13" id=""
+                                                        onkeypress="return onlyNumberKey(event)"
+                                                        value="<?php  echo  isset($rowresult) ?  $rowresult["m13"] : 0;  ?>" />
+                                                </td>
+                                                <td><input type="text" name="f13" id=""
+                                                        onkeypress="return onlyNumberKey(event)"
+                                                        value="<?php  echo  isset($rowresult) ?  $rowresult["f13"] : 0;  ?>" />
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>65 - 69</td>
+                                                <td><input type="text" name="m14" id=""
+                                                        onkeypress="return onlyNumberKey(event)"
+                                                        value="<?php  echo  isset($rowresult) ?  $rowresult["m14"] : 0;  ?>" />
+                                                </td>
+                                                <td><input type="text" name="f14" id=""
+                                                        onkeypress="return onlyNumberKey(event)"
+                                                        value="<?php  echo  isset($rowresult) ?  $rowresult["f14"] : 0;  ?>" />
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>70 - 74</td>
+                                                <td><input type="text" name="m15" id=""
+                                                        onkeypress="return onlyNumberKey(event)"
+                                                        value="<?php  echo  isset($rowresult) ?  $rowresult["m15"] : 0;  ?>" />
+                                                </td>
+                                                <td><input type="text" name="f15" id=""
+                                                        onkeypress="return onlyNumberKey(event)"
+                                                        value="<?php  echo  isset($rowresult) ?  $rowresult["f15"] : 0;  ?>" />
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>75 - 79</td>
+                                                <td><input type="text" name="m16" id=""
+                                                        onkeypress="return onlyNumberKey(event)"
+                                                        value="<?php  echo  isset($rowresult) ?  $rowresult["m16"] : 0;  ?>" />
+                                                </td>
+                                                <td><input type="text" name="f16" id=""
+                                                        onkeypress="return onlyNumberKey(event)"
+                                                        value="<?php  echo  isset($rowresult) ?  $rowresult["f16"] : 0;  ?>" />
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>80 - 84</td>
+                                                <td><input type="text" name="m17" id=""
+                                                        onkeypress="return onlyNumberKey(event)"
+                                                        value="<?php  echo  isset($rowresult) ?  $rowresult["m17"] : 0;  ?>" />
+                                                </td>
+                                                <td><input type="text" name="f17" id=""
+                                                        onkeypress="return onlyNumberKey(event)"
+                                                        value="<?php  echo  isset($rowresult) ?  $rowresult["f17"] : 0;  ?>" />
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>85 - 89</td>
+                                                <td><input type="text" name="m18" id=""
+                                                        onkeypress="return onlyNumberKey(event)"
+                                                        value="<?php  echo  isset($rowresult) ?  $rowresult["m18"] : 0;  ?>" />
+                                                </td>
+                                                <td><input type="text" name="f18" id=""
+                                                        onkeypress="return onlyNumberKey(event)"
+                                                        value="<?php  echo  isset($rowresult) ?  $rowresult["f18"] : 0;  ?>" />
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>90 - 95</td>
+                                                <td><input type="text" name="m19" id=""
+                                                        onkeypress="return onlyNumberKey(event)"
+                                                        value="<?php  echo  isset($rowresult) ?  $rowresult["m19"] : 0;  ?>" />
+                                                </td>
+                                                <td><input type="text" name="f19" id=""
+                                                        onkeypress="return onlyNumberKey(event)"
+                                                        value="<?php  echo  isset($rowresult) ?  $rowresult["f19"] : 0;  ?>" />
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>96-100</td>
+                                                <td><input type="text" name="m20" id=""
+                                                        onkeypress="return onlyNumberKey(event)"
+                                                        value="<?php  echo  isset($rowresult) ?  $rowresult["m20"] : 0;  ?>" />
+                                                </td>
+                                                <td><input type="text" name="f20" id=""
+                                                        onkeypress="return onlyNumberKey(event)"
+                                                        value="<?php  echo  isset($rowresult) ?  $rowresult["f20"] : 0;  ?>" />
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>101 and over</td>
+                                                <td><input type="text" name="m21" id=""
+                                                        onkeypress="return onlyNumberKey(event)"
+                                                        value="<?php  echo  isset($rowresult) ?  $rowresult["m21"] : 0;  ?>" />
+                                                </td>
+                                                <td><input type="text" name="f21" id=""
+                                                        onkeypress="return onlyNumberKey(event)"
+                                                        value="<?php  echo  isset($rowresult) ?  $rowresult["f21"] : 0;  ?>" />
+                                                </td>
+                                            </tr>
                                         </table>
+                                        <br>
 
+                                        <br>
                                     </div>
 
 
@@ -320,8 +508,8 @@ require("./layoutsidebar/sidebar.php");
                                         </button>
 
                                     </h2>
-                                    <div id="sexindex" class="accordion-collapse collapse show"
-                                        aria-labelledby="headingOne" data-bs-parent="#demography">
+                                    <div id="sexindex" class="accordion-collapse collapse " aria-labelledby="headingOne"
+                                        data-bs-parent="#demography">
 
 
                                         <table class="w-75 m-auto mb-3 my-3  p-4 " id="printcontent">
@@ -330,15 +518,21 @@ require("./layoutsidebar/sidebar.php");
 
                                                 <th>Male</th>
                                                 <th>Female</th>
-                                                <th>Total</th>
                                             </tr>
                                             <tr>
 
-                                                <td> <input type="text" name="m22" id="" value="0" /> </td>
-                                                <td> <input type="text" name="f22" id="" value="0" /> </td>
-                                                <td>0</td>
+                                                <td> <input onkeypress="return onlyNumberKey(event)" type="text"
+                                                        name="m22" id=""
+                                                        value="<?php  echo  isset($rowresult) ?  $rowresult["m22"] : 0;  ?>" />
+                                                </td>
+                                                <td> <input onkeypress="return onlyNumberKey(event)" type="text"
+                                                        name="f22" id=""
+                                                        value="<?php  echo  isset($rowresult) ?  $rowresult["f22"] : 0;  ?>" />
+                                                </td>
                                             </tr>
                                         </table>
+                                        <br>
+
                                     </div>
                                 </div>
 
@@ -375,51 +569,87 @@ require("./layoutsidebar/sidebar.php");
                                                 <th>Status</th>
                                                 <th>Male</th>
                                                 <th>Female</th>
-                                                <th>Toal</th>
                                             </tr>
                                             <tr>
                                                 <td>Single</td>
-                                                <td><input type="text" name="m23" id="" value="0" /> </td>
-                                                <td><input type="text" name="f23" id="" value="0" /> </td>
-                                                <td> </td>
+                                                <td><input onkeypress="return onlyNumberKey(event)" type="text"
+                                                        name="m23" id=""
+                                                        value="<?php  echo  isset($rowresult) ?  $rowresult["m23"] : 0;  ?>" />
+                                                </td>
+                                                <td><input onkeypress="return onlyNumberKey(event)" type="text"
+                                                        name="f23" id=""
+                                                        value="<?php  echo  isset($rowresult) ?  $rowresult["f23"] : 0;  ?>" />
+                                                </td>
                                             </tr>
                                             <tr>
                                                 <td>Maried - Active</td>
-                                                <td><input type="text" name="m24" id="" value="0" /> </td>
-                                                <td><input type="text" name="f24" id="" value="0" /> </td>
-                                                <td> </td>
+                                                <td><input onkeypress="return onlyNumberKey(event)" type="text"
+                                                        name="m24" id=""
+                                                        value="<?php  echo  isset($rowresult) ?  $rowresult["m24"] : 0;  ?>" />
+                                                </td>
+                                                <td><input onkeypress="return onlyNumberKey(event)" type="text"
+                                                        name="f24" id=""
+                                                        value="<?php  echo  isset($rowresult) ?  $rowresult["f24"] : 0;  ?>" />
+                                                </td>
                                             </tr>
                                             <tr>
                                                 <td>Married - Separated</td>
-                                                <td><input type="text" name="m25" id="" value="0" /> </td>
-                                                <td><input type="text" name="f25" id="" value="0" /> </td>
-                                                <td></td>
+                                                <td><input onkeypress="return onlyNumberKey(event)" type="text"
+                                                        name="m25" id=""
+                                                        value="<?php  echo  isset($rowresult) ?  $rowresult["m25"] : 0;  ?>" />
+                                                </td>
+                                                <td><input onkeypress="return onlyNumberKey(event)" type="text"
+                                                        name="f25" id=""
+                                                        value="<?php  echo  isset($rowresult) ?  $rowresult["f25"] : 0;  ?>" />
+                                                </td>
                                             </tr>
                                             <tr>
                                                 <td>Divorced</td>
-                                                <td><input type="text" name="m26" id="" value="0" /> </td>
-                                                <td><input type="text" name="f26" id="" value="0" /> </td>
-                                                <td> </td>
+                                                <td><input onkeypress="return onlyNumberKey(event)" type="text"
+                                                        name="m26" id=""
+                                                        value="<?php  echo  isset($rowresult) ?  $rowresult["m26"] : 0;  ?>" />
+                                                </td>
+                                                <td><input onkeypress="return onlyNumberKey(event)" type="text"
+                                                        name="f26" id=""
+                                                        value="<?php  echo  isset($rowresult) ?  $rowresult["f26"] : 0;  ?>" />
+                                                </td>
                                             </tr>
                                             <tr>
                                                 <td>Live-in Arrangement - Active</td>
-                                                <td><input type="text" name="m27" id="" value="0" /> </td>
-                                                <td><input type="text" name="f27" id="" value="0" /> </td>
-                                                <td> </td>
+                                                <td><input onkeypress="return onlyNumberKey(event)" type="text"
+                                                        name="m27" id=""
+                                                        value="<?php  echo  isset($rowresult) ?  $rowresult["m27"] : 0;  ?>" />
+                                                </td>
+                                                <td><input onkeypress="return onlyNumberKey(event)" type="text"
+                                                        name="f27" id=""
+                                                        value="<?php  echo  isset($rowresult) ?  $rowresult["f27"] : 0;  ?>" />
+                                                </td>
                                             </tr>
                                             <tr>
                                                 <td>Live-n Arrangement - Sepearated</td>
-                                                <td><input type="text" name="m28" id="" value="0" /> </td>
-                                                <td><input type="text" name="f28" id="" value="0" /> </td>
-                                                <td></td>
+                                                <td><input onkeypress="return onlyNumberKey(event)" type="text"
+                                                        name="m28" id=""
+                                                        value="<?php  echo  isset($rowresult) ?  $rowresult["m28"] : 0;  ?>" />
+                                                </td>
+                                                <td><input onkeypress="return onlyNumberKey(event)" type="text"
+                                                        name="f28" id=""
+                                                        value="<?php  echo  isset($rowresult) ?  $rowresult["f28"] : 0;  ?>" />
+                                                </td>
                                             </tr>
                                             <tr>
                                                 <td>Widowed</td>
-                                                <td><input type="text" name="m29" id="" value="0" /> </td>
-                                                <td><input type="text" name="f29" id="" value="0" /> </td>
-                                                <td>0</td>
+                                                <td><input onkeypress="return onlyNumberKey(event)" type="text"
+                                                        name="m29" id=""
+                                                        value="<?php  echo  isset($rowresult) ?  $rowresult["m29"] : 0;  ?>" />
+                                                </td>
+                                                <td><input onkeypress="return onlyNumberKey(event)" type="text"
+                                                        name="f29" id=""
+                                                        value="<?php  echo  isset($rowresult) ?  $rowresult["f29"] : 0;  ?>" />
+                                                </td>
                                             </tr>
                                         </table>
+                                        <br>
+
                                     </div>
                                 </div>
                             </div>
@@ -453,10 +683,14 @@ require("./layoutsidebar/sidebar.php");
                                             </tr>
                                             <tr>
 
-                                                <td class="text-center"><input type="text" name="householdaverage"
-                                                        id="" /> </td>
+                                                <td class="text-center"><input onkeypress="return onlyNumberKey(event)"
+                                                        type="text" name="num1" id=""
+                                                        value="<?php  echo  isset($rowresult) ?  $rowresult["num1"] : 0;  ?>" />
+                                                </td>
                                             </tr>
                                         </table>
+                                        <br>
+
                                     </div>
                                 </div>
 
@@ -497,51 +731,59 @@ require("./layoutsidebar/sidebar.php");
                                                 <th>Status</th>
                                                 <th>Male</th>
                                                 <th>Female</th>
-                                                <th>Toal</th>
                                             </tr>
                                             <tr>
                                                 <td>Single</td>
-                                                <td><input type="text" name="m30" id="" value="0" /> </td>
-                                                <td><input type="text" name="f30" id="" value="0" /> </td>
-                                                <td> </td>
+                                                <td><input onkeypress="return onlyNumberKey(event)" type="text"
+                                                        name="m30" id="" value="0" /> </td>
+                                                <td><input onkeypress="return onlyNumberKey(event)" type="text"
+                                                        name="f30" id="" value="0" /> </td>
                                             </tr>
                                             <tr>
                                                 <td>Maried - Active</td>
-                                                <td><input type="text" name="m31" id="" value="0" /> </td>
-                                                <td><input type="text" name="f31" id="" value="0" /> </td>
-                                                <td> </td>
+                                                <td><input onkeypress="return onlyNumberKey(event)" type="text"
+                                                        name="m31" id="" value="0" /> </td>
+                                                <td><input onkeypress="return onlyNumberKey(event)" type="text"
+                                                        name="f31" id="" value="0" /> </td>
                                             </tr>
                                             <tr>
                                                 <td>Married - Separated</td>
-                                                <td><input type="text" name="m32" id="" value="0" /> </td>
-                                                <td><input type="text" name="f32" id="" value="0" /> </td>
-                                                <td></td>
+                                                <td><input onkeypress="return onlyNumberKey(event)" type="text"
+                                                        name="m32" id="" value="0" /> </td>
+                                                <td><input onkeypress="return onlyNumberKey(event)" type="text"
+                                                        name="f32" id="" value="0" /> </td>
                                             </tr>
                                             <tr>
                                                 <td>Divorced</td>
-                                                <td><input type="text" name="m33" id="" value="0" /> </td>
-                                                <td><input type="text" name="f33" id="" value="0" /> </td>
-                                                <td> </td>
+                                                <td><input onkeypress="return onlyNumberKey(event)" type="text"
+                                                        name="m33" id="" value="0" /> </td>
+                                                <td><input onkeypress="return onlyNumberKey(event)" type="text"
+                                                        name="f33" id="" value="0" /> </td>
                                             </tr>
                                             <tr>
                                                 <td>Live-in Arrangement - Active</td>
-                                                <td><input type="text" name="m34" id="" value="0" /> </td>
-                                                <td><input type="text" name="f34" id="" value="0" /> </td>
-                                                <td> </td>
+                                                <td><input onkeypress="return onlyNumberKey(event)" type="text"
+                                                        name="m34" id="" value="0" /> </td>
+                                                <td><input onkeypress="return onlyNumberKey(event)" type="text"
+                                                        name="f34" id="" value="0" /> </td>
                                             </tr>
                                             <tr>
                                                 <td>Live-n Arrangement - Sepearated</td>
-                                                <td><input type="text" name="m35" id="" value="0" /> </td>
-                                                <td><input type="text" name="f35" id="" value="0" /> </td>
-                                                <td></td>
+                                                <td><input onkeypress="return onlyNumberKey(event)" type="text"
+                                                        name="m35" id="" value="0" /> </td>
+                                                <td><input onkeypress="return onlyNumberKey(event)" type="text"
+                                                        name="f35" id="" value="0" /> </td>
                                             </tr>
                                             <tr>
                                                 <td>Widowed</td>
-                                                <td><input type="text" name="m36" id="" value="0" /> </td>
-                                                <td><input type="text" name="f36" id="" value="0" /> </td>
-                                                <td>0</td>
+                                                <td><input onkeypress="return onlyNumberKey(event)" type="text"
+                                                        name="m36" id="" value="0" /> </td>
+                                                <td><input onkeypress="return onlyNumberKey(event)" type="text"
+                                                        name="f36" id="" value="0" /> </td>
                                             </tr>
                                         </table>
+                                        <br>
+
                                     </div>
                                 </div>
                             </div>
@@ -550,21 +792,8 @@ require("./layoutsidebar/sidebar.php");
                             <br />
 
                             <!--  -->
-                            <div class="d-flex justify-content-center my-3">
-                                <div class="mx-2">
-                                    <label>Prepared By:</label> <input
-                                        style="border:none;border-bottom:1px solid black;outline:none;"
-                                        class="px-2 py-1" type="text" name="preparedby" placeholder="type name..." />
-                                </div>
+                            <?php  require("./layout/soc_dev_footer.php");  ?>
 
-                                <div class="mx-2">
-
-                                    <label>Reviewed By:</label> <input
-                                        style="border:none;border-bottom:1px solid black;outline:none;"
-                                        class="px-2 py-1" type="text" name="reviewedby" placeholder="type name..." />
-                                </div>
-
-                            </div>
 
 
 
@@ -577,37 +806,7 @@ require("./layoutsidebar/sidebar.php");
 
     <script src="./assets/js/bootstrap.bundle.min.js"></script>
 
-    <script>
-    function onlyNumberKey(evt) {
-
-        // Only ASCII character in that range allowed
-        var ASCIICode = (evt.which) ? evt.which : evt.keyCode
-        if (ASCIICode > 31 && (ASCIICode < 48 || ASCIICode > 57))
-            return false;
-        return true;
-    }
-
-
-    function printDiv() {
-        var divContents = document.getElementById("printcontent").innerHTML;
-        var a = window.open('', '', '');
-        a.document.write('<html>');
-        a.document.write('<body >');
-        a.document.write(
-            '<h5 style="text-align:center;">Total Household Polpulation by Age and sex (psa.gov.ph) </h5>',
-            divContents,
-        );
-        a.document.write('</body> </html>');
-        a.document.close();
-        a.print();
-    }
-
-    function barangaySession(e) {
-        console.log(e.value)
-
-        document.cookie = `barangay = ${e.value}`;
-
-    }
+    <script src="./script/script.js">
     </script>
 
 

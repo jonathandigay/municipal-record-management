@@ -7,7 +7,9 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../assets/css/bootstrap.min.css">
-    <link rel="stylesheet" href="./layout.css">
+    <link rel="stylesheet" href="../layout/main.css">
+    <link rel="icon" href="../assets/images/santacruz.png">
+
     <title>Log in</title>
 </head>
 
@@ -36,10 +38,16 @@
         min-height: 100vh;
     }
 
-    .gad_login_main .side img {
-        max-width: 400px;
-        /* animation: fromtop linear 300ms 1; */
+    .img {}
 
+    .img {
+        /* animation: fromtop linear 300ms 1; */
+        max-width: 100px;
+
+    }
+
+    label {
+        font-size: 20px;
     }
 
     .gad_login_main .side .text {
@@ -53,8 +61,17 @@
         height: 100%;
         display: flex;
         align-items: center;
+        justify-content: center;
+        flex-direction: column;
         min-height: 100vh;
 
+    }
+
+    .gad_login_main .form form {
+        max-width: 600px;
+        background: white;
+        position: relative;
+        z-index: 3;
     }
 
     .gad_login_main .form .text {
@@ -197,7 +214,7 @@ if(isset($_POST["login"])){
      if(  $inputpassword === $password AND $inputusername === $username ){
 
         $_SESSION["user"]=$username;
-header("Location: http://localhost/barangay/demography.php");
+header("Location: http://localhost/barangay/dashboard.php");
     }
     if(!empty(trim($inputusername)) && !empty(trim($inputpassword)) && $inputpassword !== $password ){
         $credential_err ="credential was wrong!";
@@ -206,13 +223,6 @@ header("Location: http://localhost/barangay/demography.php");
         $credential_err ="credential was wrong!";
     }
  
-
-
-    
-
-
-
-
 }
 
 ?>
@@ -223,7 +233,7 @@ header("Location: http://localhost/barangay/demography.php");
 
 
     <div class="gad_login_main d-flex flex-column-reverse flex-md-row ">
-        <div class="side px-3 col-md-4 ">
+        <!-- <div class="side px-3 col-md-4 ">
 
             <div class="img">
                 <img src="../assets/images/santacruz.png" alt="">
@@ -243,13 +253,21 @@ header("Location: http://localhost/barangay/demography.php");
                 <p> Lorem ipsum dolor, sit amet consectetur adipisicing elit. Tenetur quod sint animi magnam nobis cum
                     nisi labore corrupti cumque similique adipisci ipsam. Officiis eos porro asperiores eaque. </p>
             </div>
-        </div>
+        </div> -->
 
 
 
 
-        <div class="form">
-            <form action="login.php" method="POST">
+
+
+
+        <div class="form   m-auto ">
+            <div class="img">
+                <img src="../assets/images/santacruz.png" alt="">
+            </div>
+
+            <form action="login.php" method="POST" class="w-75  px-3 py-3 m-0">
+
                 <h1 class="text-center p-2 text">Log in </h1>
 
                 <select class="form-select" aria-label="Default select example" name="logintype">
@@ -261,7 +279,7 @@ header("Location: http://localhost/barangay/demography.php");
 
 
                 <div class="form-group d-flex flex-column my-3">
-                    <label for="username">Username</label>
+                    <label for="username"> Username</label>
                     <input type="text" name="username" placeholder="username..." value=<?php echo  $inputusername ;?>>
                     <?php  if($username_err){
                     echo ' <div class="error_message">' . $username_err  . ' </div>';
@@ -270,7 +288,7 @@ header("Location: http://localhost/barangay/demography.php");
 
                 <div class="form-group d-flex flex-column my-3 ">
                     <label for="username">Password</label>
-                    <input type="text" name="password" placeholder="password" value=<?php echo  $inputpassword ;?>>
+                    <input type="password" name="password" placeholder="password" value=<?php echo  $inputpassword ;?>>
                     <?php  if($password_err){
                     echo ' <div class="error_message">' . $password_err  . ' </div>';
                 }  ?>
@@ -280,7 +298,7 @@ header("Location: http://localhost/barangay/demography.php");
                     <input type="checkbox"> <span>Remember me</span>
                 </div>
                 <div class="text-end my-3">
-                    <label>Need an account?</label> <span><a href="signup.php">sign up</a></span>
+                    <h6>Need an account? <span><a href="signup.php">sign up</a></span></h6>
 
                 </div>
                 <?php  if($credential_err){

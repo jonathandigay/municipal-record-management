@@ -2,12 +2,14 @@
 
 require("./middleware/checklogin.php");
 require("database/connection.php");
-$popu_age_result = $dbconnection->query("SELECT * FROM soc_dev_demography_population_age_sex");
 
 
 
 
 ?>
+<?php  require("./process/retrieve_soc_developement.php"); ?>
+<?php  require("./process/soc_development_sector.php"); ?>
+
 
 <!DOCTYPE html>
 <html lang="en">
@@ -75,6 +77,7 @@ $popu_age_result = $dbconnection->query("SELECT * FROM soc_dev_demography_popula
     }
 
     .accordion-item {
+        border: none;
         background: rgb(165, 165, 165);
     }
 
@@ -156,262 +159,240 @@ VALUES ( $ages,  $male,  $male')";
         <div class="row">
 
             <?php
-require("./layoutsidebar/sidebar.php");
+
+if(isset($_COOKIE["popup_modal"])){
+    if($_COOKIE["popup_modal"]==="saverecord")
+require("./modal/success.php");
+
+}
+
 
 ?>
 
+            <?php
+require("./layoutsidebar/sidebar.php");
+
+?>
+            <div class="burger_menu p-2 shadow" style="border-radius:50px;">
+                <button class="navbar-toggler p-0 collapsed" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#sidebarMenu" aria-controls="sidebarMenu" aria-expanded="false"
+                    aria-label="Toggle navigation">
+                    <svg clip-rule="evenodd" fill-rule="evenodd" stroke-linejoin="round" stroke-miterlimit="2"
+                        width="50px" fill="#fff" height="50px" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path
+                            d="m13 16.745c0-.414-.336-.75-.75-.75h-9.5c-.414 0-.75.336-.75.75s.336.75.75.75h9.5c.414 0 .75-.336.75-.75zm9-5c0-.414-.336-.75-.75-.75h-18.5c-.414 0-.75.336-.75.75s.336.75.75.75h18.5c.414 0 .75-.336.75-.75zm-4-5c0-.414-.336-.75-.75-.75h-14.5c-.414 0-.75.336-.75.75s.336.75.75.75h14.5c.414 0 .75-.336.75-.75z"
+                            fill-rule="nonzero" />
+                    </svg>
+                </button>
+
+            </div>
 
 
+            <div class="powered">
+                <img src="./assets/images/gad.png" alt="">
+            </div>
+            <div class="burger_menu p-2 shadow" style="border-radius:50px;">
+                <button class="navbar-toggler p-0 collapsed" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#sidebarMenu" aria-controls="sidebarMenu" aria-expanded="false"
+                    aria-label="Toggle navigation">
+                    <svg clip-rule="evenodd" fill-rule="evenodd" stroke-linejoin="round" stroke-miterlimit="2"
+                        width="50px" fill="#fff" height="50px" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path
+                            d="m13 16.745c0-.414-.336-.75-.75-.75h-9.5c-.414 0-.75.336-.75.75s.336.75.75.75h9.5c.414 0 .75-.336.75-.75zm9-5c0-.414-.336-.75-.75-.75h-18.5c-.414 0-.75.336-.75.75s.336.75.75.75h18.5c.414 0 .75-.336.75-.75zm-4-5c0-.414-.336-.75-.75-.75h-14.5c-.414 0-.75.336-.75.75s.336.75.75.75h14.5c.414 0 .75-.336.75-.75z"
+                            fill-rule="nonzero" />
+                    </svg>
+                </button>
 
-            <form action="./process/./process/soc_dev_demography.php.php" method="POST"
-                class="container-fluid p-0 py-3 px-3 col-md-9 ">
+            </div>
+
+            <form action="fishery.php" method="POST" class="container-fluid p-0 w-100  px-3 col ">
 
 
                 <div>
                     <div class="header position-sticky top-0 shadow">
                         <div class="title text-center  py-2" style="background:black;color:white;">
-                            <h5 class="m-0"> Economic Development Sector / Fishery</h5>
-                        </div>
-                        <div class=" d-flex my-2 align-items-center justify-content-between ">
-
-                            <div class="d-flex my-2 align-items-center ">
-                                <div class=" d-flex align-items-center mx-2">
-                                    <h6 class="m-0 mx-1">BARANGAY:</h6>
-                                    <select class="form-select" aria-label="Default select example" name="barangay"
-                                        name="barangay" onchange="barangaySession(this)">
-
-                                        <?php
-                                    require("./arrays/barangay.php");
-                                       $count =count($barangay);
-                                       $i =0;
-                                       for($i; $i < $count; $i++){
-                                       ?>
-                                        <option value=<?php echo $barangay[$i]   ?>><?php echo $barangay[$i]   ?>
-                                        </option>
-                                        <?php  };?>
-                                    </select>
-
-                                </div>
-                                <div class="d-flex align-items-center mx-2">
-                                    <h6 class="m-0 mx-1">YEAR:</h6>
-                                    <select class="form-select" aria-label="Default select example" name="year">
-                                        <option selected value="2020-2022">2020-2022</option>
-                                        <option value="2018-2019">2018-2019</option>
-                                        <option value="2017-2018">2017-2018</option>
-                                        <option value="2016-2017">2016-2017</option>
-
-                                    </select>
-                                </div>
-                            </div>
-
-                            <div class="print d-flex justify-content-end m-3 ">
-                                <a href="./records/social_development_sector.php" target="_self">
-                                    <button class="py-2 px-3 shadow m-2" id="print" type="button">
-                                        <p> records <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
-                                                viewBox="0 0 24 24">
-                                                <path
-                                                    d="M7.972 2h-6.972l.714 5h2.021l-.429-3h3.694c1.112 1.388 1.952 2 4.277 2h9.283l-.2 1h2.04l.6-3h-11.723c-1.978 0-2.041-.417-3.305-2zm16.028 7h-24l2 13h20l2-13z" />
-                                            </svg></p>
-                                    </button>
-                                </a>
-                                <button class="py-2 px-3 m-2 shadow" name="demography" type="submit">
-                                    <p>Save <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
-                                            viewBox="0 0 24 24">
-                                            <path
-                                                d="M14 3h2.997v5h-2.997v-5zm9 1v20h-22v-24h17.997l4.003 4zm-17 5h12v-7h-12v7zm14 4h-16v9h16v-9z" />
-                                        </svg>
-                                </button>
-                            </div>
-
+                            <h5 class="m-0 py-3 page_title"> Economic Development Sector / Fishery</h5>
                         </div>
 
-                    </div>
-
-
-                    <div class="row mt-3 " id="parent_accordion">
-                        <div class="accordion" id="local_employment">
+                        <?php require("./layout/soc_dev_header.php"); ?>
 
 
 
-
-                            <div class="accordion-item">
-                                <h2 class="accordion-header" id="headingOne">
-                                    <button class="accordion-button d-flex justify-content-between shadow" type="button"
-                                        data-bs-toggle="collapse" data-bs-target="#accordionone" aria-expanded="false"
-                                        aria-controls="accordionone">
-                                        <h6 class="p-0"> Women who are functioning as fish wardens deputized (within 6
-                                            months from IRR) (MCW-IRR Sec. 23 B. 8.a)
-                                        </h6>
-                                        <span><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
-                                                viewBox="0 0 24 24">
-                                                <path
-                                                    d="M0 7.33l2.829-2.83 9.175 9.339 9.167-9.339 2.829 2.83-11.996 12.17z" />
-                                            </svg></span>
-                                    </button>
-
-                                </h2>
-                                <div id="accordionone" class="accordion-collapse collapse show"
-                                    aria-labelledby="headingOne" data-bs-parent="#parent_accordion">
+                        <div class="row mt-3 " id="parent_accordion">
+                            <div class="accordion" id="local_employment">
 
 
-                                    <table class="w-25 m-auto mb-3 my-3  p-4 " id="printcontent">
 
 
-                                        <tr>
+                                <div class="accordion-item">
+                                    <h2 class="accordion-header" id="headingOne">
+                                        <button class="accordion-button d-flex justify-content-between shadow"
+                                            type="button" data-bs-toggle="collapse" data-bs-target="#accordionone"
+                                            aria-expanded="false" aria-controls="accordionone">
+                                            <h6 class="p-0"> Women who are functioning as fish wardens deputized (within
+                                                6
+                                                months from IRR) (MCW-IRR Sec. 23 B. 8.a)
+                                            </h6>
+                                            <span><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                                                    viewBox="0 0 24 24">
+                                                    <path
+                                                        d="M0 7.33l2.829-2.83 9.175 9.339 9.167-9.339 2.829 2.83-11.996 12.17z" />
+                                                </svg></span>
+                                        </button>
 
-                                            <td class="text-center ">
-                                                <textarea type="text" name="householdaverage" class="py-2 px-3"
-                                                    style="width:500px;min-height:200px"
-                                                    placeholder="Enter text"> </textarea>
-                                            </td>
-                                        </tr>
-                                    </table>
+                                    </h2>
+                                    <div id="accordionone" class="accordion-collapse collapse show"
+                                        aria-labelledby="headingOne" data-bs-parent="#parent_accordion">
+
+
+                                        <table class="w-25 m-auto mb-3 my-3  p-4 " id="printcontent">
+
+
+                                            <tr>
+
+                                                <td class="text-center ">
+                                                    <textarea type="text" name="text3" class="py-2 px-3"
+                                                        style="width:500px;min-height:200px"
+                                                        placeholder="Enter text"> <?php  echo  isset($rowresult) ?  $rowresult["text3"] : '';  ?></textarea>
+                                                </td>
+                                            </tr>
+                                        </table>
+                                    </div>
                                 </div>
+                                </br>
+
+                            </div>
+
+                            <div class="accordion" id="local_employment">
+                                <div class="accordion-item">
+                                    <h2 class="accordion-header" id="headingOne">
+                                        <button class="accordion-button d-flex justify-content-between shadow"
+                                            type="button" data-bs-toggle="collapse" data-bs-target="#accordiontwo"
+                                            aria-expanded="false" aria-controls="accordiontwo">
+                                            <h6 class="p-0"> Women recognized as effective fish wardens (MCW-IRR Sec. 23
+                                                B.
+                                                8.b)
+                                            </h6>
+                                            <span><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                                                    viewBox="0 0 24 24">
+                                                    <path
+                                                        d="M0 7.33l2.829-2.83 9.175 9.339 9.167-9.339 2.829 2.83-11.996 12.17z" />
+                                                </svg></span>
+                                        </button>
+
+                                    </h2>
+                                    <div id="accordiontwo" class="accordion-collapse collapse show"
+                                        aria-labelledby="headingOne" data-bs-parent="#parent_accordion">
+
+
+                                        <table class="w-25 m-auto mb-3 my-3  p-4 " id="printcontent">
+
+
+                                            <tr>
+
+                                                <td class="text-center ">
+                                                    <textarea type="text" name="text4" class="py-2 px-3"
+                                                        style="width:500px;min-height:200px" placeholder="Enter text">
+                                                <?php  echo  isset($rowresult) ?  $rowresult["text4"] : '';  ?>
+                                                </textarea>
+                                                </td>
+                                            </tr>
+                                        </table>
+                                    </div>
+                                </div>
+                                </br>
+                            </div>
+
+                            <div class="accordion" id="local_employment">
+                                <div class="accordion-item">
+                                    <h2 class="accordion-header" id="headingOne">
+                                        <button class="accordion-button d-flex justify-content-between shadow"
+                                            type="button" data-bs-toggle="collapse" data-bs-target="#accordionthree"
+                                            aria-expanded="false" aria-controls="accordionthree">
+                                            <h6 class="p-0"> Capacity Development training for women fish wardens
+                                                (MCW-IRR
+                                                Sec. B. 8.c)
+                                            </h6>
+                                            <span><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                                                    viewBox="0 0 24 24">
+                                                    <path
+                                                        d="M0 7.33l2.829-2.83 9.175 9.339 9.167-9.339 2.829 2.83-11.996 12.17z" />
+                                                </svg></span>
+                                        </button>
+
+                                    </h2>
+                                    <div id="accordionthree" class="accordion-collapse collapse show"
+                                        aria-labelledby="headingOne" data-bs-parent="#parent_accordion">
+
+
+                                        <table class="w-25 m-auto mb-3 my-3  p-4 " id="printcontent">
+
+
+                                            <tr>
+
+                                                <td class="text-center ">
+                                                    <textarea type="text" name="text5" class="py-2 px-3"
+                                                        style="width:500px;min-height:200px"
+                                                        placeholder="Enter text"> <?php  echo  isset($rowresult) ?  $rowresult["text5"] : '';  ?></textarea>
+                                                </td>
+                                            </tr>
+                                        </table>
+                                    </div>
+                                </div>
+                                </br>
+
+                            </div>
+
+
+
+                            </br>
+                            <div class="accordion" id="local_employment">
+
+                                <div class="accordion-item">
+                                    <h2 class="accordion-header" id="headingOne">
+                                        <button class="accordion-button d-flex justify-content-between shadow"
+                                            type="button" data-bs-toggle="collapse" data-bs-target="#accordionfour"
+                                            aria-expanded="false" aria-controls="accordionfour">
+                                            <h6 class="p-0"> Social and legal protection for all deputized women fish
+                                                wardens (MCW-IRR Sec. 23 B. 8.d)
+                                            </h6>
+                                            <span><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                                                    viewBox="0 0 24 24">
+                                                    <path
+                                                        d="M0 7.33l2.829-2.83 9.175 9.339 9.167-9.339 2.829 2.83-11.996 12.17z" />
+                                                </svg></span>
+                                        </button>
+
+                                    </h2>
+                                    <div id="accordionfour" class="accordion-collapse collapse show"
+                                        aria-labelledby="headingOne" data-bs-parent="#parent_accordion">
+
+
+                                        <table class="w-25 m-auto mb-3 my-3  p-4 " id="printcontent">
+
+
+                                            <tr>
+
+                                                <td class="text-center ">
+                                                    <textarea type="text" name="text6" class="py-2 px-3"
+                                                        style="width:500px;min-height:200px"
+                                                        placeholder="Enter text"> <?php  echo  isset($rowresult) ?  $rowresult["text6"] : '';  ?> </textarea>
+                                                </td>
+                                            </tr>
+                                        </table>
+                                    </div>
+                                </div>
+                                </br>
+
                             </div>
                             </br>
 
-                        </div>
 
-                        <div class="accordion" id="local_employment">
-                            <div class="accordion-item">
-                                <h2 class="accordion-header" id="headingOne">
-                                    <button class="accordion-button d-flex justify-content-between shadow" type="button"
-                                        data-bs-toggle="collapse" data-bs-target="#accordiontwo" aria-expanded="false"
-                                        aria-controls="accordiontwo">
-                                        <h6 class="p-0"> Women recognized as effective fish wardens (MCW-IRR Sec. 23 B.
-                                            8.b)
-                                        </h6>
-                                        <span><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
-                                                viewBox="0 0 24 24">
-                                                <path
-                                                    d="M0 7.33l2.829-2.83 9.175 9.339 9.167-9.339 2.829 2.83-11.996 12.17z" />
-                                            </svg></span>
-                                    </button>
-
-                                </h2>
-                                <div id="accordiontwo" class="accordion-collapse collapse show"
-                                    aria-labelledby="headingOne" data-bs-parent="#parent_accordion">
-
-
-                                    <table class="w-25 m-auto mb-3 my-3  p-4 " id="printcontent">
-
-
-                                        <tr>
-
-                                            <td class="text-center ">
-                                                <textarea type="text" name="householdaverage" class="py-2 px-3"
-                                                    style="width:500px;min-height:200px"
-                                                    placeholder="Enter text"> </textarea>
-                                            </td>
-                                        </tr>
-                                    </table>
-                                </div>
-                            </div>
-                            </br>
-                        </div>
-
-                        <div class="accordion" id="local_employment">
-                            <div class="accordion-item">
-                                <h2 class="accordion-header" id="headingOne">
-                                    <button class="accordion-button d-flex justify-content-between shadow" type="button"
-                                        data-bs-toggle="collapse" data-bs-target="#accordionthree" aria-expanded="false"
-                                        aria-controls="accordionthree">
-                                        <h6 class="p-0"> Capacity Development training for women fish wardens (MCW-IRR
-                                            Sec. B. 8.c)
-                                        </h6>
-                                        <span><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
-                                                viewBox="0 0 24 24">
-                                                <path
-                                                    d="M0 7.33l2.829-2.83 9.175 9.339 9.167-9.339 2.829 2.83-11.996 12.17z" />
-                                            </svg></span>
-                                    </button>
-
-                                </h2>
-                                <div id="accordionthree" class="accordion-collapse collapse show"
-                                    aria-labelledby="headingOne" data-bs-parent="#parent_accordion">
-
-
-                                    <table class="w-25 m-auto mb-3 my-3  p-4 " id="printcontent">
-
-
-                                        <tr>
-
-                                            <td class="text-center ">
-                                                <textarea type="text" name="householdaverage" class="py-2 px-3"
-                                                    style="width:500px;min-height:200px"
-                                                    placeholder="Enter text"> </textarea>
-                                            </td>
-                                        </tr>
-                                    </table>
-                                </div>
-                            </div>
-                            </br>
 
                         </div>
-
-
-
-                        </br>
-                        <div class="accordion" id="local_employment">
-
-                            <div class="accordion-item">
-                                <h2 class="accordion-header" id="headingOne">
-                                    <button class="accordion-button d-flex justify-content-between shadow" type="button"
-                                        data-bs-toggle="collapse" data-bs-target="#accordionfour" aria-expanded="false"
-                                        aria-controls="accordionfour">
-                                        <h6 class="p-0"> Social and legal protection for all deputized women fish
-                                            wardens (MCW-IRR Sec. 23 B. 8.d)
-                                        </h6>
-                                        <span><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
-                                                viewBox="0 0 24 24">
-                                                <path
-                                                    d="M0 7.33l2.829-2.83 9.175 9.339 9.167-9.339 2.829 2.83-11.996 12.17z" />
-                                            </svg></span>
-                                    </button>
-
-                                </h2>
-                                <div id="accordionfour" class="accordion-collapse collapse show"
-                                    aria-labelledby="headingOne" data-bs-parent="#parent_accordion">
-
-
-                                    <table class="w-25 m-auto mb-3 my-3  p-4 " id="printcontent">
-
-
-                                        <tr>
-
-                                            <td class="text-center ">
-                                                <textarea type="text" name="householdaverage" class="py-2 px-3"
-                                                    style="width:500px;min-height:200px"
-                                                    placeholder="Enter text"> </textarea>
-                                            </td>
-                                        </tr>
-                                    </table>
-                                </div>
-                            </div>
-                            </br>
-
-                        </div>
-                        </br>
-
-
-
                     </div>
-                </div>
-                <div class="d-flex justify-content-center my-3">
-                    <div class="mx-2">
-                        <label>Prepared By:</label> <input
-                            style="border:none;border-bottom:1px solid black;outline:none;" class="px-2 py-1"
-                            type="text" name="preparedby" placeholder="type name..." />
-                    </div>
+                    <?php  require("./layout/soc_dev_footer.php");  ?>
 
-                    <div class="mx-2">
-
-                        <label>Reviewed By:</label> <input
-                            style="border:none;border-bottom:1px solid black;outline:none;" class="px-2 py-1"
-                            type="text" name="reviewedby" placeholder="type name..." />
-                    </div>
-
-                </div>
 
 
 
@@ -424,38 +405,8 @@ require("./layoutsidebar/sidebar.php");
 
     <script src="./assets/js/bootstrap.bundle.min.js"></script>
 
-    <script>
-    function onlyNumberKey(evt) {
+    <script src="./script/script.js"></script>
 
-        // Only ASCII character in that range allowed
-        var ASCIICode = (evt.which) ? evt.which : evt.keyCode
-        if (ASCIICode > 31 && (ASCIICode < 48 || ASCIICode > 57))
-            return false;
-        return true;
-    }
-
-
-    function printDiv() {
-        var divContents = document.getElementById("printcontent").innerHTML;
-        var a = window.open('', '', '');
-        a.document.write('<html>');
-        a.document.write('<body >');
-        a.document.write(
-            '<h5 style="text-align:center;">Total Household Polpulation by Age and sex (psa.gov.ph) </h5>',
-            divContents,
-        );
-        a.document.write('</body> </html>');
-        a.document.close();
-        a.print();
-    }
-
-    function barangaySession(e) {
-        console.log(e.value)
-
-        document.cookie = `barangay = ${e.value}`;
-
-    }
-    </script>
 
 
 
