@@ -255,6 +255,8 @@ if(isset($_POST["demography"])){
 
 
 
+
+
 $result = $dbconnection->query("SELECT * FROM social_development");
 
 if($result->num_rows >0){
@@ -265,7 +267,7 @@ if($result->num_rows >0){
       if( $barangay === $row["barangay"] && strcmp($year, $row["year"])===0 ){
 $id = $row["id"];
 // demography
-         if(!empty($_POST["m1"]) ){
+         if(isset($_POST["m1"])  ){
             
 
 
@@ -370,7 +372,7 @@ header("Location: /barangay/demography.php" );
 };
 
 // education
-if(!empty($_POST["m37"])){
+if(isset($_POST["m37"]) ){
     $dbconnection->query("UPDATE social_development
 SET preparedby='$preparedby',
 reviewedby='$reviewedby',
@@ -396,7 +398,7 @@ header("Location: /barangay/education.php");
 }
 
 // healyh
-if(!empty($_POST["num2"]) ){
+if(isset($_POST["num2"]) ){
    $dbconnection->query("UPDATE social_development
 SET preparedby='$preparedby',
 reviewedby='$reviewedby',
@@ -421,10 +423,9 @@ reviewedby='$reviewedby',
  num13= $num13 WHERE id=$id;");
 setcookie("popup_modal","saverecord");
 header("Location: /barangay/health.php");
-
 }
 // social welfare 
-if(!empty($_POST["num14"]) ){
+if(isset($_POST["num14"]) ){
       $dbconnection->query("UPDATE social_development
 SET preparedby='$preparedby',
 reviewedby='$reviewedby',
@@ -439,7 +440,7 @@ header("Location: /barangay/social_welfare_senior_citizen.php");
 
 
 // gender base violence
-if(!empty($_POST["bol8"]) ){
+if(isset($_POST["bol8"])  ){
       $dbconnection->query("UPDATE social_development
 SET preparedby='$preparedby',
 reviewedby='$reviewedby',
@@ -452,7 +453,7 @@ setcookie("popup_modal","saverecord");
 header("Location: /barangay/gender_based_violence.php");
 }
 // media and film
-if(!empty($_POST["num15"]) ){
+if(isset($_POST["num15"])  ){
 
      $dbconnection->query("UPDATE social_development
 SET preparedby='$preparedby',
@@ -463,7 +464,7 @@ header("Location: /barangay/media_and_film.php");
 
 }
 // social protection
-if(!empty($_POST["m45"]) ){
+if(isset($_POST["m45"]) ){
      $dbconnection->query("UPDATE social_development
 SET preparedby='$preparedby',
 reviewedby='$reviewedby',
@@ -475,7 +476,7 @@ header("Location: /barangay/social_protection.php");
 }
 
 // income poverty
-if(!empty($_POST["num16"]) ){
+if(isset($_POST["num16"])  ){
   $dbconnection->query("UPDATE social_development
 SET preparedby='$preparedby',
 reviewedby='$reviewedby',
@@ -485,7 +486,7 @@ setcookie("popup_modal","saverecord");
 header("Location: /barangay/income_and_poverty.php");
 }
 // labor and employment
-if(!empty($_POST["m46"]) ){
+if(isset($_POST["m46"])  ){
   $dbconnection->query("UPDATE social_development
 SET preparedby='$preparedby',
 reviewedby='$reviewedby',
@@ -521,7 +522,7 @@ setcookie("popup_modal","saverecord");
 header("Location: /barangay/labor_and_employment.php");
 }
 // fishery
-if(!empty($_POST["text3"]) ){
+if(isset($_POST["text3"])  ){
   $dbconnection->query("UPDATE social_development
 SET preparedby='$preparedby',
 reviewedby='$reviewedby',
@@ -533,7 +534,7 @@ setcookie("popup_modal","saverecord");
 header("Location: /barangay/fishery.php");
 }
 // forestry
-if(!empty($_POST["text7"]) ){
+if(isset($_POST["text7"]) ){
   $dbconnection->query("UPDATE social_development
 SET preparedby='$preparedby',
 reviewedby='$reviewedby',
@@ -544,7 +545,7 @@ setcookie("popup_modal","saverecord");
 header("Location: /barangay/forestry.php");
 }
 // industryr
-if(!empty($_POST["text10"]) ){
+if(isset($_POST["text10"])  ){
   $dbconnection->query("UPDATE social_development
 SET preparedby='$preparedby',
 reviewedby='$reviewedby',
@@ -556,7 +557,7 @@ setcookie("popup_modal","saverecord");
 header("Location: /barangay/industry.php");
 }
 // resources base and land
-if(!empty($_POST["num21"]) ){
+if(isset($_POST["num21"]) ){
   $dbconnection->query("UPDATE social_development
 SET preparedby='$preparedby',
 reviewedby='$reviewedby',
@@ -598,7 +599,7 @@ header("Location: /barangay/resources_base_and_land_use.php");
 }
 
 // tenure and management
-if(!empty($_POST["text11"]) ){
+if(isset($_POST["text11"]) ){
   $dbconnection->query("UPDATE social_development
 SET preparedby='$preparedby',
 reviewedby='$reviewedby',
@@ -610,7 +611,7 @@ setcookie("popup_modal","saverecord");
 header("Location: /barangay/tenure_management.php");
 }
 // land use and productivity
-if(!empty($_POST["m76"])){
+if(isset($_POST["m76"]) ){
   $dbconnection->query("UPDATE social_development
 SET preparedby='$preparedby',
 reviewedby='$reviewedby',

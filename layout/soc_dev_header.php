@@ -44,20 +44,19 @@
                     <option value="2021-2022">2021-2022</option>
                     <option value="2019-2020">2019-2020</option>
                     <option value="2017-2018">2017-2018</option>
-
                 </select>
             </div>
         </div>
 
         <div class="print d-flex justify-content-end m-3 ">
-            <a href="../barangay/dashboard.php" id="view_chart_btn">
+            <!-- <a href="../barangay/dashboard.php" id="view_chart_btn">
                 <button style="background:rgb(255,62,143);color:white;" class="py-2 px-3 m-2 shadow " type="button"
                     onclick="navSelection('dashboard')">
                     Dashboard <svg width="24" height="24" xmlns="http://www.w3.org/2000/svg" fill-rule="evenodd"
                         fill="#fff" clip-rule="evenodd">
                         <path
                             d="M0 22h1v-5h4v5h2v-10h4v10h2v-15h4v15h2v-21h4v21h1v1h-24v-1zm4-4h-2v4h2v-4zm6-5h-2v9h2v-9zm6-5h-2v14h2v-14zm6-6h-2v20h2v-20z" />
-                    </svg></button></a>
+                    </svg></button></a> -->
             <a href="./records/social_development_sector.php" target="_self">
                 <button class="py-2 px-3 shadow m-2" style="background:#4169E1;" id="print" type="button">
                     <p>view records <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">

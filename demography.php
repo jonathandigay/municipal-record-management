@@ -112,19 +112,7 @@ require("./database/connection.php");
         display: none;
     }
 
-    .santa_cruz_gad {
-        position: fixed;
-        top: 0;
-        right: 0;
-        left: 0;
-        bottom: 0;
-        background: white;
-        z-index: 5000;
-        display: none;
-        justify-content: center;
-        align-items: center;
 
-    }
 
     .santa_cruz_gad .show {
         display: flex
@@ -166,11 +154,7 @@ require("./modal/success.php");
 
 ?>
 
-        <?php
 
-require("./layout/logo.php");
-
-?>
 
 
         <!-- <?php
@@ -203,7 +187,8 @@ require("./layoutsidebar/sidebar.php");
             </div>
 
 
-            <form action="demography.php" method="POST" class="container-fluid p-0 w-100  px-3 col ">
+            <form action="demography.php" method="POST" class="container-fluid p-0 w-100  px-3 col "
+                style="background:white">
                 <div name="http:localhost/barangay/demography.php">
                     <div class="header position-sticky top-0 shadow">
                         <div class="title text-center  py-2 px-5 " style="background:black;color:white;">

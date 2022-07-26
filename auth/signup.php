@@ -20,7 +20,9 @@
     * {
         padding: 0;
         margin: 0;
-        font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif
+        font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+        font-size: 15px;
+
     }
 
 
@@ -41,7 +43,7 @@
     .img {}
 
     label {
-        font-size: 20px;
+        font-size: 18px;
     }
 
 

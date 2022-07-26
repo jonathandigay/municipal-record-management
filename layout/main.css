@@ -31,6 +31,7 @@ ul {
 
 a {
   text-decoration: none;
+  color: black;
 }
 
 .sidebar {
@@ -348,8 +349,42 @@ a {
   z-index: 5000;
 }
 
+.back_dashboard {
+  position: fixed;
+  top: 10px;
+  left: 10px;
+}
+
 .burger_menu :hover {
   opacity: 0.8;
+}
+
+.back_dashboard_btn {
+  display: flex;
+  align-items: center;
+
+  z-index: 4000;
+  font-size: 13px;
+  border-radius: 50px;
+  overflow: hidden;
+}
+
+.back_dashboard_btn button:hover svg {
+  transform: translateX(-5px);
+  transition: all ease-in 300ms;
+  fill: rgb(255, 62, 143);
+}
+.back_dashboard_btn button {
+  background: none;
+  color: white;
+}
+.back_dashboard_btn button:hover {
+  opacity: 0.9;
+}
+
+.forms_selection button:hover {
+  background: black;
+  color: white;
 }
 
 @media screen and (max-width: 768px) {
@@ -381,5 +416,11 @@ a {
   100% {
     transform: translateY(0);
     opacity: 1;
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .sidebar {
+    position: relative;
   }
 }

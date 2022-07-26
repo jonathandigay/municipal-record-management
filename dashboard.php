@@ -62,6 +62,12 @@ require("./database/connection.php");
         position: absolute;
         z-index: -1;
     }
+
+    .back_dashboard {
+        position: fixed;
+        top: 10px;
+        left: 10px;
+    }
     </style>
 
 
@@ -69,6 +75,11 @@ require("./database/connection.php");
     <div class="container-fluid">
 
 
+        <?php
+
+require("./layout/logo.php");
+
+?>
 
 
         <div class="row">
@@ -84,7 +95,19 @@ require("./layoutsidebar/sidebar.php");
 ?>
 
 
+            <div class="burger_menu p-2 shadow" style="border-radius:50px;">
+                <button class="navbar-toggler p-0 collapsed" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#sidebarMenu" aria-controls="sidebarMenu" aria-expanded="false"
+                    aria-label="Toggle navigation">
+                    <svg clip-rule="evenodd" fill-rule="evenodd" stroke-linejoin="round" stroke-miterlimit="2"
+                        width="50px" fill="#fff" height="50px" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path
+                            d="m13 16.745c0-.414-.336-.75-.75-.75h-9.5c-.414 0-.75.336-.75.75s.336.75.75.75h9.5c.414 0 .75-.336.75-.75zm9-5c0-.414-.336-.75-.75-.75h-18.5c-.414 0-.75.336-.75.75s.336.75.75.75h18.5c.414 0 .75-.336.75-.75zm-4-5c0-.414-.336-.75-.75-.75h-14.5c-.414 0-.75.336-.75.75s.336.75.75.75h14.5c.414 0 .75-.336.75-.75z"
+                            fill-rule="nonzero" />
+                    </svg>
+                </button>
 
+            </div>
 
             <div class="container-fluid p-0  px-3 col-md-9 chart_container">
                 <div class=" d-flex my-2 align-items-center justify-content-between flex-wrap">
@@ -92,24 +115,34 @@ require("./layoutsidebar/sidebar.php");
 
 
 
-                </div>
-                <!-- <h1 class="page_title text-center">Social Development Chart</h1> -->
 
-                <div class="charts d-flex">
+
+                </div>
+                <h3 class="page_title  py-2 ">Social Development
+                    Chart</h3>
+
+                <div class="charts d-flex flex-wrap">
 
                     <!--  -->
                     <div class="d-flex">
-                        <div class="social_development_chart my-3 mx-5 shadow py-3 px-3" style="max-width:400px">
+                        <div style="border-radius:20px;" class="social_development_chart my-3 mx-5 shadow py-4 px-4"
+                            style="max-width:700px">
                             <canvas id="household_population_by_age_and_sex_chart" with="400" height="400"></canvas>
                         </div>
                     </div>
                     <!--  -->
-                    <div class="social_development_chart my-3 mx-5 shadow py-3 px-3"
+                    <div style="border-radius:20px;" class="social_development_chart my-3 mx-5 shadow py-3 px-3"
                         style="width:700px;max-width:700px">
                         <h6 class="text-center">Poverty</h6>
                         <canvas id="household_whose_eat_less_than_three_chart"></canvas>
                     </div>
+
+
                 </div>
+
+
+                <h3 class="page_title  py-2 ">Economic Development
+                    Chart</h3>
             </div>
 
         </div>
@@ -132,8 +165,9 @@ require("./layoutsidebar/sidebar.php");
                 label: 'Household Population by Age and Sex (psa.gov.ph)',
                 data: [500, 200],
                 backgroundColor: [
-                    'rgb(255,102,255 )',
+
                     'rgb(54, 162, 235 )',
+                    'rgb(255,102,255 )',
                 ],
 
                 borderWidth: 1
@@ -168,7 +202,7 @@ require("./layoutsidebar/sidebar.php");
             label: "Percentage per year",
             fill: false,
             pointStyle: "rectoRot",
-            pointRadius: 5,
+            pointRadius: 6,
             borderColor: 'rgb(54, 162, 235 )',
 
 

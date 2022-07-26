@@ -177,11 +177,11 @@ p {
         <br>
         <div style="max-width:1000px;margin:auto;display:flex;justify-content:space-between">
             <div style="display:flex;">
-                <h4 style="padding:0 10px 0 0">Barangay: </h4><span>Kinyaman Santa Cruz Marinduque</span>
+                <h4 style="padding:0 10px 0 0">Barangay: </h4><span><?php  echo  isset($rowresult) ?  $rowresult["barangay"] : 0;  ?> Santa Cruz Marinduque</span>
             </div>
 
             <div style="display:flex">
-                <h4 style="padding:0 10px 0 0">Year:</h4> <span>2021-2022</span>
+                <h4 style="padding:0 10px 0 0">Year:</h4> <span><?php  echo  isset($rowresult) ?  $rowresult["year"] : 0;  ?></span>
             </div>
         </div>
         <br>
