@@ -15,11 +15,18 @@
         <br>
 
         <div class="action">
+
+        <?php
+        if($_SERVER["REQUEST_URI"] !== "/barangay/primary.php" OR 
+        $_SERVER["REQUEST_URI"] !== "/barangay/secondary.php" OR
+        $_SERVER["REQUEST_URI"] !== "/barangay/tertiary.php"
+        ){    ?>
             <a href="/barangay/records/social_development_sector.php">
             <button class="shadow save_modal_exit" >
                 view records
             </button>
             </a>
+            <?php  }?>
             <button class="shadow save_modal_exit">exit</button>
         </div>
 

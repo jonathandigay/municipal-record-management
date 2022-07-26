@@ -2,11 +2,11 @@
 
 
 require("../process/school/retrieve.php");
-
 require("../process/school/drop.php");
 require("../process/school/edit.php");
 
 ?>
+
 
 <!DOCTYPE html>
 <html lang="en">
@@ -18,7 +18,7 @@ require("../process/school/edit.php");
     <link rel="stylesheet" href="../assets/css/bootstrap.min.css">
     <link rel="stylesheet" href="../layout/main.css">
     <link rel="stylesheet" href="./school.css">
-    <title>Primary Education</title>
+    <title>Tertiary Education</title>
 </head>
 
 <body>
@@ -65,6 +65,22 @@ require("../process/school/edit.php");
     table tr td input {
         outline: none;
         padding: 5px 10px;
+    }
+
+    .record_btn {
+        position: relative;
+
+    }
+
+    .record_btn .count {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 25px;
+        height: 25px;
+        transform: translate(-15px, -15px);
+        border-radius: 50px;
+        background: rgb(255, 62, 143);
     }
 
     .record_lists {
@@ -117,29 +133,12 @@ require("../process/school/edit.php");
         transition: all ease-in 300ms;
 
     }
-
-    .record_btn {
-        position: relative;
-
-    }
-
-    .record_btn .count {
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 25px;
-        height: 25px;
-        transform: translate(-15px, -15px);
-        border-radius: 50px;
-        background: rgb(255, 62, 143);
-    }
     </style>
 
 
     <div class="conatainer_fluid">
 
         <div class="row">
-
 
             <?php
 
@@ -152,6 +151,8 @@ require("..//modal/success.php");
 
 ?>
 
+
+
             <div class="powered">
                 <img src="../assets/images/gad.png" alt="">
             </div>
@@ -161,10 +162,8 @@ require("..//modal/success.php");
 require("../layoutsidebar/sidebar.php")
 ?>
 
-
             <div class="container-fluid p-0 w-100  px-3 col ">
-                <form action="/barangay/process/school/primary.php" method="POST">
-
+                <form action="/barangay/process/school/tertiary.php" method="POST">
                     <div class="burger_menu p-2 shadow col " style="border-radius:50px;">
                         <button class="navbar-toggler p-0 collapsed" type="button" data-bs-toggle="collapse"
                             data-bs-target="#sidebarMenu" aria-controls="sidebarMenu" aria-expanded="false"
@@ -183,26 +182,24 @@ require("../layoutsidebar/sidebar.php")
 
                     <div class="container-fluid p-0 w-100  px-3 col ">
                         <div class="text-center py-2" style="background:black;color:white">
-                            <h2>Primary School</h2>
+                            <h2>Tertiary education</h2>
                         </div>
 
                         <br>
 
-                        <div class="d-flex justify-content-between align-content-center">
+                        <div class="d-flex justify-content-between align-content-center flex-wrap">
 
-                            <div class="d-flex">
+                            <div class="d-flex flex-wrap ">
 
-                                <div class="d-flex align-items-center mx-2">
+                                <div class="d-flex align-items-center m-2 mx-3">
                                     <h6 class="m-0 mx-1">SCHOOL YEAR:</h6>
                                     <select class="form-select  " aria-label="Default select example" name="school_year"
-                                        onchange="primarySchoolYearSession(this)" style="width:max-content">
-
+                                        style="width:max-content" onchange="tertiarySchoolYearSession(this)">
                                         <?php 
-                                if(isset($_COOKIE["primary_school_year"])){  ?>
-                                        <option hidden value='<?php  echo $_COOKIE["primary_school_year"]  ?>'>
-                                            <?php  echo $_COOKIE["primary_school_year"]  ?></option>
+                                if(isset($_COOKIE["tertiary_school_year"])){  ?>
+                                        <option hidden value='<?php  echo $_COOKIE["tertiary_school_year"]  ?>'>
+                                            <?php  echo $_COOKIE["tertiary_school_year"]  ?></option>
                                         <?php  } ?>
-
                                         <option value="2021-2022">2021-2022</option>
                                         <option value="2019-2020">2019-2020</option>
                                         <option value="2017-2018">2017-2018</option>
@@ -212,39 +209,52 @@ require("../layoutsidebar/sidebar.php")
                                 </div>
 
 
-                                <div class="d-flex align-items-center mx-2">
+                                <div class="d-flex align-items-center m-2 mx-3">
                                     <h6 class="m-0 mx-1">SCHOOL NAME:</h6>
                                     <select class="form-select  " aria-label="Default select example" name="school_name"
-                                        onchange="primarySchoolNameSession(this)" style="width:max-content">
+                                        style="width:max-content" onchange="tertiarySchoolNameSession(this)">
                                         <?php 
-                                if(isset($_COOKIE["primary_school_name"])){  ?>
-                                        <option hidden value='<?php  echo $_COOKIE["primary_school_name"]  ?>'>
-                                            <?php  echo $_COOKIE["primary_school_name"]  ?></option>
+                                if(isset($_COOKIE["tertiary_school_name"])){  ?>
+                                        <option hidden value='<?php  echo $_COOKIE["tertiary_school_name"]  ?>'>
+                                            <?php  echo $_COOKIE["tertiary_school_name"]  ?></option>
                                         <?php  } ?>
-                                        <option value="Buyabod Elementary School">Buyabod Elemantary School</option>
-                                        <option value="Gabaldon Elementary School">Gabaldon Elementary School</option>
-                                        <option value="Kaganhao Elementary School">Kaganhao Elementary School </option>
-                                        <option value="Kinyaman Elementary School">Kinyaman Elementary School </option>
-                                        <option value="Labo Elementary School">Labo Elementary School </option>
-                                        <option value="Lipa Elementary School">Lipa Elementary School </option>
+                                        <option value="Santa Cruz Insitute">Santa Cruz Institute</option>
+                                        <option value="Marinduque State College">Marinduque State College</option>
 
                                     </select>
 
                                 </div>
+                                <div class="d-flex align-items-center m-2 mx-3">
+                                    <h6 class="m-0 mx-1">COURSE NAME:</h6>
+                                    <select class="form-select  " aria-label="Default select example"
+                                        name="school_course" style="width:max-content"
+                                        onchange="tertiarySchoolCourseSession(this)">
+                                        <?php 
+                                if(isset($_COOKIE["tertiary_school_course"])){  ?>
+                                        <option hidden value='<?php  echo $_COOKIE["tertiary_school_course"]  ?>'>
+                                            <?php  echo $_COOKIE["tertiary_school_course"]  ?></option>
+                                        <?php  } ?>
+                                        <option value="BS Computer Science">BS Computer Science </option>
+                                        <option value="BS Business Administration">BS Business Administration</option>
+                                        <option value="BS Information Techology">BS Information Technology</option>
+
+                                    </select>
+
+                                </div>
+
 
                             </div>
 
 
                             <div class="d-flex">
 
+
                                 <button class="py-2 px-3 shadow m-2 record_btn" style="background:#4169E1;color:white;"
-                                    onclick="recordsToggle()" id="print" type="button">
+                                    id="print" type="button" onclick="recordsToggle()">
 
                                     <div class="count">
-                                        <p> <?php  echo $primaryresults->num_rows ?> </p>
+                                        <p> <?php  echo $tertiaryresults->num_rows ?> </p>
                                     </div>
-
-
 
                                     <p> records <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
                                             viewBox="0 0 24 24" fill="#fff">
@@ -255,7 +265,7 @@ require("../layoutsidebar/sidebar.php")
 
 
                                 <button class="py-2 px-3 m-2 shadow" style="background:#1E90FF;color:white"
-                                    name="primary_education" type="submit">
+                                    name="tertiary_education" type="submit">
                                     <p>Save <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
                                             viewBox="0 0 24 24" fill="#fff">
                                             <path
@@ -265,10 +275,11 @@ require("../layoutsidebar/sidebar.php")
                             </div>
 
 
+
                         </div>
                         <br>
 
-                        <div class="primary_school">
+                        <div class="tertiary_school">
 
                             <br>
                             <br>
@@ -277,17 +288,18 @@ require("../layoutsidebar/sidebar.php")
                                     <button class="accordion-button d-flex justify-content-between shadow" type="button"
                                         data-bs-toggle="collapse" data-bs-target="#accordionone" aria-expanded="false"
                                         aria-controls="accordionone">
-                                        <h6 class="p-0"> Primary education form
+                                        <h6 class="p-0"> Tertiary education form
                                         </h6>
 
                                     </button>
 
                                 </h2>
                                 <div id="accordionone" class="accordion-collapse collapse show"
-                                    aria-labelledby="headingOne" data-bs-parent="#primary_school">
+                                    aria-labelledby="headingOne" data-bs-parent="#tertiary_school">
 
                                     <section>
-                                        <h6 class="p-0 pt-3 w-75 m-auto "> Ratio of girls to boys in primary education
+                                        <h6 class="p-0 pt-3 w-75 m-auto "> Ratio of Girl's to Boys in Tertiary Education
+                                            (1st Year - 4th Year)
                                         </h6>
                                         <table class="w-75 m-auto mb-3 my-3  p-4 " id="printcontent">
 
@@ -299,12 +311,10 @@ require("../layoutsidebar/sidebar.php")
                                             <tr>
 
                                                 <td> <input type="text" name="m1" id=""
-                                                        value="<?php echo isset($primary_row) ? $primary_row["m1"] : 0  ?>"
-                                                        onkeypress="return onlyNumberKey(event)" />
+                                                        value="<?php  echo  isset($tertiary_row) ?  $tertiary_row["m1"] : 0;  ?>" />
                                                 </td>
                                                 <td> <input type="text" name="f1" id=""
-                                                        value="<?php echo isset($primary_row) ? $primary_row["f1"] : 0  ?>"
-                                                        onkeypress="return onlyNumberKey(event)" />
+                                                        value="<?php  echo  isset($tertiary_row) ?  $tertiary_row["f1"] : 0;  ?>" />
                                                 </td>
                                             </tr>
                                         </table>
@@ -312,8 +322,10 @@ require("../layoutsidebar/sidebar.php")
                                         <br>
                                     </section>
 
+
+
                                     <section>
-                                        <h6 class="p-0 pt-3 w-75 m-auto "> Elementary School Completion Rate, by Sex
+                                        <h6 class="p-0 pt-3 w-75 m-auto "> Number of college Graduate by course
                                         </h6>
                                         <table class="w-75 m-auto mb-3 my-3  p-4 " id="printcontent">
 
@@ -325,12 +337,10 @@ require("../layoutsidebar/sidebar.php")
                                             <tr>
 
                                                 <td> <input type="text" name="m2" id=""
-                                                        value="<?php echo isset($primary_row) ? $primary_row["m2"] : 0  ?>"
-                                                        onkeypress="return onlyNumberKey(event)" />
+                                                        value="<?php  echo  isset($tertiary_row) ?  $tertiary_row["m2"] : 0;  ?>" />
                                                 </td>
                                                 <td> <input type="text" name="f2" id=""
-                                                        value="<?php echo isset($primary_row) ? $primary_row["f2"] : 0  ?>"
-                                                        onkeypress="return onlyNumberKey(event)" />
+                                                        value="<?php  echo  isset($tertiary_row) ?  $tertiary_row["f2"] : 0;  ?>" />
                                                 </td>
                                             </tr>
                                         </table>
@@ -338,104 +348,11 @@ require("../layoutsidebar/sidebar.php")
                                         <br>
                                     </section>
 
-                                    <section class="w-75 w-75 m-auto">
-                                        <h6 class="  pt-3  "> Classroom to Pupil Ratio
-                                        </h6>
-                                        <div style="border:1px solid black">
-
-                                            <table class="w-75 m-auto mb-3 my-3  p-4 " id="printcontent">
-                                                <tr class="d-flex justify-content-center">
-                                                    <th>No. of classrooms (Elementary)</th>
-                                                </tr>
-                                                <tr class="d-flex justify-content-center">
-                                                    <td> <input type="text" name="num1" id=""
-                                                            value="<?php echo isset($primary_row) ? $primary_row["num1"] : 0  ?>"
-                                                            onkeypress="return onlyNumberKey(event)" />
-                                                    </td>
-
-                                                </tr>
-                                            </table>
-
-
-                                            <table class="w-75 m-auto mb-3 my-3  p-4 " id="printcontent">
-
-                                                <tr>
-
-                                                    <th>Male</th>
-                                                    <th>Female</th>
-                                                </tr>
-                                                <tr>
-
-                                                    <td> <input type="text" name="m3" id=""
-                                                            value="<?php echo isset($primary_row) ? $primary_row["m3"] : 0  ?>"
-                                                            onkeypress="return onlyNumberKey(event)" />
-                                                    </td>
-                                                    <td> <input type="text" name="f3" id=""
-                                                            value="<?php echo isset($primary_row) ? $primary_row["f3"] : 0  ?>"
-                                                            onkeypress="return onlyNumberKey(event)" />
-                                                    </td>
-                                                </tr>
-                                            </table>
-
-                                        </div>
-
-                                        <br>
-
-                                        <br>
-
-
-                                    </section>
-
-                                    <section class="w-75 w-75 m-auto">
-                                        <h6 class="  pt-3  "> Teacher to Pupil Ratio
-                                        </h6>
-                                        <div style="border:1px solid black">
-
-                                            <table class="w-75 m-auto mb-3 my-3  p-4 " id="printcontent">
-                                                <tr class="d-flex justify-content-center">
-                                                    <th>No. of classrooms (Elementary)</th>
-                                                </tr>
-                                                <tr class="d-flex justify-content-center">
-                                                    <td> <input type="text" name="num1" id=""
-                                                            value="<?php echo isset($primary_row) ? $primary_row["num2"] : 0  ?>"
-                                                            onkeypress="return onlyNumberKey(event)" />
-                                                    </td>
-
-                                                </tr>
-                                            </table>
-
-
-                                            <table class="w-75 m-auto mb-3 my-3  p-4 " id="printcontent">
-
-                                                <tr>
-
-                                                    <th>Male</th>
-                                                    <th>Female</th>
-                                                </tr>
-                                                <tr>
-
-                                                    <td> <input type="text" name="m4" id=""
-                                                            value="<?php echo isset($primary_row) ? $primary_row["m4"] : 0  ?>"
-                                                            onkeypress="return onlyNumberKey(event)" />
-                                                    </td>
-                                                    <td> <input type="text" name="f4" id=""
-                                                            value="<?php echo isset($primary_row) ? $primary_row["f4"] : 0  ?>"
-                                                            onkeypress="return onlyNumberKey(event)" />
-                                                    </td>
-                                                </tr>
-                                            </table>
-
-                                        </div>
-
-                                        <br>
-
-                                        <br>
-
-
-                                    </section>
 
 
                                 </div>
+
+
                             </div>
 
                             <br>
@@ -448,7 +365,6 @@ require("../layoutsidebar/sidebar.php")
 
                     </div>
                 </form>
-
 
                 <!-- records start-->
 
@@ -466,7 +382,7 @@ require("../layoutsidebar/sidebar.php")
                     </div>
 
                     <div class="record_data" style="overflow:auto;">
-                        <h5 class="text-center py-3 " style="background: #4169e1; color:white">PRIMARY SCHOOL RECORDS
+                        <h5 class="text-center py-3 " style="background: #4169e1; color:white">TERTIARY SCHOOL RECORDS
                         </h5>
 
                         <div class="d-flex justify-content-end">
@@ -485,55 +401,66 @@ require("../layoutsidebar/sidebar.php")
 
                         <!-- lists -->
 
+                        <div>
 
 
-                        <?php
-$primaryresults = $dbconnection->query("SELECT * FROM primary_education");
+                            <?php
+$tertiaryresults = $dbconnection->query("SELECT * FROM tertiary_education");
 
-                        if(isset($primaryresults)){
-               if($primaryresults->num_rows > 0){
-  
-                
-     while($dbrow = $primaryresults->fetch_assoc() ){  ?>
+    if(isset($tertiaryresults)){
+if($tertiaryresults->num_rows > 0){
 
 
-                        <div class="d-flex justify-content-between align-items-center py-3 px-3 shadow">
-                            <div class="d-flex align-items-center">
-                                <h6 class="m-0"> <?php  echo $dbrow["schoolName"]  ?> </h6> <span> </span> -
-                                <?php  echo $dbrow["schoolYear"]  ?>
-                            </div>
+while($dbrow = $tertiaryresults->fetch_assoc() ){  ?>
 
-                            <div class="d-flex align-items-center">
+
+                            <div class="d-flex justify-content-between align-items-center px-3 shadow">
+                                <div class="py-4 ">
+                                    <div class="d-flex">
+                                        <h6>School Name: </h6>
+                                        <class="m-2"> <?php  echo  $dbrow["schoolName"]  ?>
+                                    </div>
+                                    <div class="d-flex">
+                                        <h6> Year: </h6>
+                                        <class="m-2"> <?php  echo $dbrow["schoolYear"]  ?>
+                                    </div>
+                                    <div class="d-flex">
+                                        <h6> Course: </h6>
+                                        <class="m-2"> <?php  echo $dbrow["schoolCourse"]  ?>
+                                    </div>
+                                </div>
+
                                 <div class="d-flex align-items-center">
-                                    <div class="dots_dropdown d-flex align-items-center p-1 justify-content-center"
-                                        style="cursor:pointer;">
+                                    <div class="d-flex align-items-center">
+                                        <div class="dots_dropdown d-flex align-items-center p-1 justify-content-center"
+                                            style="cursor:pointer;">
 
-                                        <div class="drop_down shadow ">
-                                            <a
-                                                href="/barangay/process/view_school.php?primary_school_name=<?php echo $dbrow["schoolName"] ?>&primary_school_year=<?php echo $dbrow["schoolYear"]  ?> ">
-                                                <button class="py-2 px-3 mb-1" style="background:#32CD32;color:white;">
-                                                    view</button>
-                                            </a>
+                                            <div class="drop_down shadow ">
+                                                <a
+                                                    href="/barangay/process/view_school.php?tertiary_school_name=<?php echo $dbrow["schoolName"] ?>&tertiary_school_year=<?php echo $dbrow["schoolYear"]  ?>&tertiary_school_course=<?php echo $dbrow["schoolCourse"]  ?> ">
+                                                    <button class="py-2 px-3 mb-1"
+                                                        style="background:#32CD32;color:white;">
+                                                        view</button>
+                                                </a>
 
-                                            <a
-                                                href="primary.php?primary_school_name=<?php echo $dbrow["schoolName"] ?>&primary_school_year=<?php echo $dbrow["schoolYear"]  ?> ">
-                                                <button class="py-2 px-3 mb-1"
-                                                    style="background:#1E90FF;color:white;">edit</button></a>
-                                            <a href="primary.php?primary_drop_id=<?php echo $dbrow["id"] ?> ">
-                                                <button class="py-2 px-3 mb-1"
-                                                    style="background:#DC143C;color:white;">delete</button></a>
+                                                <a
+                                                    href="tertiary.php?tertiary_school_name=<?php echo $dbrow["schoolName"]?>&tertiary_school_year=<?php echo $dbrow["schoolYear"]?>&tertiary_school_course=<?php echo $dbrow["schoolCourse"]?> ">
+                                                    <button class="py-2 px-3 mb-1"
+                                                        style="background:#1E90FF;color:white;">edit</button></a>
+                                                <a href="tertiary.php?tertiary_drop_id=<?php echo $dbrow["id"] ?> ">
+                                                    <button class="py-2 px-3 mb-1"
+                                                        style="background:#DC143C;color:white;">delete</button></a>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                        </div>
 
-                        <?php
-    }
+                            <?php
+}
 }}
 ?>
-
-
+                        </div>
                         <!-- lists -->
                     </div>
                 </div>
@@ -541,7 +468,9 @@ $primaryresults = $dbconnection->query("SELECT * FROM primary_education");
 
                 <!-- records ends-->
 
+
             </div>
+
 
         </div>
     </div>
@@ -551,13 +480,18 @@ $primaryresults = $dbconnection->query("SELECT * FROM primary_education");
     <script src="../script/script.js"> </script>
 
     <script>
-    function primarySchoolYearSession(e) {
-        document.cookie = `primary_school_year = ${e.value} ; expires=Thu, 18 Dec 3000 12:00:00 UTC`;
+    function tertiarySchoolYearSession(e) {
+        document.cookie = `tertiary_school_year = ${e.value} ; expires=Thu, 18 Dec 3000 12:00:00 UTC`;
         window.location.reload();
     }
 
-    function primarySchoolNameSession(e) {
-        document.cookie = `primary_school_name = ${e.value} ; expires=Thu, 18 Dec 3000 12:00:00 UTC`;
+    function tertiarySchoolNameSession(e) {
+        document.cookie = `tertiary_school_name = ${e.value} ; expires=Thu, 18 Dec 3000 12:00:00 UTC`;
+        window.location.reload();
+    }
+
+    function tertiarySchoolCourseSession(e) {
+        document.cookie = `tertiary_school_course = ${e.value} ; expires=Thu, 18 Dec 3000 12:00:00 UTC`;
         window.location.reload();
     }
 

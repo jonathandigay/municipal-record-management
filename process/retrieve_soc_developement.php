@@ -18,7 +18,6 @@ if(!isset($_COOKIE["year"]) && !isset($_COOKIE["barangay"])){
 
         if($dbrow["barangay"] === $currentbarangay && strcmp($dbrow["year"], $currentyear )===0   ){
          $rowresult=$dbrow;
-         
          $test="not setted";
         }}}
     }

@@ -20,7 +20,8 @@
     * {
         padding: 0;
         margin: 0;
-        font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif
+        font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+        font-size: 15px;
     }
 
 
@@ -47,7 +48,9 @@
     }
 
     label {
-        font-size: 20px;
+        font-size: 16px;
+        position: relative;
+        tra
     }
 
     .gad_login_main .side .text {
@@ -202,7 +205,6 @@ if(isset($_POST["login"])){
     $password = $row["password"];
     $inputusername = $_POST["username"];
     $inputpassword = $_POST["password"];
-    $logintype=$_POST["logintype"];
 
     if(empty($inputusername) ){
      $username_err ="Username is required!";
@@ -214,7 +216,7 @@ if(isset($_POST["login"])){
      if(  $inputpassword === $password AND $inputusername === $username ){
 
         $_SESSION["user"]=$username;
-header("Location: http://localhost/barangay/dashboard.php");
+header("Location: /barangay");
     }
     if(!empty(trim($inputusername)) && !empty(trim($inputpassword)) && $inputpassword !== $password ){
         $credential_err ="credential was wrong!";
@@ -266,15 +268,18 @@ header("Location: http://localhost/barangay/dashboard.php");
                 <img src="../assets/images/santacruz.png" alt="">
             </div>
 
+
+
+
             <form action="login.php" method="POST" class="w-75  px-3 py-3 m-0">
 
                 <h1 class="text-center p-2 text">Log in </h1>
 
-                <select class="form-select" aria-label="Default select example" name="logintype">
+                <!-- <select class="form-select" aria-label="Default select example" name="logintype">
                     <option selected value="admin">Admin mode</option>
                     <option value="client">Client mode</option>
 
-                </select>
+                </select> -->
 
 
 
