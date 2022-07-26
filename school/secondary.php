@@ -19,7 +19,10 @@ require("../process/school/edit.php");
     <link rel="stylesheet" href="./school.css">
     <title>Secondary Education</title>
 </head>
+<<<<<<< HEAD
 
+=======
+>>>>>>> d7ecf03639143f887ac402ca2a8e96c474a599c3
 <body>
 
 
@@ -85,11 +88,19 @@ require("../process/school/edit.php");
 
     .record_lists .overlay {
         flex: 1;
+<<<<<<< HEAD
         color: white;
         display: flex;
         flex-direction: column;
         justify-content: center;
         align-items: center;
+=======
+        color:white;
+        display:flex;
+        flex-direction:column ;
+        justify-content:center;
+        align-items:center;
+>>>>>>> d7ecf03639143f887ac402ca2a8e96c474a599c3
         cursor: pointer;
 
     }
@@ -101,10 +112,17 @@ require("../process/school/edit.php");
     }
 
     .record_lists .overlay:hover svg {
+<<<<<<< HEAD
 
         transform: translateX(-5px);
         transition: all ease-in 300ms;
     }
+=======
+        
+  transform: translateX(-5px);
+  transition: all ease-in 300ms;
+}
+>>>>>>> d7ecf03639143f887ac402ca2a8e96c474a599c3
 
     .record_lists .record_data {
         width: 50%;
@@ -118,6 +136,7 @@ require("../process/school/edit.php");
 
     }
 
+<<<<<<< HEAD
     .record_btn {
         position: relative;
 
@@ -132,6 +151,21 @@ require("../process/school/edit.php");
         transform: translate(-15px, -15px);
         border-radius: 50px;
         background: rgb(255, 62, 143);
+=======
+    .record_btn{
+        position: relative;
+
+    }
+    .record_btn .count{
+        position:absolute;
+        top:0;
+        left:0;
+        width:25px;
+        height:25px;
+        transform:translate(-15px,-15px);
+        border-radius:50px;
+        background:rgb(255, 62, 143);
+>>>>>>> d7ecf03639143f887ac402ca2a8e96c474a599c3
     }
     </style>
 
@@ -239,6 +273,7 @@ require("../layoutsidebar/sidebar.php")
 
                             <div class="d-flex">
 
+<<<<<<< HEAD
                                 <button class="py-2 px-3 shadow m-2 record_btn" style="background:#4169E1;color:white;"
                                     id="print" type="button" onclick="recordsToggle()">
 
@@ -254,6 +289,21 @@ require("../layoutsidebar/sidebar.php")
 
 
                                 </button>
+=======
+                                    <button class="py-2 px-3 shadow m-2 record_btn" style="background:#4169E1;color:white;"
+                                        id="print" type="button" onclick="recordsToggle()">
+
+<div class="count"><p> <?php  echo $secondaryresults->num_rows ?> </p></div>
+
+                                        <p> records <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                                                viewBox="0 0 24 24" fill="#fff">
+                                                <path
+                                                    d="M7.972 2h-6.972l.714 5h2.021l-.429-3h3.694c1.112 1.388 1.952 2 4.277 2h9.283l-.2 1h2.04l.6-3h-11.723c-1.978 0-2.041-.417-3.305-2zm16.028 7h-24l2 13h20l2-13z" />
+                                            </svg></p>
+
+                                            
+                                    </button>
+>>>>>>> d7ecf03639143f887ac402ca2a8e96c474a599c3
 
 
                                 <button class="py-2 px-3 m-2 shadow" style="background:#1E90FF;color:white"
@@ -313,7 +363,11 @@ require("../layoutsidebar/sidebar.php")
                                     </section>
 
                                     <section>
+<<<<<<< HEAD
                                         <h6 class="p-0 pt-3 w-75 m-auto "> Highschool School Completion Rate, by Sex
+=======
+                                        <h6 class="p-0 pt-3 w-75 m-auto "> Ratio of girls to boys in Secondary education
+>>>>>>> d7ecf03639143f887ac402ca2a8e96c474a599c3
                                         </h6>
                                         <table class="w-75 m-auto mb-3 my-3  p-4 " id="printcontent">
 
@@ -336,6 +390,7 @@ require("../layoutsidebar/sidebar.php")
                                         <br>
                                     </section>
 
+<<<<<<< HEAD
                                     <section class="w-75 m-auto">
                                         <h6 class=" pt-3  "> Classroom to pupil ratio
                                         </h6>
@@ -412,6 +467,43 @@ require("../layoutsidebar/sidebar.php")
                                             <br>
 
                                         </div>
+=======
+                                    <section>
+                                        <h5 class="px-3  pt-3  "> Classroom to pupil ratio
+                                        </h5>
+
+
+                                        <table class="w-75 m-auto mb-3 my-3  p-4 " id="printcontent">
+
+                                            <tr>
+
+                                                <th>Male</th>
+                                                <th>Female</th>
+                                            </tr>
+                                            <tr>
+
+                                                <td> <input type="text" name="m3" id=""
+                                                        value="<?php echo isset($secondary_row) ? $secondary_row["m3"] : 0  ?>" />
+                                                </td>
+                                                <td> <input type="text" name="f3" id=""
+                                                        value="<?php echo isset($secondary_row) ? $secondary_row["f3"] : 0  ?>" />
+                                                </td>
+                                            </tr>
+                                        </table>
+                                        <br>
+                                        <table class="w-75 m-auto mb-3 my-3  p-4 " id="printcontent">
+                                            <tr class="d-flex justify-content-center">
+                                                <th>No. of classrooms (Elementary)</th>
+                                            </tr>
+                                            <tr class="d-flex justify-content-center">
+                                                <td> <input type="text" name="num1" id=""
+                                                        value="<?php echo isset($secondary_row) ? $secondary_row["num1"] : 0  ?>" />
+                                                </td>
+
+                                            </tr>
+                                        </table>
+
+>>>>>>> d7ecf03639143f887ac402ca2a8e96c474a599c3
                                         <br>
 
 
@@ -432,6 +524,7 @@ require("../layoutsidebar/sidebar.php")
                 </form>
 
 
+<<<<<<< HEAD
                 <!-- records start-->
 
                 <div class="record_lists">
@@ -470,6 +563,47 @@ require("../layoutsidebar/sidebar.php")
 
 
                         <?php
+=======
+                        <!-- records start-->
+
+                        <div class="record_lists">
+
+
+                        <div class="overlay" onclick="recordsToggle()" >
+                    <span><svg width="24" height="24"
+                                    xmlns="http://www.w3.org/2000/svg" fill-rule="evenodd" clip-rule="evenodd"
+                                    fill="#fff">
+                                    <path
+                                        d="M2.117 12l7.527 6.235-.644.765-9-7.521 9-7.479.645.764-7.529 6.236h21.884v1h-21.883z" />
+                                </svg></span>
+
+                                <div>BACK</div>
+                </div>
+
+<div class="record_data" style="overflow:auto;">
+    <h5 class="text-center py-3 " style="background: #4169e1; color:white"> SCHOOL RECORDS
+    </h5>
+
+    <div class="d-flex justify-content-end">
+        <button class="py-2 px-3 shadow  m-2" onclick="recordsToggle()"
+            style="background:#32CD32;font-weight:bold;color:white;">
+            create new record <span>
+                <svg clip-rule="evenodd" fill-rule="evenodd" stroke-linejoin="round" width="24"
+                    fill="#fff" height="24" stroke-miterlimit="2" viewBox="0 0 24 24"
+                    xmlns="http://www.w3.org/2000/svg">
+                    <path
+                        d="m11 11h-7.25c-.414 0-.75.336-.75.75s.336.75.75.75h7.25v7.25c0 .414.336.75.75.75s.75-.336.75-.75v-7.25h7.25c.414 0 .75-.336.75-.75s-.336-.75-.75-.75h-7.25v-7.25c0-.414-.336-.75-.75-.75s-.75.336-.75.75z"
+                        fill-rule="nonzero" />
+                </svg>
+            </span> </button>
+    </div>
+
+    <!-- lists -->
+
+
+    
+    <?php
+>>>>>>> d7ecf03639143f887ac402ca2a8e96c474a599c3
 $secondaryresults = $dbconnection->query("SELECT * FROM secondary_education");
 
     if(isset($secondaryresults)){
@@ -479,6 +613,7 @@ if($secondaryresults->num_rows > 0){
 while($dbrow = $secondaryresults->fetch_assoc() ){  ?>
 
 
+<<<<<<< HEAD
                         <div class="d-flex justify-content-between align-items-center py-3 px-3 shadow">
                             <div class="d-flex align-items-center">
                                 <h6 class="m-0"> <?php  echo $dbrow["schoolName"]  ?> </h6> -
@@ -511,17 +646,57 @@ while($dbrow = $secondaryresults->fetch_assoc() ){  ?>
                         </div>
 
                         <?php
+=======
+    <div class="d-flex justify-content-between align-items-center py-3 px-3 shadow">
+        <div class="d-flex align-items-center">
+            <h6 class="m-0"> <?php  echo $dbrow["schoolName"]  ?> </h6> - <?php  echo $dbrow["schoolYear"]  ?> 
+        </div>
+
+        <div class="d-flex align-items-center">
+            <div class="d-flex align-items-center">
+                <div class="dots_dropdown d-flex align-items-center p-1 justify-content-center"
+                    style="cursor:pointer;">
+
+                    <div class="drop_down shadow ">
+                        <a href="/barangay/view/school.php">
+                            <button class="py-2 px-3 mb-1" style="background:#32CD32;color:white;">
+                                view</button>
+                        </a>
+
+                        <a href="secondary.php?secondary_school_name=<?php echo $dbrow["schoolName"] ?>&secondary_school_year=<?php echo $dbrow["schoolYear"]  ?> ">
+                            <button class="py-2 px-3 mb-1"
+                                style="background:#1E90FF;color:white;">edit</button></a>
+                        <a href="secondary.php?secondary_drop_id=<?php echo $dbrow["id"] ?> ">
+                            <button class="py-2 px-3 mb-1"
+                                style="background:#DC143C;color:white;">delete</button></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <?php
+>>>>>>> d7ecf03639143f887ac402ca2a8e96c474a599c3
 }
 }}
 ?>
 
 
+<<<<<<< HEAD
                         <!-- lists -->
                     </div>
                 </div>
 
 
                 <!-- records ends-->
+=======
+    <!-- lists -->
+</div>
+</div>
+
+
+<!-- records ends-->
+>>>>>>> d7ecf03639143f887ac402ca2a8e96c474a599c3
 
             </div>
 
@@ -543,7 +718,11 @@ while($dbrow = $secondaryresults->fetch_assoc() ){  ?>
         window.location.reload();
     }
     const recordList = document.querySelector(".record_lists");
+<<<<<<< HEAD
 
+=======
+    
+>>>>>>> d7ecf03639143f887ac402ca2a8e96c474a599c3
     function recordsToggle() {
         recordList.classList.toggle("record_lists_show");
     }

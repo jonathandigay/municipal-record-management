@@ -1,6 +1,7 @@
 <?php  
 require("../middleware/checklogin.php");
 ?>
+<<<<<<< HEAD
 <?php  require("../process/school/retrieve.php");
 
 $primaryresults = $dbconnection->query("SELECT * FROM primary_education");
@@ -8,6 +9,9 @@ $primaryresults = $dbconnection->query("SELECT * FROM primary_education");
 ?>
 
 
+=======
+<?php  require("../process/school/retrieve.php"); ?>
+>>>>>>> d7ecf03639143f887ac402ca2a8e96c474a599c3
 
 
 <!DOCTYPE html>
@@ -177,6 +181,7 @@ p {
 
         </div>
         <br>
+<<<<<<< HEAD
         <h2 style="font-weight:500;text-align:center" class="text-center">PRIMARY EDUCATION </h2>
 
         <br>
@@ -192,10 +197,26 @@ p {
             </div>
 
 
+=======
+        <br>
+        <div style="max-width:1000px;margin:auto;display:flex;justify-content:space-between;flex-wrap">
+            <div style="display:flex;">
+                <h4 style="padding:0 10px 0 0">School Name: </h4><span>Kinyaman Santa Cruz Marinduque</span>
+            </div>
+
+            <div style="display:flex">
+                <h4 style="padding:0 10px 0 0">School Year:</h4> <span>2021-2022</span>
+            </div>
+            
+            <div style="display:flex">
+                <h4 style="padding:0 10px 0 0">School Course:</h4> <span>BS Computer Science</span>
+            </div>
+>>>>>>> d7ecf03639143f887ac402ca2a8e96c474a599c3
         </div>
         <br>
 
 
+<<<<<<< HEAD
 
 
         <section>
@@ -344,6 +365,12 @@ p {
                 </div>
             </div>
         </section>
+=======
+        <h3 style="font-weight:500">1.PRIMARY EDUCATION<?php  echo  isset($primaryresults) ?  $primaryresults["barangay"] : 0;  ?>  </h3>
+
+
+        
+>>>>>>> d7ecf03639143f887ac402ca2a8e96c474a599c3
 
 
     </div>

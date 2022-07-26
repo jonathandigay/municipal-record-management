@@ -53,7 +53,11 @@
         <div>
             <p>
                 <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+<<<<<<< HEAD
                     style="margin: auto; background:none; display: block; shape-rendering: auto;"
+=======
+                    style="margin: auto; background: rgb(241, 242, 243); display: block; shape-rendering: auto;"
+>>>>>>> d7ecf03639143f887ac402ca2a8e96c474a599c3
                     width="100px" height="100px" viewBox="0 0 100 100" preserveAspectRatio="xMidYMid">
                     <g transform="rotate(0 50 50)">
                         <rect x="47" y="24" rx="3" ry="6" width="6" height="12" fill="#0a0a0a">

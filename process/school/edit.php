@@ -26,7 +26,11 @@ if(isset($_GET["tertiary_school_year"]) &&  isset($_GET["tertiary_school_name"])
     $course = $_GET["tertiary_school_course"];
    setcookie("tertiary_school_year",$year,05-12-3030,"/barangay/school");
    setcookie("tertiary_school_name",$name,05-12-3030,"/barangay/school");
+<<<<<<< HEAD
    setcookie("tertiary_school_course",$course,05-12-3030,"/barangay/school");
+=======
+   setcookie("tertiary_school_course",$name,05-12-3030,"/barangay/school");
+>>>>>>> d7ecf03639143f887ac402ca2a8e96c474a599c3
    header("Location: /barangay/school/tertiary.php");
 }
 ?>
