@@ -118,8 +118,6 @@ require("./layoutsidebar/sidebar.php");
 
 
                 </div>
-                <h3 class="page_title  py-2 ">Social Development
-                    Chart</h3>
 
                 <div class="charts d-flex flex-wrap">
 
@@ -133,16 +131,21 @@ require("./layoutsidebar/sidebar.php");
                     <!--  -->
                     <div style="border-radius:20px;" class="social_development_chart my-3 mx-5 shadow py-3 px-3"
                         style="width:700px;max-width:700px">
-                        <h6 class="text-center">Poverty</h6>
-                        <canvas id="household_whose_eat_less_than_three_chart"></canvas>
+                        <h6 class="text-center">Popular job </h6>
+                        <canvas id="pie_chart"></canvas>
                     </div>
 
 
                 </div>
 
+                <div style="border-radius:20px;" class="social_development_chart my-3 mx-5 shadow py-3 px-3"
+                    style="width:700px;max-width:500px">
+                    <h6 class="text-center">Poverty</h6>
+                    <canvas id="household_whose_eat_less_than_three_chart" style="max-width:700px"></canvas>
+                </div>
 
-                <h3 class="page_title  py-2 ">Economic Development
-                    Chart</h3>
+
+
             </div>
 
         </div>
@@ -184,18 +187,17 @@ require("./layoutsidebar/sidebar.php");
     // household_population_by_age_and_sex_chart
 
 
-    // household_whose_eat_less_than_three_chart
-    const ctx2 = document.getElementById('household_whose_eat_less_than_three_chart').getContext("2d")
+    const ctx2 = document.getElementById('pie_chart').getContext("2d")
 
 
 
 
     const ctx2data = {
         labels: [
-            "2017-2018",
-            "2019-2020",
-            "2021-2022",
-            "2021-2022",
+            "vendor",
+            "trycycle",
+            "jeepney",
+            "others",
         ],
         datasets: [{
             data: ["40", "70", "30", "5"],
@@ -208,17 +210,57 @@ require("./layoutsidebar/sidebar.php");
 
             backgroundColor: [
                 'rgb(255,102,255 )',
+                'rgb(54, 162, 235 )',
+                '#e60995',
+                '#efdd93'
+
             ],
         }]
     }
     const ctx2config = {
-        type: "line",
+        type: "pie",
         data: ctx2data,
 
 
     }
 
-    const myChart2 = new Chart(ctx2, ctx2config);
+    const myChart3 = new Chart(ctx2, ctx2config);
+
+    // household_whose_eat_less_than_three_chart
+    const ctx3 = document.getElementById('household_whose_eat_less_than_three_chart').getContext("2d")
+
+
+
+
+    const ctx3data = {
+        labels: [
+            "2017-2018",
+            "2019-2020",
+            "2021-2022",
+            "2021-2022",
+        ],
+        datasets: [{
+            data: ["40", "30", "50", "40"],
+            label: "Percentage per year",
+            fill: false,
+            pointStyle: "rectoRot",
+            pointRadius: 6,
+            borderColor: 'rgb(54, 162, 235 )',
+
+
+            backgroundColor: [
+                'rgb(255,102,255 )',
+            ],
+        }]
+    }
+    const ctx3config = {
+        type: "line",
+        data: ctx3data,
+
+
+    }
+
+    const myChart2 = new Chart(ctx3, ctx3config);
     // household_whose_eat_less_than_three_chart
     </script>
     <script src="./assets/js/bootstrap.bundle.min.js"></script>

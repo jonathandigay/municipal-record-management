@@ -228,6 +228,7 @@ require("./layoutsidebar/sidebar.php");
                                     <table class="w-25 m-auto mb-3 my-3  p-4 " id="printcontent">
                                         <tr>
                                             <td class="text-center"><input type="text" name="num2" id=""
+                                                    onkeypress="return onlyNumberKey(event)"
                                                     value="<?php  echo  isset($rowresult) ?  $rowresult["num2"] : 0;  ?>" />
                                             </td>
                                         </tr>
@@ -265,6 +266,7 @@ require("./layoutsidebar/sidebar.php");
                                         <tr>
 
                                             <td class="text-center"><input type="text"
+                                                    onkeypress="return onlyNumberKey(event)"
                                                     value="<?php  echo  isset($rowresult) ?  $rowresult["num3"] : 0;  ?>"
                                                     name="num3" id="" />
                                             </td>
@@ -298,6 +300,7 @@ require("./layoutsidebar/sidebar.php");
                                     <table class="w-25 m-auto mb-3 my-3  p-4 " id="printcontent">
                                         <tr>
                                             <td class="text-center"><input type="text" name="num4"
+                                                    onkeypress="return onlyNumberKey(event)"
                                                     value="<?php  echo  isset($rowresult) ?  $rowresult["num4"] : 0;  ?>"
                                                     id="" />
                                             </td>
@@ -331,6 +334,7 @@ require("./layoutsidebar/sidebar.php");
                                     <table class="w-25 m-auto mb-3 my-3  p-4 " id="printcontent">
                                         <tr>
                                             <td class="text-center"><input type="text" name="num5" id=""
+                                                    onkeypress="return onlyNumberKey(event)"
                                                     value="<?php  echo  isset($rowresult) ?  $rowresult["num5"] : 0;  ?>" />
                                             </td>
                                         </tr>
@@ -363,6 +367,7 @@ require("./layoutsidebar/sidebar.php");
                                     <table class="w-25 m-auto mb-3 my-3  p-4 " id="printcontent">
                                         <tr>
                                             <td class="text-center"><input type="text" name="num6" id=""
+                                                    onkeypress="return onlyNumberKey(event)"
                                                     value="<?php  echo  isset($rowresult) ?  $rowresult["num6"] : 0;  ?>" />
                                             </td>
                                         </tr>
@@ -703,7 +708,8 @@ require("./layoutsidebar/sidebar.php");
 
                                 <table class="w-25 m-auto mb-3 my-3  p-4 " id="printcontent">
                                     <tr>
-                                        <td class="text-center"><input type="text" value="0" name="num7" id="" />
+                                        <td class="text-center"><input type="text" value="0" name="num7" id=""
+                                                onkeypress="return onlyNumberKey(event)" />
                                         </td>
                                     </tr>
                                 </table>
@@ -735,7 +741,8 @@ require("./layoutsidebar/sidebar.php");
                                 <div class="d-flex justify-content-center py-3 align-items-center w-100">
                                     <table class="w-25 m-auto mb-3 my-2  p-4 " id="printcontent">
                                         <tr>
-                                            <td class="text-center"><input type="text" value="0" name="num8" id="" />
+                                            <td class="text-center"><input type="text" value="0" name="num8" id=""
+                                                    onkeypress="return onlyNumberKey(event)" />
                                             </td>
                                         </tr>
                                     </table>
@@ -771,7 +778,8 @@ require("./layoutsidebar/sidebar.php");
                                 <div class="d-flex justify-content-center py-3 align-items-center w-100">
                                     <table class="w-25 m-auto mb-3 my-2  p-4 " id="printcontent">
                                         <tr>
-                                            <td class="text-center"><input type="text" value="0" name="num9" id="" />
+                                            <td class="text-center"><input type="text" value="0" name="num9" id=""
+                                                    onkeypress="return onlyNumberKey(event)" />
                                             </td>
                                         </tr>
                                     </table>
@@ -809,7 +817,8 @@ require("./layoutsidebar/sidebar.php");
                                 <div class="d-flex justify-content-center  align-items-center w-100">
                                     <table class="w-25 m-auto mb-3 my-2  p-4 " id="printcontent">
                                         <tr>
-                                            <td class="text-center"><input type="text" value="0" name="num10" id="" />
+                                            <td class="text-center"><input type="text" value="0" name="num10" id=""
+                                                    onkeypress="return onlyNumberKey(event)" />
                                             </td>
                                         </tr>
                                     </table>
@@ -845,7 +854,8 @@ require("./layoutsidebar/sidebar.php");
                                 <div class="d-flex justify-content-center  align-items-center w-100">
                                     <table class="w-25 m-auto mb-3 my-2  p-4 " id="printcontent">
                                         <tr>
-                                            <td class="text-center"><input type="text" value="0" name="num11" id="" />
+                                            <td class="text-center"><input type="text" value="0" name="num11" id=""
+                                                    onkeypress="return onlyNumberKey(event)" />
                                             </td>
                                         </tr>
                                     </table>
@@ -883,7 +893,8 @@ require("./layoutsidebar/sidebar.php");
                                 <div class="d-flex justify-content-center  align-items-center w-100">
                                     <table class="w-25 m-auto mb-3 my-2  p-4 " id="printcontent">
                                         <tr>
-                                            <td class="text-center"><input type="text" value="0" name="num12" id="" />
+                                            <td class="text-center"><input type="text" value="0" name="num12" id=""
+                                                    onkeypress="return onlyNumberKey(event)" />
                                             </td>
                                         </tr>
                                     </table>
@@ -922,7 +933,8 @@ require("./layoutsidebar/sidebar.php");
                                 <div class="d-flex justify-content-center  align-items-center w-100">
                                     <table class="w-25 m-auto mb-3 my-2  p-4 " id="printcontent">
                                         <tr>
-                                            <td class="text-center"><input type="text" value="0" name="num13" id="" />
+                                            <td class="text-center"><input type="text" value="0" name="num13" id=""
+                                                    onkeypress="return onlyNumberKey(event)" />
                                             </td>
                                         </tr>
                                     </table>

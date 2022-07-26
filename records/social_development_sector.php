@@ -6,6 +6,9 @@ require("../process/delete_soc_dev.php");
 require("../process/update_soc_dev.php");
 require("../process/view_soc_dev_record.php");
 
+$record_found=null;
+
+
 ?>
 
 <!DOCTYPE html>
@@ -120,6 +123,7 @@ require("../process/view_soc_dev_record.php");
         flex-direction: column;
         z-index: 3;
         display: none;
+        transition: all ease-in 300ms;
 
     }
 
@@ -134,7 +138,135 @@ require("../process/view_soc_dev_record.php");
     .dots_dropdown .drop_down_on {
         display: flex;
         transform: translateY(100%);
-        transition: all easein 300ms;
+        transition: all ease-in 300ms;
+
+    }
+
+    .record_list {
+        animation: recordlist ease-in 300ms 1;
+    }
+
+    .view_all:hover svg {
+        transform: translateX(10px);
+        transition: all ease-in 300ms;
+
+    }
+
+    .record_lists {
+        position: fixed;
+        top: 0;
+        left: 0;
+        bottom: 0;
+        right: 0;
+        width: 100%;
+        height: 100vh;
+        z-index: 5000;
+        background: rgba(0, 0, 0, .5);
+        display: flex;
+        transform: translateX(100%);
+        transition: all ease-in 300ms;
+
+    }
+
+    .record_lists .overlay {
+        flex: 1;
+        color: white;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        cursor: pointer;
+
+    }
+
+    .record_lists .overlay:hover {
+        background: rgba(0, 0, 0, .2);
+        transition: all ease-in 300ms;
+
+    }
+
+    .record_lists .overlay:hover svg {
+
+        transform: translateX(-5px);
+        transition: all ease-in 300ms;
+    }
+
+    .record_lists .record_data {
+        width: 80%;
+        max-width: 85%;
+        background: white;
+    }
+
+
+    .list_tracker::-webkit-scrollbar {
+        width: 7px;
+        height: 9px;
+        border-radius: 20px;
+    }
+
+    .list_tracker::-webkit-scrollbar-thumb {
+        background: rgba(0, 0, 0, .8);
+
+
+    }
+
+    .list_tracker::-webkit-scrollbar-thumb:hover {
+        background: rgba(0, 0, 0, 1);
+
+        cursor: pointer;
+    }
+
+    .list_tracker::-webkit-scrollbar-track {
+        background: none;
+
+
+    }
+
+
+
+    .record_lists_show {
+        transform: translateX(0%);
+        transition: all ease-in 300ms;
+
+    }
+
+    .record_item {
+        cursor: pointer;
+    }
+
+    .record_item:hover {
+        opacity: 1;
+        background: rgba(166, 166, 166, .5);
+    }
+
+    .year_column {
+        height: 450px;
+        overflow-y: auto;
+    }
+
+
+
+    .year_column .year_column_title {
+        position: sticky;
+        top: 0;
+        left: 0;
+        right: 0;
+        background: black;
+        color: white;
+        z-index: 5;
+    }
+
+    @keyframes recordlist {
+
+
+        0% {
+            transform: translateY(-100px);
+        }
+
+        100% {
+            transform: translateY(0px);
+
+        }
     }
     </style>
 
@@ -195,56 +327,69 @@ require("../layoutsidebar/sidebar.php");
 
 
                     </div>
-                    <div class="d-flex align-items-center justify-content-start mx-2 my-2">
-                        <div class="d-flex align-items-center ">
+                    <div class="d-flex align-items-center justify-content-between flex-wrap mx-2 my-2">
+                        <div class="d-flex align-items-center justify-content-start mx-2 my-2">
+                            <div class="d-flex align-items-center ">
 
-                            <h6 class="m-0 mx-1">YEAR:</h6>
-                            <div>
-                                <select class="form-select" aria-label="Default select example"
-                                    name="year_session_records" onchange="yearSessionRecords(this)">
-                                    <?php 
+                                <h6 class="m-0 mx-1">YEAR:</h6>
+                                <div>
+                                    <select class="form-select" aria-label="Default select example"
+                                        name="year_session_records" onchange="yearSessionRecords(this)">
+                                        <?php 
                                 if(isset($_COOKIE["year_session_records"])){  ?>
-                                    <option hidden style="background:#fe4895 !important;color:white;"
-                                        value='<?php  echo $_COOKIE["year_session_records"]  ?>'>
-                                        <?php  echo $_COOKIE["year_session_records"]  ?></option>
-                                    <?php  } ?>
-                                    <option value="2021-2022">2021-2022</option>
-                                    <option value="2019-2020">2019-2020</option>
-                                    <option value="2017-2018">2017-2018</option>
-                                </select>
+                                        <option hidden style="background:#fe4895 !important;color:white;"
+                                            value='<?php  echo $_COOKIE["year_session_records"]  ?>'>
+                                            <?php  echo $_COOKIE["year_session_records"]  ?></option>
+                                        <?php  } ?>
+                                        <option value="2021-2022">2021-2022</option>
+                                        <option value="2019-2020">2019-2020</option>
+                                        <option value="2017-2018">2017-2018</option>
+                                    </select>
+                                </div>
+
                             </div>
 
-                        </div>
+                            <div class="d-flex align-items-center m-1">
 
-                        <div class="d-flex align-items-center m-1">
-
-                            <h6 class="m-0 mx-1">BARANGAY:</h6>
-                            <div>
-                                <select class="form-select " aria-label="Default select example" name="barangay"
-                                    onchange="barangaySessionRecords(this)">
+                                <h6 class="m-0 mx-1">BARANGAY:</h6>
+                                <div>
+                                    <select class="form-select " aria-label="Default select example" name="barangay"
+                                        onchange="barangaySessionRecords(this)">
 
 
-                                    <?php 
+                                        <?php 
                                 if(isset($_COOKIE["barangay_session_records"])){  ?>
-                                    <option hidden style="background:#fe4895 !important;color:white;"
-                                        value='<?php  echo $_COOKIE["barangay_session_records"]  ?>'>
-                                        <?php  echo $_COOKIE["barangay_session_records"]  ?></option>
-                                    <?php  } ?>
+                                        <option hidden style="background:#fe4895 !important;color:white;"
+                                            value='<?php  echo $_COOKIE["barangay_session_records"]  ?>'>
+                                            <?php  echo $_COOKIE["barangay_session_records"]  ?></option>
+                                        <?php  } ?>
 
 
-                                    <?php
+                                        <?php
                                     require("../arrays/barangay.php");
                                        $count =count($barangay);
                                        $i =0;
                                        for($i; $i < $count; $i++){
                                        ?>
-                                    <option value=<?php echo $barangay[$i]   ?>><?php echo $barangay[$i]   ?>
-                                    </option>
+                                        <option value=<?php echo $barangay[$i]   ?>><?php echo $barangay[$i]   ?>
+                                        </option>
 
-                                    <?php  };?>
-                                </select>
+                                        <?php  };?>
+                                    </select>
+                                </div>
+
                             </div>
+                        </div>
 
+                        <div>
+                            <button class="py-2 px-3 view_all" style="background:#1E90FF;color:white"
+                                onclick="recordsToggle()">
+                                <p> </p> view all records <svg width="24" fill="#fff" height="24"
+                                    xmlns="http://www.w3.org/2000/svg" fill-rule="evenodd" clip-rule="evenodd">
+                                    <path
+                                        d="M21.883 12l-7.527 6.235.644.765 9-7.521-9-7.479-.645.764 7.529 6.236h-21.884v1h21.883z" />
+                                </svg>
+                            </button>
                         </div>
                     </div>
 
@@ -269,16 +414,22 @@ require("../layoutsidebar/sidebar.php");
                     <?php
 $rowresult=null;
 
+
 $results = $dbconnection->query("SELECT * FROM social_development");
 if(isset($_COOKIE["year_session_records"]) && isset($_COOKIE["barangay_session_records"])){
 
  if($results->num_rows > 0){
     
     while($dbrow =$results->fetch_assoc() ){  
-        if(strcmp($dbrow["year"], $_COOKIE["year_session_records"])===0  && strcmp($dbrow["barangay"], $_COOKIE["barangay_session_records"])===0 ){  ?>
+        if(strcmp($dbrow["year"], $_COOKIE["year_session_records"])===0  && strcmp($dbrow["barangay"], $_COOKIE["barangay_session_records"])===0 ){ 
+            
+$record_found="yes";
+            
+            ?>
 
 
-                    <tr class="d-flex justify-content-between align-items-center py-3 px-3 shadow">
+
+                    <tr class="d-flex justify-content-between align-items-center py-3 px-3 shadow record_list">
                         <td class="d-flex align-items-center">
                             <h6 class="m-0"> <?php  echo $dbrow["barangay"]  ?> </h6>
                         </td>
@@ -316,6 +467,8 @@ if(isset($_COOKIE["year_session_records"]) && isset($_COOKIE["barangay_session_r
 
 
                     <?php
+
+
                     }}
                 }
 } ?>
@@ -323,8 +476,271 @@ if(isset($_COOKIE["year_session_records"]) && isset($_COOKIE["barangay_session_r
 
 
 
+
+
+                    <?php
+
+if(!isset($record_found)){  ?>
+
+                    <tr class="text-center  w-100">
+                        <h2 class="text-center py-3" style="opacity:.7">No Record Found...</h2>
+                    </tr>
+
+
+                    <?php  }
+?>
+
+
+
                 </table>
+
+
+
             </div>
+
+
+
+
+            <!-- records start-->
+
+            <div class="record_lists ">
+
+
+                <div class="overlay" onclick="recordsToggle()">
+                    <span><svg width="24" height="24" xmlns="http://www.w3.org/2000/svg" fill-rule="evenodd"
+                            clip-rule="evenodd" fill="#fff">
+                            <path
+                                d="M2.117 12l7.527 6.235-.644.765-9-7.521 9-7.479.645.764-7.529 6.236h21.884v1h-21.883z" />
+                        </svg></span>
+
+                    <div>BACK</div>
+                </div>
+
+                <div class="record_data " style="overflow:auto;">
+                    <h5 class="text-center py-4 " style="background: black; color:white">SOCIAL DEVELOPMENT RECORDS
+                    </h5>
+
+                    <div class="d-flex justify-content-end">
+                        <a href="/barangay/demography.php">
+                            <button class="py-2 px-3 shadow  m-2"
+                                style="background:#32CD32;font-weight:bold;color:white;">
+                                create new record <span>
+                                    <svg clip-rule="evenodd" fill-rule="evenodd" stroke-linejoin="round" width="24"
+                                        fill="#fff" height="24" stroke-miterlimit="2" viewBox="0 0 24 24"
+                                        xmlns="http://www.w3.org/2000/svg">
+                                        <path
+                                            d="m11 11h-7.25c-.414 0-.75.336-.75.75s.336.75.75.75h7.25v7.25c0 .414.336.75.75.75s.75-.336.75-.75v-7.25h7.25c.414 0 .75-.336.75-.75s-.336-.75-.75-.75h-7.25v-7.25c0-.414-.336-.75-.75-.75s-.75.336-.75.75z"
+                                            fill-rule="nonzero" />
+                                    </svg>
+                                </span> </button></a>
+                    </div>
+
+                    <!-- lists -->
+
+                    <div class="list_tracker" style="width:100%;overflow:auto">
+                        <div style="display:flex;width:1500px;overflow:hidden">
+
+                            <div style="width:500px " class="shadow m-3 year_column">
+                                <div class="year_column_title">
+                                    <h5 class="p-2 py-3">2021-2022</h5>
+
+                                </div>
+
+
+                                <?php
+
+
+$results = $dbconnection->query("SELECT * FROM social_development");
+if(isset($_COOKIE["year_session_records"]) && isset($_COOKIE["barangay_session_records"])){
+
+ if($results->num_rows > 0){
+    
+    while($dbrow =$results->fetch_assoc() ){  
+            
+            if(strcmp($dbrow["year"] , "2021-2022" )===0){
+            ?>
+
+                                <!-- item -->
+                                <div
+                                    class="record_item d-flex justify-content-between align-items-center py-3 px-2 mb-3">
+                                    <h6 class="m-0"><?php echo $dbrow["barangay"] ?> Santa Cruz Marinduque</h6>
+
+                                    <div class="action">
+                                        <a
+                                            href="/barangay/process/view_soc_dev_record.php?barangay=<?php echo $dbrow["barangay"] ?>&year=<?php echo $dbrow["year"] ?>">
+                                            <button style="background:#32CD32;" class="p-2 shadow"><svg
+                                                    xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                                                    fill="#fff" viewBox="0 0 24 24">
+                                                    <path
+                                                        d="M12.015 7c4.751 0 8.063 3.012 9.504 4.636-1.401 1.837-4.713 5.364-9.504 5.364-4.42 0-7.93-3.536-9.478-5.407 1.493-1.647 4.817-4.593 9.478-4.593zm0-2c-7.569 0-12.015 6.551-12.015 6.551s4.835 7.449 12.015 7.449c7.733 0 11.985-7.449 11.985-7.449s-4.291-6.551-11.985-6.551zm-.015 3c-2.21 0-4 1.791-4 4s1.79 4 4 4c2.209 0 4-1.791 4-4s-1.791-4-4-4zm-.004 3.999c-.564.564-1.479.564-2.044 0s-.565-1.48 0-2.044c.564-.564 1.479-.564 2.044 0s.565 1.479 0 2.044z" />
+                                                </svg></button>
+                                        </a>
+                                        <a
+                                            href="/barangay/process/update_soc_dev.php?barangay=<?php echo $dbrow["barangay"] ?>&year=<?php echo $dbrow["year"] ?>">
+                                            <button style="background:#1E90FF;" class="p-2 shadow"><svg
+                                                    xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                                                    fill="#fff" viewBox="0 0 24 24">
+                                                    <path
+                                                        d="M19.769 9.923l-12.642 12.639-7.127 1.438 1.438-7.128 12.641-12.64 5.69 5.691zm1.414-1.414l2.817-2.82-5.691-5.689-2.816 2.817 5.69 5.692z" />
+                                                </svg> </button>
+                                        </a>
+
+                                        <a href="social_development_sector.php?id=<?php  echo $dbrow["id"]?>">
+
+                                            <button style="background:#DC143C" class="p-2 shadow"><svg width="24"
+                                                    height="24" fill="#fff" xmlns="http://www.w3.org/2000/svg"
+                                                    fill-rule="evenodd" clip-rule="evenodd">
+                                                    <path
+                                                        d="M19 24h-14c-1.104 0-2-.896-2-2v-16h18v16c0 1.104-.896 2-2 2m-9-14c0-.552-.448-1-1-1s-1 .448-1 1v9c0 .552.448 1 1 1s1-.448 1-1v-9zm6 0c0-.552-.448-1-1-1s-1 .448-1 1v9c0 .552.448 1 1 1s1-.448 1-1v-9zm6-5h-20v-2h6v-1.5c0-.827.673-1.5 1.5-1.5h5c.825 0 1.5.671 1.5 1.5v1.5h6v2zm-12-2h4v-1h-4v1z" />
+                                                </svg> </button>
+                                        </a>
+
+                                    </div>
+                                </div>
+                                <!-- item -->
+                                <?php
+
+            }
+                    }
+                }
+} ?>
+
+
+                            </div>
+                            <div style="width:500px;" class="shadow m-3 year_column">
+                                <div class="year_column_title">
+                                    <h5 class="p-2 py-3">2019-2020</h5>
+                                </div>
+
+                                <?php
+
+
+$results = $dbconnection->query("SELECT * FROM social_development");
+if(isset($_COOKIE["year_session_records"]) && isset($_COOKIE["barangay_session_records"])){
+
+ if($results->num_rows > 0){
+    
+    while($dbrow =$results->fetch_assoc() ){  
+            
+            if(strcmp($dbrow["year"] , "2019-2020" )===0){
+            ?>
+
+                                <!-- item -->
+                                <div
+                                    class="record_item d-flex justify-content-between align-items-center py-3 px-2 mb-3">
+                                    <h6 class="m-0"><?php echo $dbrow["barangay"] ?> Santa Cruz Marinduque</h6>
+
+                                    <div class="action">
+                                        <a
+                                            href="/barangay/process/view_soc_dev_record.php?barangay=<?php echo $dbrow["barangay"] ?>&year=<?php echo $dbrow["year"] ?>">
+                                            <button style="background:#32CD32;" class="p-2 shadow"><svg
+                                                    xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                                                    fill="#fff" viewBox="0 0 24 24">
+                                                    <path
+                                                        d="M12.015 7c4.751 0 8.063 3.012 9.504 4.636-1.401 1.837-4.713 5.364-9.504 5.364-4.42 0-7.93-3.536-9.478-5.407 1.493-1.647 4.817-4.593 9.478-4.593zm0-2c-7.569 0-12.015 6.551-12.015 6.551s4.835 7.449 12.015 7.449c7.733 0 11.985-7.449 11.985-7.449s-4.291-6.551-11.985-6.551zm-.015 3c-2.21 0-4 1.791-4 4s1.79 4 4 4c2.209 0 4-1.791 4-4s-1.791-4-4-4zm-.004 3.999c-.564.564-1.479.564-2.044 0s-.565-1.48 0-2.044c.564-.564 1.479-.564 2.044 0s.565 1.479 0 2.044z" />
+                                                </svg></button>
+                                        </a>
+                                        <a
+                                            href="/barangay/process/update_soc_dev.php?barangay=<?php echo $dbrow["barangay"] ?>&year=<?php echo $dbrow["year"] ?>">
+                                            <button style="background:#1E90FF;" class="p-2 shadow"><svg
+                                                    xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                                                    fill="#fff" viewBox="0 0 24 24">
+                                                    <path
+                                                        d="M19.769 9.923l-12.642 12.639-7.127 1.438 1.438-7.128 12.641-12.64 5.69 5.691zm1.414-1.414l2.817-2.82-5.691-5.689-2.816 2.817 5.69 5.692z" />
+                                                </svg> </button>
+                                        </a>
+                                        <a href="social_development_sector.php?id=<?php  echo $dbrow["id"]?>">
+                                            <button style="background:#DC143C" class="p-2 shadow"><svg width="24"
+                                                    height="24" fill="#fff" xmlns="http://www.w3.org/2000/svg"
+                                                    fill-rule="evenodd" clip-rule="evenodd">
+                                                    <path
+                                                        d="M19 24h-14c-1.104 0-2-.896-2-2v-16h18v16c0 1.104-.896 2-2 2m-9-14c0-.552-.448-1-1-1s-1 .448-1 1v9c0 .552.448 1 1 1s1-.448 1-1v-9zm6 0c0-.552-.448-1-1-1s-1 .448-1 1v9c0 .552.448 1 1 1s1-.448 1-1v-9zm6-5h-20v-2h6v-1.5c0-.827.673-1.5 1.5-1.5h5c.825 0 1.5.671 1.5 1.5v1.5h6v2zm-12-2h4v-1h-4v1z" />
+                                                </svg> </button>
+                                        </a>
+
+                                    </div>
+                                </div>
+                                <!-- item -->
+                                <?php
+
+            }
+                    }
+                }
+} ?>
+                            </div>
+                            <div style="width:500px;" class="shadow m-3 year_column">
+                                <div class="year_column_title">
+
+                                    <h5 class="p-2 py-3">2017-2018</h5>
+                                </div>
+
+                                <?php
+
+
+$results = $dbconnection->query("SELECT * FROM social_development");
+if(isset($_COOKIE["year_session_records"]) && isset($_COOKIE["barangay_session_records"])){
+
+ if($results->num_rows > 0){
+    
+    while($dbrow =$results->fetch_assoc() ){  
+            
+            if(strcmp($dbrow["year"] , "2017-2018" )===0){
+            ?>
+
+                                <!-- item -->
+                                <div
+                                    class="record_item d-flex justify-content-between align-items-center py-3 px-2 mb-3">
+                                    <h6 class="m-0"><?php echo $dbrow["barangay"] ?> Santa Cruz Marinduque</h6>
+
+                                    <div class="action">
+                                        <a
+                                            href="/barangay/process/view_soc_dev_record.php?barangay=<?php echo $dbrow["barangay"] ?>&year=<?php echo $dbrow["year"] ?>">
+                                            <button style="background:#32CD32;" class="p-2 shadow"><svg
+                                                    xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                                                    fill="#fff" viewBox="0 0 24 24">
+                                                    <path
+                                                        d="M12.015 7c4.751 0 8.063 3.012 9.504 4.636-1.401 1.837-4.713 5.364-9.504 5.364-4.42 0-7.93-3.536-9.478-5.407 1.493-1.647 4.817-4.593 9.478-4.593zm0-2c-7.569 0-12.015 6.551-12.015 6.551s4.835 7.449 12.015 7.449c7.733 0 11.985-7.449 11.985-7.449s-4.291-6.551-11.985-6.551zm-.015 3c-2.21 0-4 1.791-4 4s1.79 4 4 4c2.209 0 4-1.791 4-4s-1.791-4-4-4zm-.004 3.999c-.564.564-1.479.564-2.044 0s-.565-1.48 0-2.044c.564-.564 1.479-.564 2.044 0s.565 1.479 0 2.044z" />
+                                                </svg></button>
+                                        </a>
+                                        <a
+                                            href="/barangay/process/update_soc_dev.php?barangay=<?php echo $dbrow["barangay"] ?>&year=<?php echo $dbrow["year"] ?>">
+                                            <button style="background:#1E90FF;" class="p-2 shadow"><svg
+                                                    xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                                                    fill="#fff" viewBox="0 0 24 24">
+                                                    <path
+                                                        d="M19.769 9.923l-12.642 12.639-7.127 1.438 1.438-7.128 12.641-12.64 5.69 5.691zm1.414-1.414l2.817-2.82-5.691-5.689-2.816 2.817 5.69 5.692z" />
+                                                </svg> </button>
+                                        </a>
+                                        <a href="social_development_sector.php?id=<?php  echo $dbrow["id"]?>">
+                                            <button style="background:#DC143C" class="p-2 shadow"><svg width="24"
+                                                    height="24" fill="#fff" xmlns="http://www.w3.org/2000/svg"
+                                                    fill-rule="evenodd" clip-rule="evenodd">
+                                                    <path
+                                                        d="M19 24h-14c-1.104 0-2-.896-2-2v-16h18v16c0 1.104-.896 2-2 2m-9-14c0-.552-.448-1-1-1s-1 .448-1 1v9c0 .552.448 1 1 1s1-.448 1-1v-9zm6 0c0-.552-.448-1-1-1s-1 .448-1 1v9c0 .552.448 1 1 1s1-.448 1-1v-9zm6-5h-20v-2h6v-1.5c0-.827.673-1.5 1.5-1.5h5c.825 0 1.5.671 1.5 1.5v1.5h6v2zm-12-2h4v-1h-4v1z" />
+                                                </svg> </button>
+                                        </a>
+
+                                    </div>
+                                </div>
+                                <!-- item -->
+                                <?php
+
+            }
+                    }
+                }
+} ?>
+                            </div>
+                        </div>
+                    </div>
+
+
+
+                    <!-- lists -->
+                </div>
+            </div>
+
+
+            <!-- records ends-->
 
 
         </div>
@@ -369,6 +785,11 @@ if(isset($_COOKIE["year_session_records"]) && isset($_COOKIE["barangay_session_r
 
         document.cookie = `barangay_session_records = ${e.value} ; expires=Thu, 18 Dec 3000 12:00:00 UTC`;
         window.location.reload();
+    }
+    const recordList = document.querySelector(".record_lists");
+
+    function recordsToggle() {
+        recordList.classList.toggle("record_lists_show");
     }
     </script>
 

@@ -68,6 +68,9 @@
         flex-direction: column;
         min-height: 100vh;
 
+        animation: form ease-in 400ms 1;
+
+
     }
 
     .gad_login_main .form form {
@@ -161,6 +164,20 @@
         ;
     }
 
+    @keyframes form {
+
+        0% {
+            transform: scale(.5);
+        }
+
+        100% {
+            transform: scale(1);
+
+
+        }
+
+    }
+
 
     @keyframes fromtop {
         0% {
@@ -229,7 +246,7 @@ if(isset($_POST["signup"])){
 
 
 
-    <div class="gad_login_main d-flex flex-column-reverse flex-md-row ">
+    <div class="gad_login_main d-flex flex-column-reverse flex-md-row " style="background:black;">
         <!-- <div class="side px-3 col-md-4 ">
 
             <div class="img">
@@ -255,8 +272,8 @@ if(isset($_POST["signup"])){
 
 
 
-        <div class=" form">
-            <div class="img">
+        <div class="form   m-auto  w-75" style="background:white; ">
+            <div class=" img">
                 <img src="../assets/images/santacruz.png" alt="">
             </div>
 

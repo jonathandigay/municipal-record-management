@@ -154,6 +154,19 @@ require("./modal/success.php");
 
 ?>
 
+        <?php
+
+if(isset($_COOKIE["popup_modal"])){
+    if($_COOKIE["popup_modal"]==="deleterecord")
+require("./modal/deleted.php");
+
+}
+
+
+?>
+
+
+
 
 
 

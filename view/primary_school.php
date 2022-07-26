@@ -1,7 +1,6 @@
 <?php  
 require("../middleware/checklogin.php");
 ?>
-<<<<<<< HEAD
 <?php  require("../process/school/retrieve.php");
 
 $primaryresults = $dbconnection->query("SELECT * FROM primary_education");
@@ -9,9 +8,6 @@ $primaryresults = $dbconnection->query("SELECT * FROM primary_education");
 ?>
 
 
-=======
-<?php  require("../process/school/retrieve.php"); ?>
->>>>>>> d7ecf03639143f887ac402ca2a8e96c474a599c3
 
 
 <!DOCTYPE html>
@@ -181,7 +177,6 @@ p {
 
         </div>
         <br>
-<<<<<<< HEAD
         <h2 style="font-weight:500;text-align:center" class="text-center">PRIMARY EDUCATION </h2>
 
         <br>
@@ -197,26 +192,10 @@ p {
             </div>
 
 
-=======
-        <br>
-        <div style="max-width:1000px;margin:auto;display:flex;justify-content:space-between;flex-wrap">
-            <div style="display:flex;">
-                <h4 style="padding:0 10px 0 0">School Name: </h4><span>Kinyaman Santa Cruz Marinduque</span>
-            </div>
-
-            <div style="display:flex">
-                <h4 style="padding:0 10px 0 0">School Year:</h4> <span>2021-2022</span>
-            </div>
-            
-            <div style="display:flex">
-                <h4 style="padding:0 10px 0 0">School Course:</h4> <span>BS Computer Science</span>
-            </div>
->>>>>>> d7ecf03639143f887ac402ca2a8e96c474a599c3
         </div>
         <br>
 
 
-<<<<<<< HEAD
 
 
         <section>
@@ -251,6 +230,8 @@ p {
             </div>
         </section>
 
+        <br>
+
         <section>
             <h4 style="padding:10px">Elementary School Completion Rate by Sex</h4>
             <div class="row_pair_table table">
@@ -284,93 +265,6 @@ p {
         </section>
 
 
-        <br>
-
-        <section>
-            <h4 style="padding:10px">Classroom to Pupil Ratio</h4>
-            <div class="row_pair_table table">
-                <section style="display:flex;align-items:center;padding-top:5px;">
-                    <h4>No. of classrooms </h4>
-                    <div class="col" style="text-align:center;">
-                        <p class="box" style="padding:5px 20px;">
-                            <?php  echo  isset($rowresult) ?  $rowresult["num1"] : 0;  ?>
-                        </p>
-                    </div>
-                </section>
-                <div class=" row_pair row table_head" style="display:flex;">
-                    <div class="col" style="text-align:center;">
-                        <h5>Male</h5>
-                    </div>
-                    <div class="col">
-
-                        <h5>Female</h5>
-                    </div>
-                    <div class="col">
-                        <h5>Total</h5>
-                    </div>
-
-                </div>
-                <div class="row_pair row">
-                    <div class="col" style="text-align:center;">
-                        <p class="box"><?php  echo  isset($primary_row) ?  $primary_row["m3"] : 0;  ?></p>
-                    </div>
-
-                    <div class="col">
-                        <p class="box"><?php  echo  isset($primary_row) ?  $primary_row["f3"] : 0;  ?></p>
-                    </div>
-                    <div class="col">
-                        <p class="box">
-                            <?php  echo  isset($primary_row) ?  $primary_row["m3"] + $primary_row["f3"]  : 0;  ?></p>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <section>
-            <h4 style="padding:10px">Teacher to Pupil Ratio</h4>
-            <div class="row_pair_table table">
-                <section style="display:flex;align-items:center;padding-top:5px;">
-                    <h4>No. of classrooms </h4>
-                    <div class="col" style="text-align:center;">
-                        <p class="box" style="padding:5px 20px;">
-                            <?php  echo  isset($rowresult) ?  $rowresult["num1"] : 0;  ?>
-                        </p>
-                    </div>
-                </section>
-                <div class=" row_pair row table_head" style="display:flex;">
-                    <div class="col" style="text-align:center;">
-                        <h5>Male</h5>
-                    </div>
-                    <div class="col">
-
-                        <h5>Female</h5>
-                    </div>
-                    <div class="col">
-                        <h5>Total</h5>
-                    </div>
-
-                </div>
-                <div class="row_pair row">
-                    <div class="col" style="text-align:center;">
-                        <p class="box"><?php  echo  isset($primary_row) ?  $primary_row["m4"] : 0;  ?></p>
-                    </div>
-
-                    <div class="col">
-                        <p class="box"><?php  echo  isset($primary_row) ?  $primary_row["f4"] : 0;  ?></p>
-                    </div>
-                    <div class="col">
-                        <p class="box">
-                            <?php  echo  isset($primary_row) ?  $primary_row["m4"] + $primary_row["f4"]  : 0;  ?></p>
-                    </div>
-                </div>
-            </div>
-        </section>
-=======
-        <h3 style="font-weight:500">1.PRIMARY EDUCATION<?php  echo  isset($primaryresults) ?  $primaryresults["barangay"] : 0;  ?>  </h3>
-
-
-        
->>>>>>> d7ecf03639143f887ac402ca2a8e96c474a599c3
 
 
     </div>

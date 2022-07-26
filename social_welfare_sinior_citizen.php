@@ -110,19 +110,22 @@ require("database/connection.php");
         fill: white;
         display: none;
     }
+
     .back_dashboard_btn button:hover svg {
-  transform: translateX(-5px);
-  transition: all ease-in 300ms;
-  fill: rgb(255, 62, 143);
-}
-.back_dashboard_btn button {
-  background: none;
-  color: white;
-  font-size:16px;
-}
-.back_dashboard_btn button:hover {
-  opacity: 0.9;
-}
+        transform: translateX(-5px);
+        transition: all ease-in 300ms;
+        fill: rgb(255, 62, 143);
+    }
+
+    .back_dashboard_btn button {
+        background: none;
+        color: white;
+        font-size: 16px;
+    }
+
+    .back_dashboard_btn button:hover {
+        opacity: 0.9;
+    }
     </style>
 
     <?php
@@ -216,6 +219,7 @@ require("./layoutsidebar/sidebar.php");
                                     <table class="w-25 m-auto mb-3 my-3  p-4 " id="printcontent">
                                         <tr>
                                             <td class="text-center"><input type="text"
+                                                    onkeypress="return onlyNumberKey(event)"
                                                     value="<?php  echo  isset($rowresult) ?  $rowresult["num15"] : 0;  ?>"
                                                     name="num14" id="" />
                                             </td>

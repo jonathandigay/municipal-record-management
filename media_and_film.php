@@ -240,6 +240,7 @@ require("./layoutsidebar/sidebar.php");
                                     <table class="w-25 m-auto mb-3 my-3  p-4 " id="printcontent">
                                         <tr>
                                             <td class="text-center"><input type="text"
+                                                    onkeypress="return onlyNumberKey(event)"
                                                     value="<?php  echo  isset($rowresult) ?  $rowresult["num15"] : 0;  ?>"
                                                     name="num15" id="" />
                                             </td>

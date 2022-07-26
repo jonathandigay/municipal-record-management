@@ -233,6 +233,7 @@ require("./layoutsidebar/sidebar.php");
                                     <table class="w-25 m-auto mb-3 my-3  p-4 " id="printcontent">
                                         <tr>
                                             <td class="text-center"><input type="text" name="num16" id=""
+                                                    onkeypress="return onlyNumberKey(event)"
                                                     value="<?php  echo  isset($rowresult) ?  $rowresult["num16"] : 0;  ?>" />
                                             </td>
                                         </tr>
@@ -268,6 +269,7 @@ require("./layoutsidebar/sidebar.php");
                                     <table class="w-25 m-auto mb-3 my-3  p-4 " id="printcontent">
                                         <tr>
                                             <td class="text-center"><input type="text" name="num17" id=""
+                                                    onkeypress="return onlyNumberKey(event)"
                                                     value="<?php  echo  isset($rowresult) ?  $rowresult["num17"] : 0;  ?>" />
                                             </td>
                                         </tr>

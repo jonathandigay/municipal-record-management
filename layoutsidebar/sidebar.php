@@ -147,7 +147,7 @@
                         style="max-width:50px;position:absolute;transform:translate(-30px,-10px);border-radius:50px;">
                         <img src="./assets/images/barangay.png" alt="">
                     </div>
-                    <p class=" m-0" style="padding:8px 0 8px 30px;font-weight:400"> BARANGAY FORM</p>
+                    <h6 class=" m-0" style="padding:8px 0 8px 30px;font-weight:400"> BARANGAY FORM</h6>
                 </button>
             </a>
             <a href="/barangay/school/primary.php" target="_self">
@@ -160,7 +160,7 @@
 
                     </div>
 
-                    <p class=" m-0" style="padding:8px 0 8px 30px;font-weight:400">SCHOOL FORM </p>
+                    <h6 class=" m-0" style="padding:8px 0 8px 30px;font-weight:400">SCHOOL FORM </h6>
                 </button>
             </a>
             <a href="/barangay/demography.php" target="_self">
@@ -173,7 +173,7 @@
 
                     </div>
 
-                    <p class=" m-0" style="padding:8px 0 8px 30px;font-weight:400">DEPARTMENT FORM</p>
+                    <h6 class=" m-0" style="padding:8px 0 8px 30px;font-weight:400">DEPARTMENT FORM</h6>
                 </button>
             </a>
         </div>

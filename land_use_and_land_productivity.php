@@ -238,9 +238,11 @@ require("./layoutsidebar/sidebar.php");
                                         <tr>
 
                                             <td> <input type="text" name="m76" id=""
+                                                    onkeypress="return onlyNumberKey(event)"
                                                     value="<?php  echo  isset($rowresult) ?  $rowresult["m76"] : 0;  ?>" />
                                             </td>
                                             <td> <input type="text" name="f76" id=""
+                                                    onkeypress="return onlyNumberKey(event)"
                                                     value="<?php  echo  isset($rowresult) ?  $rowresult["f76"] : 0;  ?>" />
                                             </td>
                                         </tr>
@@ -279,6 +281,7 @@ require("./layoutsidebar/sidebar.php");
                                     <table class="w-25 m-auto mb-3 my-3  p-4 " id="printcontent">
                                         <tr>
                                             <td class="text-center"><input type="text" name="num25" id=""
+                                                    onkeypress="return onlyNumberKey(event)"
                                                     value="<?php  echo  isset($rowresult) ?  $rowresult["num25"] : 0;  ?>" />
                                             </td>
                                         </tr>
@@ -325,9 +328,11 @@ require("./layoutsidebar/sidebar.php");
                                         <tr>
 
                                             <td> <input type="text" name="m77" id=""
+                                                    onkeypress="return onlyNumberKey(event)"
                                                     value="<?php  echo  isset($rowresult) ?  $rowresult["m77"] : 0;  ?>" />
                                             </td>
                                             <td> <input type="text" name="f77" id=""
+                                                    onkeypress="return onlyNumberKey(event)"
                                                     value="<?php  echo  isset($rowresult) ?  $rowresult["f77"] : 0;  ?>" />
                                             </td>
                                         </tr>
@@ -370,9 +375,11 @@ require("./layoutsidebar/sidebar.php");
                                         <tr>
 
                                             <td> <input type="text" name="m78" id=""
+                                                    onkeypress="return onlyNumberKey(event)"
                                                     value="<?php  echo  isset($rowresult) ?  $rowresult["m78"] : 0;  ?>" />
                                             </td>
                                             <td> <input type="text" name="f78" id=""
+                                                    onkeypress="return onlyNumberKey(event)"
                                                     value="<?php  echo  isset($rowresult) ?  $rowresult["f78"] : 0;  ?>" />
                                             </td>
                                         </tr>
@@ -416,9 +423,11 @@ require("./layoutsidebar/sidebar.php");
                                         <tr>
 
                                             <td> <input type="text" name="m79" id=""
+                                                    onkeypress="return onlyNumberKey(event)"
                                                     value="<?php  echo  isset($rowresult) ?  $rowresult["m79"] : 0;  ?>" />
                                             </td>
                                             <td> <input type="text" name="f79" id=""
+                                                    onkeypress="return onlyNumberKey(event)"
                                                     value="<?php  echo  isset($rowresult) ?  $rowresult["f79"] : 0;  ?>" />
                                             </td>
                                         </tr>

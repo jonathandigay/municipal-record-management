@@ -10,7 +10,6 @@ if(isset($_GET["primary_school_year"]) &&  isset($_GET["primary_school_name"]) )
    header("Location: /barangay/view/primary_school.php");
 }
 
-<<<<<<< HEAD
 if(isset($_GET["secondary_school_year"]) &&  isset($_GET["secondary_school_name"]) ){
 
     $secondary_school_name = $_GET["secondary_school_name"];
@@ -34,6 +33,4 @@ if(isset($_GET["tertiary_school_year"]) &&  isset($_GET["tertiary_school_name"])
    header("Location: /barangay/view/tertiary_school.php");
 }
 
-=======
->>>>>>> d7ecf03639143f887ac402ca2a8e96c474a599c3
 ?>

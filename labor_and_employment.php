@@ -243,90 +243,110 @@ require("./layoutsidebar/sidebar.php");
                                         <tr>
                                             <td>15-19</td>
                                             <td><input type="text" name="m46" id=""
+                                                    onkeypress="return onlyNumberKey(event)"
                                                     value="<?php  echo  isset($rowresult) ?  $rowresult["m46"] : 0;  ?>" />
                                             </td>
                                             <td><input type="text" name="f46" id=""
+                                                    onkeypress="return onlyNumberKey(event)"
                                                     value="<?php  echo  isset($rowresult) ?  $rowresult["f46"] : 0;  ?>" />
                                             </td>
                                         </tr>
                                         <tr>
                                             <td>20-24</td>
                                             <td><input type="text" name="m47" id=""
+                                                    onkeypress="return onlyNumberKey(event)"
                                                     value="<?php  echo  isset($rowresult) ?  $rowresult["m47"] : 0;  ?>" />
                                             </td>
                                             <td><input type="text" name="f47" id=""
+                                                    onkeypress="return onlyNumberKey(event)"
                                                     value="<?php  echo  isset($rowresult) ?  $rowresult["f47"] : 0;  ?>" />
                                             </td>
                                         </tr>
                                         <tr>
                                             <td>25-29</td>
                                             <td><input type="text" name="m48" id=""
+                                                    onkeypress="return onlyNumberKey(event)"
                                                     value="<?php  echo  isset($rowresult) ?  $rowresult["m48"] : 0;  ?>" />
                                             </td>
                                             <td><input type="text" name="f48" id=""
+                                                    onkeypress="return onlyNumberKey(event)"
                                                     value="<?php  echo  isset($rowresult) ?  $rowresult["f48"] : 0;  ?>" />
                                             </td>
                                         </tr>
                                         <tr>
                                             <td>30-34</td>
                                             <td><input type="text" name="m49" id=""
+                                                    onkeypress="return onlyNumberKey(event)"
                                                     value="<?php  echo  isset($rowresult) ?  $rowresult["m49"] : 0;  ?>" />
                                             </td>
                                             <td><input type="text" name="f49" id=""
+                                                    onkeypress="return onlyNumberKey(event)"
                                                     value="<?php  echo  isset($rowresult) ?  $rowresult["f49"] : 0;  ?>" />
                                             </td>
                                         </tr>
                                         <tr>
                                             <td>35-39</td>
                                             <td><input type="text" name="m50" id=""
+                                                    onkeypress="return onlyNumberKey(event)"
                                                     value="<?php  echo  isset($rowresult) ?  $rowresult["m50"] : 0;  ?>" />
                                             </td>
                                             <td><input type="text" name="f50" id=""
+                                                    onkeypress="return onlyNumberKey(event)"
                                                     value="<?php  echo  isset($rowresult) ?  $rowresult["f50"] : 0;  ?>" />
                                             </td>
                                         </tr>
                                         <tr>
                                             <td>40-44</td>
                                             <td><input type="text" name="m51" id=""
+                                                    onkeypress="return onlyNumberKey(event)"
                                                     value="<?php  echo  isset($rowresult) ?  $rowresult["m51"] : 0;  ?>" />
                                             </td>
                                             <td><input type="text" name="f51" id=""
+                                                    onkeypress="return onlyNumberKey(event)"
                                                     value="<?php  echo  isset($rowresult) ?  $rowresult["f51"] : 0;  ?>" />
                                             </td>
                                         </tr>
                                         <tr>
                                             <td>45-49</td>
                                             <td><input type="text" name="m52" id=""
+                                                    onkeypress="return onlyNumberKey(event)"
                                                     value="<?php  echo  isset($rowresult) ?  $rowresult["m52"] : 0;  ?>" />
                                             </td>
                                             <td><input type="text" name="f52" id=""
+                                                    onkeypress="return onlyNumberKey(event)"
                                                     value="<?php  echo  isset($rowresult) ?  $rowresult["f52"] : 0;  ?>" />
                                             </td>
                                         </tr>
                                         <tr>
                                             <td>50-54</td>
                                             <td><input type="text" name="m53" id=""
+                                                    onkeypress="return onlyNumberKey(event)"
                                                     value="<?php  echo  isset($rowresult) ?  $rowresult["m53"] : 0;  ?>" />
                                             </td>
                                             <td><input type="text" name="f53" id=""
+                                                    onkeypress="return onlyNumberKey(event)"
                                                     value="<?php  echo  isset($rowresult) ?  $rowresult["f53"] : 0;  ?>" />
                                             </td>
                                         </tr>
                                         <tr>
                                             <td>55-59</td>
                                             <td><input type="text" name="m54" id=""
+                                                    onkeypress="return onlyNumberKey(event)"
                                                     value="<?php  echo  isset($rowresult) ?  $rowresult["m54"] : 0;  ?>" />
                                             </td>
                                             <td><input type="text" name="f54" id=""
+                                                    onkeypress="return onlyNumberKey(event)"
                                                     value="<?php  echo  isset($rowresult) ?  $rowresult["f54"] : 0;  ?>" />
                                             </td>
                                         </tr>
                                         <tr>
                                             <td>60-65</td>
                                             <td><input type="text" name="m55" id=""
+                                                    onkeypress="return onlyNumberKey(event)"
                                                     value="<?php  echo  isset($rowresult) ?  $rowresult["m55"] : 0;  ?>" />
                                             </td>
                                             <td><input type="text" name="f55" id=""
+                                                    onkeypress="return onlyNumberKey(event)"
                                                     value="<?php  echo  isset($rowresult) ?  $rowresult["f55"] : 0;  ?>" />
                                             </td>
                                         </tr>
@@ -367,9 +387,11 @@ require("./layoutsidebar/sidebar.php");
                                             <tr>
 
                                                 <td> <input type="text" name="m56" id=""
+                                                        onkeypress="return onlyNumberKey(event)"
                                                         value="<?php  echo  isset($rowresult) ?  $rowresult["m56"] : 0;  ?>" />
                                                 </td>
                                                 <td> <input type="text" name="f56" id=""
+                                                        onkeypress="return onlyNumberKey(event)"
                                                         value="<?php  echo  isset($rowresult) ?  $rowresult["f56"] : 0;  ?>" />
                                                 </td>
                                             </tr>
@@ -413,9 +435,11 @@ require("./layoutsidebar/sidebar.php");
                                             <tr>
 
                                                 <td> <input type="text" name="m57" id=""
+                                                        onkeypress="return onlyNumberKey(event)"
                                                         value="<?php  echo  isset($rowresult) ?  $rowresult["m57"] : 0;  ?>" />
                                                 </td>
                                                 <td> <input type="text" name="f57" id=""
+                                                        onkeypress="return onlyNumberKey(event)"
                                                         value="<?php  echo  isset($rowresult) ?  $rowresult["f57"] : 0;  ?>" />
                                                 </td>
                                             </tr>
@@ -458,9 +482,11 @@ require("./layoutsidebar/sidebar.php");
                                             <tr>
 
                                                 <td> <input type="text" name="m58" id=""
+                                                        onkeypress="return onlyNumberKey(event)"
                                                         value="<?php  echo  isset($rowresult) ?  $rowresult["m58"] : 0;  ?>" />
                                                 </td>
                                                 <td> <input type="text" name="f58" id=""
+                                                        onkeypress="return onlyNumberKey(event)"
                                                         value="<?php  echo  isset($rowresult) ?  $rowresult["f58"] : 0;  ?>" />
                                                 </td>
                                             </tr>
@@ -504,9 +530,11 @@ require("./layoutsidebar/sidebar.php");
                                             <tr>
 
                                                 <td> <input type="text" name="m59" id=""
+                                                        onkeypress="return onlyNumberKey(event)"
                                                         value="<?php  echo  isset($rowresult) ?  $rowresult["m59"] : 0;  ?>" />
                                                 </td>
                                                 <td> <input type="text" name="f59" id=""
+                                                        onkeypress="return onlyNumberKey(event)"
                                                         value="<?php  echo  isset($rowresult) ?  $rowresult["f59"] : 0;  ?>" />
                                                 </td>
                                             </tr>

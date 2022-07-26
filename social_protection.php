@@ -238,9 +238,11 @@ require("./layoutsidebar/sidebar.php");
                                         <tr>
 
                                             <td> <input type="text" name="m45" id=""
+                                                    onkeypress="return onlyNumberKey(event)"
                                                     value="<?php  echo  isset($rowresult) ?  $rowresult["m45"] : 0;  ?>" />
                                             </td>
                                             <td> <input type="text" name="f45" id=""
+                                                    onkeypress="return onlyNumberKey(event)"
                                                     value="<?php  echo  isset($rowresult) ?  $rowresult["f45"] : 0;  ?>" />
                                             </td>
                                         </tr>
