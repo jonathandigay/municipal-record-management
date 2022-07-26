@@ -17,6 +17,7 @@ require("../process/school/edit.php");
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../assets/css/bootstrap.min.css">
     <link rel="stylesheet" href="../layout/main.css">
+    <link rel="icon" href="./assets/images/santacruz.png">
     <link rel="stylesheet" href="./school.css">
     <title>Primary Education</title>
 </head>
@@ -151,6 +152,18 @@ require("..//modal/success.php");
 
 
 ?>
+
+            <?php
+
+if(isset($_COOKIE["popup_modal"])){
+    if($_COOKIE["popup_modal"]==="deleterecord")
+require("../modal/deleted.php");
+
+}
+
+
+?>
+
 
             <div class="powered">
                 <img src="../assets/images/gad.png" alt="">
@@ -299,10 +312,12 @@ require("../layoutsidebar/sidebar.php")
                                             <tr>
 
                                                 <td> <input type="text" name="m1" id=""
-                                                        value=" <?php echo isset($primary_row) ? $primary_row["m1"] : 0  ?> " />
+                                                        onkeypress="return onlyNumberKey(event)"
+                                                        value="<?php echo isset($primary_row) ? $primary_row["m1"] : 0  ?>" />
                                                 </td>
                                                 <td> <input type="text" name="f1" id=""
-                                                        value=" <?php echo isset($primary_row) ? $primary_row["f1"] : 0  ?> " />
+                                                        onkeypress="return onlyNumberKey(event)"
+                                                        value="<?php echo isset($primary_row) ? $primary_row["f1"] : 0  ?>" />
                                                 </td>
                                             </tr>
                                         </table>
@@ -323,9 +338,11 @@ require("../layoutsidebar/sidebar.php")
                                             <tr>
 
                                                 <td> <input type="text" name="m2" id=""
+                                                        onkeypress="return onlyNumberKey(event)"
                                                         value="<?php echo isset($primary_row) ? $primary_row["m2"] : 0  ?>" />
                                                 </td>
                                                 <td> <input type="text" name="f2" id=""
+                                                        onkeypress="return onlyNumberKey(event)"
                                                         value="<?php echo isset($primary_row) ? $primary_row["f2"] : 0  ?>" />
                                                 </td>
                                             </tr>
@@ -345,6 +362,7 @@ require("../layoutsidebar/sidebar.php")
                                                 </tr>
                                                 <tr class="d-flex justify-content-center">
                                                     <td> <input type="text" name="num1" id=""
+                                                            onkeypress="return onlyNumberKey(event)"
                                                             value="<?php echo isset($primary_row) ? $primary_row["num1"] : 0  ?>" />
                                                     </td>
 
@@ -362,9 +380,11 @@ require("../layoutsidebar/sidebar.php")
                                                 <tr>
 
                                                     <td> <input type="text" name="m3" id=""
+                                                            onkeypress="return onlyNumberKey(event)"
                                                             value="<?php echo isset($primary_row) ? $primary_row["m3"] : 0  ?>" />
                                                     </td>
                                                     <td> <input type="text" name="f3" id=""
+                                                            onkeypress="return onlyNumberKey(event)"
                                                             value="<?php echo isset($primary_row) ? $primary_row["f3"] : 0  ?>" />
                                                     </td>
                                                 </tr>
@@ -390,6 +410,7 @@ require("../layoutsidebar/sidebar.php")
                                                 </tr>
                                                 <tr class="d-flex justify-content-center">
                                                     <td> <input type="text" name="num1" id=""
+                                                            onkeypress="return onlyNumberKey(event)"
                                                             value="<?php echo isset($primary_row) ? $primary_row["num2"] : 0  ?>" />
                                                     </td>
 
@@ -407,9 +428,11 @@ require("../layoutsidebar/sidebar.php")
                                                 <tr>
 
                                                     <td> <input type="text" name="m4" id=""
+                                                            onkeypress="return onlyNumberKey(event)"
                                                             value="<?php echo isset($primary_row) ? $primary_row["m4"] : 0  ?>" />
                                                     </td>
                                                     <td> <input type="text" name="f4" id=""
+                                                            onkeypress="return onlyNumberKey(event)"
                                                             value="<?php echo isset($primary_row) ? $primary_row["f4"] : 0  ?>" />
                                                     </td>
                                                 </tr>

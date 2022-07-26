@@ -273,7 +273,16 @@ $record_found=null;
 
 
 
+    <?php
 
+if(isset($_COOKIE["popup_modal"])){
+    if($_COOKIE["popup_modal"]==="deleterecord")
+require("../modal/deleted.php");
+
+}
+
+
+?>
 
 
     <div class="container-fluid position-relative">

@@ -17,6 +17,7 @@ require("../process/school/edit.php");
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../assets/css/bootstrap.min.css">
     <link rel="stylesheet" href="../layout/main.css">
+    <link rel="icon" href="./assets/images/santacruz.png">
     <link rel="stylesheet" href="./school.css">
     <title>Tertiary Education</title>
 </head>
@@ -145,6 +146,18 @@ require("../process/school/edit.php");
 if(isset($_COOKIE["popup_modal"])){
     if($_COOKIE["popup_modal"]==="saverecord")
 require("..//modal/success.php");
+
+}
+
+
+?>
+
+
+            <?php
+
+if(isset($_COOKIE["popup_modal"])){
+    if($_COOKIE["popup_modal"]==="deleterecord")
+require("../modal/deleted.php");
 
 }
 
@@ -311,9 +324,11 @@ require("../layoutsidebar/sidebar.php")
                                             <tr>
 
                                                 <td> <input type="text" name="m1" id=""
+                                                        onkeypress="return onlyNumberKey(event)"
                                                         value="<?php  echo  isset($tertiary_row) ?  $tertiary_row["m1"] : 0;  ?>" />
                                                 </td>
                                                 <td> <input type="text" name="f1" id=""
+                                                        onkeypress="return onlyNumberKey(event)"
                                                         value="<?php  echo  isset($tertiary_row) ?  $tertiary_row["f1"] : 0;  ?>" />
                                                 </td>
                                             </tr>
@@ -337,6 +352,7 @@ require("../layoutsidebar/sidebar.php")
                                             <tr>
 
                                                 <td> <input type="text" name="m2" id=""
+                                                        onkeypress="return onlyNumberKey(event)"
                                                         value="<?php  echo  isset($tertiary_row) ?  $tertiary_row["m2"] : 0;  ?>" />
                                                 </td>
                                                 <td> <input type="text" name="f2" id=""

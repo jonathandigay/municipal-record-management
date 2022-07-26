@@ -82,6 +82,8 @@ document.querySelectorAll(".save_modal_exit").forEach((btn) => {
     console.log("dgnn");
     document.cookie = "popup_modal = ''";
     window.location.reload();
+    document.cookie = "popup_modal='','/barangay/records'";
+    document.cookie = "popup_modal='','/barangay/school'";
   });
 });
 

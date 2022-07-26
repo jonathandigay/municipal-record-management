@@ -18,7 +18,7 @@
 
         <div class="action">
 
-            <button class="shadow">ok</button>
+            <button class="shadow save_modal_exit">ok</button>
         </div>
 
     </div>
