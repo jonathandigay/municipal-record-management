@@ -139,9 +139,9 @@ require("./layoutsidebar/sidebar.php");
                 </div>
 
                 <div style="border-radius:20px;" class="social_development_chart my-3 mx-5 shadow py-3 px-3"
-                    style="width:700px;max-width:500px">
+                    style="width:700px;max-width:700px">
                     <h6 class="text-center">Poverty</h6>
-                    <canvas id="household_whose_eat_less_than_three_chart" style="max-width:700px"></canvas>
+                    <canvas id="household_whose_eat_less_than_three_chart" width="700"></canvas>
                 </div>
 
 

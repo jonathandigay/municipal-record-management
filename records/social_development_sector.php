@@ -232,6 +232,8 @@ $record_found=null;
 
     .record_item {
         cursor: pointer;
+        background: rgba(166, 166, 166, .1);
+
     }
 
     .record_item:hover {
@@ -308,17 +310,17 @@ require("../layoutsidebar/sidebar.php");
 
 
 
-            <div class="container-fluid p-0 py-3 px-3 col ">
+            <div class="container-fluid p-0 py-0 px-3 col ">
                 <div class="header position-sticky top-0 shadow">
-                    <div class="title text-center  py-2" style="background:black;color:white;">
+                    <div class="title text-center  py-2 shadow" style="background:black;color:white;">
                         <h5 class="m-0 py-3 page_title">Social Development Records</h5>
                     </div>
-                    <div class=" d-flex my-2 align-items-center  ">
+                    <div class=" d-flex my-4 align-items-center justify-content-end  ">
 
                         <div class="d-flex justify-content-end">
 
                             <a href="http://localhost/barangay/demography.php">
-                                <button class="py-2 px-3 shadow  m-2"
+                                <button class="py-2 px-3 shadow  m-2 my-3"
                                     style="background:#32CD32;font-weight:bold;color:white;">
                                     create new record <span>
                                         <svg clip-rule="evenodd" fill-rule="evenodd" stroke-linejoin="round" width="24"
@@ -329,69 +331,8 @@ require("../layoutsidebar/sidebar.php");
                                                 fill-rule="nonzero" />
                                         </svg>
                                     </span> </button></a>
-                        </div>
 
-
-
-
-
-                    </div>
-                    <div class="d-flex align-items-center justify-content-between flex-wrap mx-2 my-2">
-                        <div class="d-flex align-items-center justify-content-start mx-2 my-2">
-                            <div class="d-flex align-items-center ">
-
-                                <h6 class="m-0 mx-1">YEAR:</h6>
-                                <div>
-                                    <select class="form-select" aria-label="Default select example"
-                                        name="year_session_records" onchange="yearSessionRecords(this)">
-                                        <?php 
-                                if(isset($_COOKIE["year_session_records"])){  ?>
-                                        <option hidden style="background:#fe4895 !important;color:white;"
-                                            value='<?php  echo $_COOKIE["year_session_records"]  ?>'>
-                                            <?php  echo $_COOKIE["year_session_records"]  ?></option>
-                                        <?php  } ?>
-                                        <option value="2021-2022">2021-2022</option>
-                                        <option value="2019-2020">2019-2020</option>
-                                        <option value="2017-2018">2017-2018</option>
-                                    </select>
-                                </div>
-
-                            </div>
-
-                            <div class="d-flex align-items-center m-1">
-
-                                <h6 class="m-0 mx-1">BARANGAY:</h6>
-                                <div>
-                                    <select class="form-select " aria-label="Default select example" name="barangay"
-                                        onchange="barangaySessionRecords(this)">
-
-
-                                        <?php 
-                                if(isset($_COOKIE["barangay_session_records"])){  ?>
-                                        <option hidden style="background:#fe4895 !important;color:white;"
-                                            value='<?php  echo $_COOKIE["barangay_session_records"]  ?>'>
-                                            <?php  echo $_COOKIE["barangay_session_records"]  ?></option>
-                                        <?php  } ?>
-
-
-                                        <?php
-                                    require("../arrays/barangay.php");
-                                       $count =count($barangay);
-                                       $i =0;
-                                       for($i; $i < $count; $i++){
-                                       ?>
-                                        <option value=<?php echo $barangay[$i]   ?>><?php echo $barangay[$i]   ?>
-                                        </option>
-
-                                        <?php  };?>
-                                    </select>
-                                </div>
-
-                            </div>
-                        </div>
-
-                        <div>
-                            <button class="py-2 px-3 view_all" style="background:#1E90FF;color:white"
+                            <button class="py-2 px-3 view_all m-2 my-3" style="background:#1E90FF;color:white"
                                 onclick="recordsToggle()">
                                 <p> </p> view all records <svg width="24" fill="#fff" height="24"
                                     xmlns="http://www.w3.org/2000/svg" fill-rule="evenodd" clip-rule="evenodd">
@@ -400,18 +341,86 @@ require("../layoutsidebar/sidebar.php");
                                 </svg>
                             </button>
                         </div>
+
+
+
+
+
                     </div>
 
-                    <br>
+
                 </div>
-                <table class="w-75 m-auto mb-3 my-3 p-4 " id="printcontent">
+
+                <section class="mx-2 my-2 px-2 py-3 shadow">
+
+                    <h6 style="background:black;color:white;width:max-content;clip-path: polygon(25% 0%, 100% 0%, 75% 100%, 0% 100%);"
+                        class="p-3 px-5 shadow"> YEAR W/ BARANGAY</h6>
+                    <div class=" d-flex align-items-center justify-content-start mx-2 my-2">
+                        <div class="d-flex align-items-center ">
+
+                            <h6 class="m-0 mx-1">YEAR:</h6>
+                            <div>
+                                <select class="form-select" aria-label="Default select example"
+                                    name="year_session_records" onchange="yearSessionRecords(this)">
+                                    <?php 
+                                if(isset($_COOKIE["year_session_records"])){  ?>
+                                    <option hidden style="background:#fe4895 !important;color:white;"
+                                        value='<?php  echo $_COOKIE["year_session_records"]  ?>'>
+                                        <?php  echo $_COOKIE["year_session_records"]  ?></option>
+                                    <?php  } ?>
+                                    <option value="2021-2022">2021-2022</option>
+                                    <option value="2019-2020">2019-2020</option>
+                                    <option value="2017-2018">2017-2018</option>
+                                </select>
+                            </div>
+
+                        </div>
+
+                        <div class="d-flex align-items-center m-1">
+
+                            <h6 class="m-0 mx-1">BARANGAY:</h6>
+                            <div>
+                                <select class="form-select " aria-label="Default select example" name="barangay"
+                                    onchange="barangaySessionRecords(this)">
 
 
+                                    <?php 
+                                if(isset($_COOKIE["barangay_session_records"])){  ?>
+                                    <option hidden style="background:#fe4895 !important;color:white;"
+                                        value='<?php  echo $_COOKIE["barangay_session_records"]  ?>'>
+                                        <?php  echo $_COOKIE["barangay_session_records"]  ?></option>
+                                    <?php  } ?>
 
-                    <div class="powered">
-                        <img src="../assets/images/gad.png" alt="">
+
+                                    <?php
+                                    require("../arrays/barangay.php");
+                                       $count =count($barangay);
+                                       $i =0;
+                                       for($i; $i < $count; $i++){
+                                       ?>
+                                    <option value=<?php echo $barangay[$i]   ?>><?php echo $barangay[$i]   ?>
+                                    </option>
+
+                                    <?php  };?>
+                                </select>
+                            </div>
+
+                        </div>
                     </div>
 
+                    <div>
+
+
+
+                    </div>
+
+                    <table class="w-75 m-auto mb-3 my-3 p-4 " id="printcontent">
+
+
+
+                        <div class="powered">
+                            <img src="../assets/images/gad.png" alt="">
+                        </div>
 
 
 
@@ -420,7 +429,8 @@ require("../layoutsidebar/sidebar.php");
 
 
 
-                    <?php
+
+                        <?php
 $rowresult=null;
 
 
@@ -438,44 +448,45 @@ $record_found="yes";
 
 
 
-                    <tr class="d-flex justify-content-between align-items-center py-3 px-3 shadow record_list">
-                        <td class="d-flex align-items-center">
-                            <h6 class="m-0"> <?php  echo $dbrow["barangay"]  ?> </h6>
-                        </td>
+                        <tr class="d-flex justify-content-between align-items-center py-3 px-3 shadow record_list">
+                            <td class="d-flex align-items-center">
+                                <h6 class="m-0"> <?php  echo $dbrow["barangay"]  ?> </h6>
+                            </td>
 
-                        <td class="d-flex align-items-center">
-                            <div class="d-flex align-items-center">
-                                <div class="dots_dropdown d-flex align-items-center p-1 justify-content-center"
-                                    style="cursor:pointer;">
+                            <td class="d-flex align-items-center">
+                                <div class="d-flex align-items-center">
+                                    <div class="dots_dropdown d-flex align-items-center p-1 justify-content-center"
+                                        style="cursor:pointer;">
 
-                                    <span style="pointer-events:none"><svg width="24" height="24"
-                                            xmlns="http://www.w3.org/2000/svg" fill-rule="evenodd" clip-rule="evenodd">
-                                            <path
-                                                d="M14 19h-14v-1h14v1zm9.247-8.609l-3.247 4.049-3.263-4.062-.737.622 4 5 4-5-.753-.609zm-9.247 2.609h-14v-1h14v1zm0-6h-14v-1h14v1z" />
-                                        </svg></span>
-                                    <div class="drop_down shadow ">
-                                        <a
-                                            href="/barangay/process/view_soc_dev_record.php?barangay=<?php echo $dbrow["barangay"] ?>&year=<?php echo $dbrow["year"] ?>">
-                                            <button class="py-2 px-3 mb-1" style="background:#32CD32;color:white;">
-                                                view</button>
-                                        </a>
+                                        <span style="pointer-events:none"><svg width="24" height="24"
+                                                xmlns="http://www.w3.org/2000/svg" fill-rule="evenodd"
+                                                clip-rule="evenodd">
+                                                <path
+                                                    d="M14 19h-14v-1h14v1zm9.247-8.609l-3.247 4.049-3.263-4.062-.737.622 4 5 4-5-.753-.609zm-9.247 2.609h-14v-1h14v1zm0-6h-14v-1h14v1z" />
+                                            </svg></span>
+                                        <div class="drop_down shadow ">
+                                            <a
+                                                href="/barangay/process/view_soc_dev_record.php?barangay=<?php echo $dbrow["barangay"] ?>&year=<?php echo $dbrow["year"] ?>">
+                                                <button class="py-2 px-3 mb-1" style="background:#32CD32;color:white;">
+                                                    view</button>
+                                            </a>
 
-                                        <a
-                                            href="/barangay/process/update_soc_dev.php?barangay=<?php echo $dbrow["barangay"] ?>&year=<?php echo $dbrow["year"] ?>">
-                                            <button class="py-2 px-3 mb-1"
-                                                style="background:#1E90FF;color:white;">edit</button></a>
-                                        <a href="social_development_sector.php?id=<?php  echo $dbrow["id"]?>">
-                                            <button class="py-2 px-3 mb-1"
-                                                style="background:#DC143C;color:white;">delete</button></a>
+                                            <a
+                                                href="/barangay/process/update_soc_dev.php?barangay=<?php echo $dbrow["barangay"] ?>&year=<?php echo $dbrow["year"] ?>">
+                                                <button class="py-2 px-3 mb-1"
+                                                    style="background:#1E90FF;color:white;">edit</button></a>
+                                            <a href="social_development_sector.php?id=<?php  echo $dbrow["id"]?>">
+                                                <button class="py-2 px-3 mb-1"
+                                                    style="background:#DC143C;color:white;">delete</button></a>
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
-                        </td>
-                    </tr>
+                            </td>
+                        </tr>
 
 
 
-                    <?php
+                        <?php
 
 
                     }}
@@ -487,26 +498,185 @@ $record_found="yes";
 
 
 
-                    <?php
+                        <?php
 
 if(!isset($record_found)){  ?>
 
-                    <tr class="text-center  w-100">
-                        <h2 class="text-center py-3" style="opacity:.7">No Record Found...</h2>
-                    </tr>
+                        <tr class="text-center  w-100">
+                            <h2 class="text-center py-3" style="opacity:.7">No Record Found...</h2>
+                        </tr>
 
 
-                    <?php  }
+                        <?php  }
 ?>
 
 
 
-                </table>
+                    </table>
 
+
+
+                </section>
+
+
+
+                <!-- barangay only -->
+
+
+                <section class="mx-2 my-2 px-2 py-3 shadow">
+
+                    <h6 style="background:black;color:white;width:max-content;clip-path: polygon(25% 0%, 100% 0%, 75% 100%, 0% 100%);"
+                        class="p-3 px-5 shadow"> W/ BARANGAY</h6>
+                    <div class=" d-flex align-items-center justify-content-start mx-2 my-2">
+
+
+                        <div class="d-flex align-items-center m-1">
+
+                            <h6 class="m-0 mx-1">BARANGAY:</h6>
+                            <div>
+                                <select class="form-select " aria-label="Default select example" name="barangay"
+                                    onchange="onlyBarangaySessionRecords(this)">
+
+
+                                    <?php 
+                                if(isset($_COOKIE["only_barangay_session_records"])){  ?>
+                                    <option hidden style="background:#fe4895 !important;color:white;"
+                                        value='<?php  echo $_COOKIE["only_barangay_session_records"]  ?>'>
+                                        <?php  echo $_COOKIE["only_barangay_session_records"]  ?></option>
+                                    <?php  } ?>
+
+
+                                    <?php
+                                    require("../arrays/barangay.php");
+                                       $count =count($barangay);
+                                       $i =0;
+                                       for($i; $i < $count; $i++){
+                                       ?>
+                                    <option value=<?php echo $barangay[$i]   ?>><?php echo $barangay[$i]   ?>
+                                    </option>
+
+                                    <?php  };?>
+                                </select>
+                            </div>
+
+                        </div>
+                    </div>
+
+                    <div>
+
+
+
+                    </div>
+
+                    <table class="w-75 m-auto mb-3 my-3 p-4 " id="printcontent">
+
+
+
+                        <div class="powered">
+                            <img src="../assets/images/gad.png" alt="">
+                        </div>
+
+
+
+
+
+
+
+
+
+                        <?php
+$rowresult=null;
+
+
+$results = $dbconnection->query("SELECT * FROM social_development");
+if(isset($_COOKIE["only_barangay_session_records"])){
+
+ if($results->num_rows > 0){
+    
+    while($dbrow =$results->fetch_assoc() ){  
+        if(strcmp($dbrow["barangay"], $_COOKIE["only_barangay_session_records"])===0 ){ 
+            
+$only_barangay_record_found="yes";
+            
+            ?>
+
+
+
+                        <tr class="d-flex justify-content-between align-items-center py-3 px-3 shadow record_list">
+                            <td class="d-flex align-items-center">
+                                <h6 class="m-0"> <?php  echo $dbrow["barangay"]  ?> <span><?php  echo $dbrow["year"]  ?>
+                                    </span> </h6>
+
+                            </td>
+
+                            <td class="d-flex align-items-center">
+                                <div class="d-flex align-items-center">
+                                    <div class="dots_dropdown d-flex align-items-center p-1 justify-content-center"
+                                        style="cursor:pointer;">
+
+                                        <span style="pointer-events:none"><svg width="24" height="24"
+                                                xmlns="http://www.w3.org/2000/svg" fill-rule="evenodd"
+                                                clip-rule="evenodd">
+                                                <path
+                                                    d="M14 19h-14v-1h14v1zm9.247-8.609l-3.247 4.049-3.263-4.062-.737.622 4 5 4-5-.753-.609zm-9.247 2.609h-14v-1h14v1zm0-6h-14v-1h14v1z" />
+                                            </svg></span>
+                                        <div class="drop_down shadow ">
+                                            <a
+                                                href="/barangay/process/view_soc_dev_record.php?barangay=<?php echo $dbrow["barangay"] ?>&year=<?php echo $dbrow["year"] ?>">
+                                                <button class="py-2 px-3 mb-1" style="background:#32CD32;color:white;">
+                                                    view</button>
+                                            </a>
+
+                                            <a
+                                                href="/barangay/process/update_soc_dev.php?barangay=<?php echo $dbrow["barangay"] ?>&year=<?php echo $dbrow["year"] ?>">
+                                                <button class="py-2 px-3 mb-1"
+                                                    style="background:#1E90FF;color:white;">edit</button></a>
+                                            <a href="social_development_sector.php?id=<?php  echo $dbrow["id"]?>">
+                                                <button class="py-2 px-3 mb-1"
+                                                    style="background:#DC143C;color:white;">delete</button></a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </td>
+                        </tr>
+
+
+
+                        <?php
+
+
+                    }}
+                }
+} ?>
+
+
+
+
+
+
+                        <?php
+
+if(!isset($only_barangay_record_found)){  ?>
+
+                        <tr class="text-center  w-100">
+                            <h2 class="text-center py-3" style="opacity:.7">No Record Found...</h2>
+                        </tr>
+
+
+                        <?php  }
+?>
+
+
+
+                    </table>
+
+
+
+                </section>
+                <!-- barangay only -->
 
 
             </div>
-
 
 
 
@@ -567,7 +737,10 @@ if(isset($_COOKIE["year_session_records"]) && isset($_COOKIE["barangay_session_r
     while($dbrow =$results->fetch_assoc() ){  
             
             if(strcmp($dbrow["year"] , "2021-2022" )===0){
+
+                $year2021_2022="true";
             ?>
+
 
                                 <!-- item -->
                                 <div
@@ -615,7 +788,24 @@ if(isset($_COOKIE["year_session_records"]) && isset($_COOKIE["barangay_session_r
 } ?>
 
 
+                                <?php
+
+if(!isset( $year2021_2022)){?>
+
+                                <h6 class="px-3 py-2">No records found...</h6>
+
+
+                                <?php
+
+
+}
+
+?>
+
+
                             </div>
+
+
                             <div style="width:500px;" class="shadow m-3 year_column">
                                 <div class="year_column_title">
                                     <h5 class="p-2 py-3">2019-2020</h5>
@@ -632,6 +822,8 @@ if(isset($_COOKIE["year_session_records"]) && isset($_COOKIE["barangay_session_r
     while($dbrow =$results->fetch_assoc() ){  
             
             if(strcmp($dbrow["year"] , "2019-2020" )===0){
+                $year2019_2020="true";
+
             ?>
 
                                 <!-- item -->
@@ -676,6 +868,22 @@ if(isset($_COOKIE["year_session_records"]) && isset($_COOKIE["barangay_session_r
                     }
                 }
 } ?>
+
+
+
+                                <?php
+
+if(!isset( $year2019_2020)){?>
+
+                                <h6 class="px-3 py-2">No records found...</h6>
+
+
+                                <?php
+
+
+}
+
+?>
                             </div>
                             <div style="width:500px;" class="shadow m-3 year_column">
                                 <div class="year_column_title">
@@ -694,6 +902,8 @@ if(isset($_COOKIE["year_session_records"]) && isset($_COOKIE["barangay_session_r
     while($dbrow =$results->fetch_assoc() ){  
             
             if(strcmp($dbrow["year"] , "2017-2018" )===0){
+                $year2017_2018="true";
+
             ?>
 
                                 <!-- item -->
@@ -738,6 +948,21 @@ if(isset($_COOKIE["year_session_records"]) && isset($_COOKIE["barangay_session_r
                     }
                 }
 } ?>
+
+
+                                <?php
+
+if(!isset( $year2017_2018)){?>
+
+                                <h6 class="px-3 py-2">No records found...</h6>
+
+
+                                <?php
+
+
+}
+
+?>
                             </div>
                         </div>
                     </div>
@@ -793,6 +1018,12 @@ if(isset($_COOKIE["year_session_records"]) && isset($_COOKIE["barangay_session_r
     function barangaySessionRecords(e) {
 
         document.cookie = `barangay_session_records = ${e.value} ; expires=Thu, 18 Dec 3000 12:00:00 UTC`;
+        window.location.reload();
+    }
+
+    function onlyBarangaySessionRecords(e) {
+
+        document.cookie = `only_barangay_session_records = ${e.value} ; expires=Thu, 18 Dec 3000 12:00:00 UTC`;
         window.location.reload();
     }
     const recordList = document.querySelector(".record_lists");

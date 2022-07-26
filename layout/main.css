@@ -98,6 +98,10 @@ a {
   transform: translateY(105%);
   background: white;
 }
+.sidebar-sticky .search .search_results ul {
+  height: 300px;
+  overflow: auto;
+}
 .sidebar-sticky .search .search_results ul li {
   padding: 8px 0;
   cursor: pointer;

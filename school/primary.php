@@ -196,7 +196,7 @@ require("../layoutsidebar/sidebar.php")
 
                     <div class="container-fluid p-0 w-100  px-3 col ">
                         <div class="text-center py-2" style="background:black;color:white">
-                            <h2>Primary School</h2>
+                            <h4>PRIMARY SCHOOL</h4>
                         </div>
 
                         <br>

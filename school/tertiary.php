@@ -195,7 +195,8 @@ require("../layoutsidebar/sidebar.php")
 
                     <div class="container-fluid p-0 w-100  px-3 col ">
                         <div class="text-center py-2" style="background:black;color:white">
-                            <h2>Tertiary education</h2>
+                            <h4>TERTIARY EDUCATION</h4>
+
                         </div>
 
                         <br>
