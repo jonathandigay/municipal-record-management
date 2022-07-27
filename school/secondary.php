@@ -196,8 +196,10 @@ require("../layoutsidebar/sidebar.php")
 
 
                     <div class="container-fluid p-0 w-100  px-3 col ">
+                    <div style="position:sticky;top:0;left:0;right:0;background:white;z-index:5">
+
                         <div class="text-center py-2" style="background:black;color:white">
-                            <h4>SECONDARY SCHOOL</h4>
+                            <h4 class="py-3">SECONDARY SCHOOL</h4>
 
                         </div>
 
@@ -208,7 +210,7 @@ require("../layoutsidebar/sidebar.php")
                             <div class="d-flex flex-wrap">
 
                                 <div class="d-flex align-items-center mx-2">
-                                    <h6 class="m-0 mx-1">SCHOOL YEAR:</h6>
+                                    <h6 style="background:black;color:white;width:max-content;clip-path: polygon(25% 0%, 100% 0%, 75% 100%, 0% 100%);" class="m-0 mx-1 px-5 py-3">SCHOOL YEAR:</h6>
                                     <select class="form-select  " aria-label="Default select example" name="school_year"
                                         onchange="secondarySchoolYearSession(this)" style="width:max-content">
 
@@ -226,7 +228,7 @@ require("../layoutsidebar/sidebar.php")
 
                                 </div>
                                 <div class="d-flex align-items-center mx-2">
-                                    <h6 class="m-0 mx-1">SCHOOL NAME:</h6>
+                                    <h6 style="background:black;color:white;width:max-content;clip-path: polygon(25% 0%, 100% 0%, 75% 100%, 0% 100%);" class="m-0 mx-1 px-5 py-3">SCHOOL NAME:</h6>
                                     <select class="form-select  " aria-label="Default select example" name="school_name"
                                         onchange="secondarySchoolNameSession(this)" style="width:max-content">
                                         <?php 
@@ -284,6 +286,7 @@ require("../layoutsidebar/sidebar.php")
 
                         </div>
                         <br>
+                        </div>
 
                         <div class="secondary_school">
 

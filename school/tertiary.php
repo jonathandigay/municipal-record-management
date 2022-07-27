@@ -194,8 +194,10 @@ require("../layoutsidebar/sidebar.php")
 
 
                     <div class="container-fluid p-0 w-100  px-3 col ">
+                    <div style="position:sticky;top:0;left:0;right:0;background:white;z-index:5">
+
                         <div class="text-center py-2" style="background:black;color:white">
-                            <h4>TERTIARY EDUCATION</h4>
+                            <h4 class="py-3">TERTIARY EDUCATION</h4>
 
                         </div>
 
@@ -206,7 +208,7 @@ require("../layoutsidebar/sidebar.php")
                             <div class="d-flex flex-wrap ">
 
                                 <div class="d-flex align-items-center m-2 mx-3">
-                                    <h6 class="m-0 mx-1">SCHOOL YEAR:</h6>
+                                    <h6 style="background:black;color:white;width:max-content;clip-path: polygon(25% 0%, 100% 0%, 75% 100%, 0% 100%);" class="m-0 mx-1 px-5 py-3">SCHOOL YEAR:</h6>
                                     <select class="form-select  " aria-label="Default select example" name="school_year"
                                         style="width:max-content" onchange="tertiarySchoolYearSession(this)">
                                         <?php 
@@ -224,7 +226,7 @@ require("../layoutsidebar/sidebar.php")
 
 
                                 <div class="d-flex align-items-center m-2 mx-3">
-                                    <h6 class="m-0 mx-1">SCHOOL NAME:</h6>
+                                    <h6 style="background:black;color:white;width:max-content;clip-path: polygon(25% 0%, 100% 0%, 75% 100%, 0% 100%);" class="m-0 mx-1 px-5 py-3">SCHOOL NAME:</h6>
                                     <select class="form-select  " aria-label="Default select example" name="school_name"
                                         style="width:max-content" onchange="tertiarySchoolNameSession(this)">
                                         <?php 
@@ -239,7 +241,7 @@ require("../layoutsidebar/sidebar.php")
 
                                 </div>
                                 <div class="d-flex align-items-center m-2 mx-3">
-                                    <h6 class="m-0 mx-1">COURSE NAME:</h6>
+                                    <h6 style="background:black;color:white;width:max-content;clip-path: polygon(25% 0%, 100% 0%, 75% 100%, 0% 100%);" class="m-0 mx-1 px-5 py-3">COURSE NAME:</h6>
                                     <select class="form-select  " aria-label="Default select example"
                                         name="school_course" style="width:max-content"
                                         onchange="tertiarySchoolCourseSession(this)">
@@ -260,38 +262,40 @@ require("../layoutsidebar/sidebar.php")
                             </div>
 
 
-                            <div class="d-flex">
-
-
-                                <button class="py-2 px-3 shadow m-2 record_btn" style="background:#4169E1;color:white;"
-                                    id="print" type="button" onclick="recordsToggle()">
-
-                                    <div class="count">
-                                        <p> <?php  echo $tertiaryresults->num_rows ?> </p>
-                                    </div>
-
-                                    <p> records <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
-                                            viewBox="0 0 24 24" fill="#fff">
-                                            <path
-                                                d="M7.972 2h-6.972l.714 5h2.021l-.429-3h3.694c1.112 1.388 1.952 2 4.277 2h9.283l-.2 1h2.04l.6-3h-11.723c-1.978 0-2.041-.417-3.305-2zm16.028 7h-24l2 13h20l2-13z" />
-                                        </svg></p>
-                                </button>
-
-
-                                <button class="py-2 px-3 m-2 shadow" style="background:#1E90FF;color:white"
-                                    name="tertiary_education" type="submit">
-                                    <p>Save <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
-                                            viewBox="0 0 24 24" fill="#fff">
-                                            <path
-                                                d="M14 3h2.997v5h-2.997v-5zm9 1v20h-22v-24h17.997l4.003 4zm-17 5h12v-7h-12v7zm14 4h-16v9h16v-9z" />
-                                        </svg>
-                                </button>
-                            </div>
+                         
 
 
 
                         </div>
+                        <div class="d-flex justify-content-end">
+
+
+<button class="py-2 px-3 shadow m-2 record_btn" style="background:#4169E1;color:white;"
+    id="print" type="button" onclick="recordsToggle()">
+
+    <div class="count">
+        <p> <?php  echo $tertiaryresults->num_rows ?> </p>
+    </div>
+
+    <p> records <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+            viewBox="0 0 24 24" fill="#fff">
+            <path
+                d="M7.972 2h-6.972l.714 5h2.021l-.429-3h3.694c1.112 1.388 1.952 2 4.277 2h9.283l-.2 1h2.04l.6-3h-11.723c-1.978 0-2.041-.417-3.305-2zm16.028 7h-24l2 13h20l2-13z" />
+        </svg></p>
+</button>
+
+
+<button class="py-2 px-3 m-2 shadow" style="background:#1E90FF;color:white"
+    name="tertiary_education" type="submit">
+    <p>Save <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+            viewBox="0 0 24 24" fill="#fff">
+            <path
+                d="M14 3h2.997v5h-2.997v-5zm9 1v20h-22v-24h17.997l4.003 4zm-17 5h12v-7h-12v7zm14 4h-16v9h16v-9z" />
+        </svg>
+</button>
+</div>
                         <br>
+                        </div>
 
                         <div class="tertiary_school">
 

@@ -197,8 +197,8 @@ require("./layoutsidebar/sidebar.php");
                 <div>
                     <div class="header position-sticky top-0 shadow">
                         <div class="title text-center  py-2" style="background:black;color:white;">
-                            <h5 class="m-0 py-3 page_title"> Social Development Sector / Social welfare sinior citizen
-                            </h5>
+                        <h4 class="m-0 py-3 page_title">SOCIAL DEVELOPMENT SECTOR / SOCIAL WELFARE SENIOR CITIZEN
+                            </h4>
                         </div>
                         <?php require("./layout/soc_dev_header.php"); ?>
 

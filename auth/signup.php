@@ -309,8 +309,9 @@ if(isset($_POST["signup"])){
                 }  ?>
 
                 <div class="text-end my-4">
-                    <h6>Already have an account? <span><a href="login.php">login in</a></span></h6>
-
+                <div class="d-flex justify-content-end align-items-center">
+                        <h6 class="m-0 px-1">Already have an account? </h6><a href="login.php" style="display:inline-block;text-decoration:underline;color:blue">Log in</a>
+                        </div>
                 </div>
 
                 <div class="action d-flex justify-content-center">

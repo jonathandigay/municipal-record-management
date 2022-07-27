@@ -313,7 +313,7 @@ require("../layoutsidebar/sidebar.php");
             <div class="container-fluid p-0 py-0 px-3 col ">
                 <div class="header position-sticky top-0 shadow">
                     <div class="title text-center  py-2 shadow" style="background:black;color:white;">
-                        <h5 class="m-0 py-3 page_title">Social Development Records</h5>
+                        <h4 class="m-0 py-3 page_title">SOCIAL DEVELOPMENT RECORDS</h4>
                     </div>
                     <div class=" d-flex my-4 align-items-center justify-content-end  ">
 

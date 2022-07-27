@@ -17,9 +17,9 @@
         <div class="action">
 
         <?php
-        if($_SERVER["REQUEST_URI"] !== "/barangay/primary.php" OR 
-        $_SERVER["REQUEST_URI"] !== "/barangay/secondary.php" OR
-        $_SERVER["REQUEST_URI"] !== "/barangay/tertiary.php"
+        if($_SERVER["REQUEST_URI"] !== "/barangay/school/primary.php" OR 
+        $_SERVER["REQUEST_URI"] !== "/barangay/school/secondary.php" OR
+        $_SERVER["REQUEST_URI"] !== "/barangay/school/tertiary.php"
         ){    ?>
             <a href="/barangay/records/social_development_sector.php">
             <button class="shadow save_modal_exit" >

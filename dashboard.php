@@ -68,6 +68,106 @@ require("./database/connection.php");
         top: 10px;
         left: 10px;
     }
+
+    .chart_container{
+        position: relative;
+    }
+
+    .chart_container .overlay{
+        min-height:400px;
+        width:100%;
+        position: absolute;
+        top:0;
+        background:linear-gradient(black,rgba(0,0,0,0.6));
+        left:0;
+    }
+    .chart{
+        position: relative;
+        z-index: 4;
+        background:white;
+    }
+    .people_count{
+        position: relative;
+        z-index: 4;
+    }
+.people_count .box{
+        position: relative;
+        z-index: 4;
+
+}
+    .people_count .box{
+        background:white;
+    width:300px;
+
+        max-width:300px;
+        border-radius:20px;
+        position: relative;
+    text-align:center;
+    animation:people_box linear 300ms 1;
+    }
+
+    .people_count .box .img{
+        position:absolute;
+        transform:translate(-50px,-50px);
+        background:white;
+        border-radius:50px;  animation:people_box_img linear 300ms 1;
+     }
+
+     .forms{
+        position: relative;
+        z-index: 4;
+     }
+
+     .forms .form{
+        background:white;
+        display:flex;
+        align-items:center;
+        
+     }
+
+     .forms .form{
+        position:relative;
+
+     }
+ .forms .form .count{
+    position:absolute;
+    top:0;
+    right:0;
+    background: rgb(255, 62, 143);
+    color:white;
+    width:35px;
+    height:35px;
+    border-radius:50px;
+    transform:translate(10px,-10px);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+ }
+
+ .forms .form .count h3{
+    font-size:20px;
+  
+    margin:0;
+
+ }
+
+     
+     @keyframes  people_box_img {
+        0%{
+            transform:translateY(-20px)
+        }100{
+            transform:translateY(0)
+
+        }
+     }
+     @keyframes  people_box {
+        0%{
+            transform:translateY(20px)
+        }100{
+            transform:translateY(0)
+
+        }
+     }
     </style>
 
 
@@ -106,42 +206,107 @@ require("./layoutsidebar/sidebar.php");
                             fill-rule="nonzero" />
                     </svg>
                 </button>
-
             </div>
 
             <div class="container-fluid p-0  px-3 col-md-9 chart_container">
-                <div class=" d-flex my-2 align-items-center justify-content-between flex-wrap">
+                
+            <h2 style="font-weight:300;color:white;position:relative;z-index:4" class="py-3">Welcome to GAD Dashboard!!</h2>
+    <div class="people_count d-flex justify-content-end align-items-end flex-column w-75 m-auto">
+        <p style="color:white ;transform:translateX(30px)">No. of Respondents in <span style="font-weight:bold">Santa Cruz Marinduque</span> </p>
+        <div class="box shadow">
+        <div class="img" style="max-width:80px">
+    <img src="./assets/images/people.png" alt=""></div>
+
+    <h1>33,000</h1>
+        </div>
 
 
 
+    </div>
+
+    
+<div class="forms d-flex">
 
 
 
-                </div>
+<div class="form form1 m-3 shadow py-2 px-3" style="border-radius:20px">
 
-                <div class="charts d-flex flex-wrap">
+<div class="count shadow ">
+    
+<?php
+
+$primary_education_results = $dbconnection->query("SELECT * FROM primary_education");
+$secondary_education_results = $dbconnection->query("SELECT * FROM secondary_education");
+$tertiary_education_results = $dbconnection->query("SELECT * FROM tertiary_education");
+
+if(isset($primary_education_results ) && isset($secondary_education_results ) && isset($tertiary_education_results )){    ?>
+
+   
+    <h3> <?php   echo $primary_education_results ->num_rows + $secondary_education_results ->num_rows + $tertiary_education_results ->num_rows ?> </h3>
+
+
+    <?php
+}
+
+?>
+</div>
+<div class="img shadow"
+                        style="max-width:50px;border-radius:50px;">
+                        <img src="./assets/images/school.png" alt="">
+                    </div>
+<h5 class=" px-2">SCHOOL</h5>
+</div>
+<div class="form form2 m-3 shadow py-2 px-3" style="border-radius:20px">
+<div class="count shadow ">
+<?php
+
+$results = $dbconnection->query("SELECT * FROM social_development");
+
+if(isset($results)){    ?>
+
+   
+    <h3> <?php   echo $results->num_rows;  ?> </h3>
+
+
+    <?php
+}
+
+?>
+</div>
+<div class="img shadow"
+                        style="max-width:50px;border-radius:50px;">
+                        <img src="./assets/images/barangay.png" alt="">
+                    </div>
+<h5 class="px-2">BARANGAY</h5>
+    
+</div>
+
+
+</div>
+            <div class="overlay"></div>
+
+                <div class="charts d-flex  flex-wrap w-100">
 
                     <!--  -->
-                    <div class="d-flex">
-                        <div style="border-radius:20px;" class="social_development_chart my-3 mx-5 shadow py-4 px-4"
-                            style="max-width:700px">
+                        <div style="border-radius:20px;max-width:700px" class=" chart social_development_chart my-3 mx-5 shadow py-4 px-4"
+                          >
                             <canvas id="household_population_by_age_and_sex_chart" with="400" height="400"></canvas>
                         </div>
-                    </div>
                     <!--  -->
-                    <div style="border-radius:20px;" class="social_development_chart my-3 mx-5 shadow py-3 px-3"
-                        style="width:700px;max-width:700px">
-                        <h6 class="text-center">Popular job </h6>
+                    <div style="border-radius:20px;max-width:700px;" class="chart social_development_chart my-3 mx-5 shadow py-3 px-3"
+                        >
                         <canvas id="pie_chart"></canvas>
                     </div>
 
 
                 </div>
+                <div  class="charts d-flex  flex-wrap w-100">
 
-                <div style="border-radius:20px;" class="social_development_chart my-3 mx-5 shadow py-3 px-3"
-                    style="width:700px;max-width:700px">
+                <div style="border-radius:20px;max-width:1000px;" class="chart social_development_chart my-3 m-auto mx-5 shadow py-3 px-3"
+    >
                     <h6 class="text-center">Poverty</h6>
                     <canvas id="household_whose_eat_less_than_three_chart" width="700"></canvas>
+                </div>
                 </div>
 
 
@@ -220,6 +385,15 @@ require("./layoutsidebar/sidebar.php");
     const ctx2config = {
         type: "pie",
         data: ctx2data,
+        options:{
+            responsive:true,
+            plugins:{
+                title:{
+                    display:true,
+                    text:'Most Job'
+                }
+            }
+        }
 
 
     }

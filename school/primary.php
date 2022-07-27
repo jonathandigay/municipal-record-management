@@ -195,8 +195,10 @@ require("../layoutsidebar/sidebar.php")
 
 
                     <div class="container-fluid p-0 w-100  px-3 col ">
-                        <div class="text-center py-2" style="background:black;color:white">
-                            <h4>PRIMARY SCHOOL</h4>
+
+                    <div style="position:sticky;top:0;left:0;right:0;background:white;z-index:5">
+                         <div class="text-center py-2" style="background:black;color:white">
+                            <h4 class="py-3" >PRIMARY SCHOOL</h4>
                         </div>
 
                         <br>
@@ -206,7 +208,7 @@ require("../layoutsidebar/sidebar.php")
                             <div class="d-flex flex-wrap">
 
                                 <div class="d-flex align-items-center mx-2">
-                                    <h6 class="m-0 mx-1">SCHOOL YEAR:</h6>
+                                    <h6 style="background:black;color:white;width:max-content;clip-path: polygon(25% 0%, 100% 0%, 75% 100%, 0% 100%);" class="m-0 mx-1 px-5 py-3">SCHOOL YEAR:</h6>
                                     <select class="form-select  " aria-label="Default select example" name="school_year"
                                         onchange="primarySchoolYearSession(this)" style="width:max-content">
 
@@ -226,7 +228,7 @@ require("../layoutsidebar/sidebar.php")
 
 
                                 <div class="d-flex align-items-center mx-2">
-                                    <h6 class="m-0 mx-1">SCHOOL NAME:</h6>
+                                    <h6 style="background:black;color:white;width:max-content;clip-path: polygon(25% 0%, 100% 0%, 75% 100%, 0% 100%);" class="m-0 mx-1 px-5 py-3"">SCHOOL NAME:</h6>
                                     <select class="form-select  " aria-label="Default select example" name="school_name"
                                         onchange="primarySchoolNameSession(this)" style="width:max-content">
                                         <?php 
@@ -280,17 +282,18 @@ require("../layoutsidebar/sidebar.php")
 
                         </div>
                         <br>
+                    </div>
+                       
 
                         <div class="primary_school">
 
-                            <br>
                             <br>
                             <div class="accordion-item">
                                 <h2 class="accordion-header" id="headingOne">
                                     <button class="accordion-button d-flex justify-content-between shadow" type="button"
                                         data-bs-toggle="collapse" data-bs-target="#accordionone" aria-expanded="false"
                                         aria-controls="accordionone">
-                                        <h6 class="p-0"> Primary education form
+                                        <h6 class="p-0"> PRIMARY EDUCATION FORM
                                         </h6>
 
                                     </button>
@@ -511,9 +514,9 @@ $primaryresults = $dbconnection->query("SELECT * FROM primary_education");
 
 
                         <div class="d-flex justify-content-between align-items-center py-3 px-3 shadow">
-                            <div class="d-flex align-items-center">
-                                <h6 class="m-0"> <?php  echo $dbrow["schoolName"]  ?> </h6> <span> </span> -
-                                <?php  echo $dbrow["schoolYear"]  ?>
+                            <div class="">
+                                <h6 class="m-0"> <?php  echo $dbrow["schoolName"]  ?> </h6> 
+                              <div>  <?php  echo $dbrow["schoolYear"]  ?> </div> 
                             </div>
 
                             <div class="d-flex align-items-center">

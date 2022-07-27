@@ -329,7 +329,10 @@ header("Location: /barangay");
                         <input type="checkbox"> <span>Remember me</span>
                     </div>
                     <div class="text-end my-3">
-                        <h6>Need an account? <span><a href="signup.php">sign up</a></span></h6>
+                        <div class="d-flex justify-content-end align-items-center">
+                        <h6 class="m-0 px-1">Need an account? </h6><a href="signup.php" style="display:inline-block;text-decoration:underline;color:blue">sign up</a>
+                        </div>
+                    
 
                     </div>
                     <?php  if($credential_err){
