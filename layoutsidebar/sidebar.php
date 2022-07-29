@@ -140,8 +140,9 @@
             <h5 class="py-2 text-center" style="border-top:1px solid black;border-bottom:1px solid black">DASHBOARD</h5>
             <br>
             <a href="/barangay/demography.php" target="_self" style="">
-                <button class="py-2 px-3 shadow m-auto mb-3 d-flex align-items-center " style="width:80%;border-radius:50px "
-                    onclick="navSelection('barangay')" style="position:relative ; " type="button">
+                <button class="py-2 px-3 shadow m-auto mb-3 d-flex align-items-center "
+                    style="width:80%;border-radius:50px " onclick="navSelection('barangay')"
+                    style="position:relative ; " type="button">
 
                     <div class="img shadow"
                         style="max-width:50px;position:absolute;transform:translate(-30px,-10px);border-radius:50px;">
@@ -151,8 +152,9 @@
                 </button>
             </a>
             <a href="/barangay/school/primary.php" target="_self">
-                <button class="py-2 px-3 shadow m-auto mb-3 d-flex align-items-center " style="width:80%;border-radius:50px"
-                    onclick="navSelection('school')" style="position:relative ; " type="button">
+                <button class="py-2 px-3 shadow m-auto mb-3 d-flex align-items-center "
+                    style="width:80%;border-radius:50px" onclick="navSelection('school')" style="position:relative ; "
+                    type="button">
 
                     <div class="img shadow"
                         style="max-width:50px;position:absolute;transform:translate(-30px,-10px);border-radius:50px;">
@@ -429,14 +431,11 @@
 
                     <!--  school form navigation ends-->
 
-                
+
 
 
                 </div>
-                <P class="text-center py-5">
-                        @All right reserved 2022
-                        <span style="display:block">-Digay</span>
-                    </P>
+
             </div>
 </nav>
 
@@ -455,6 +454,3 @@
  Mark zackurberg seeing on stackoverflow and ask about bug
  I love Prgramming...........meme
 -->
-
-
-

@@ -327,8 +327,9 @@ a {
   position: fixed;
   top: 0;
   right: 0;
-  max-width: 180px;
+  max-width: 165px;
   z-index: 5000;
+  padding: 0 !important;
 }
 
 .santa_cruz_gad {
@@ -389,21 +390,6 @@ a {
 .forms_selection button:hover {
   background: black;
   color: white;
-}
-
-.record_btn {
-  position: relative;
-}
-
-.record_btn .count {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 25px;
-  height: 25px;
-  transform: translate(-15px, -15px);
-  border-radius: 50px;
-  background: rgb(255, 62, 143);
 }
 
 @media screen and (max-width: 768px) {

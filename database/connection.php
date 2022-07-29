@@ -1,8 +1,8 @@
   <?php
 
 define("server","localhost");
-define("username","mydbuser");
-define("password","1234");
+define("username","root");
+define("password","");
 define("dbname","barangay");
 
 // Create connection

@@ -126,6 +126,21 @@ require("database/connection.php");
     .back_dashboard_btn button:hover {
         opacity: 0.9;
     }
+
+    .record_btn {
+        position: relative;
+    }
+
+    .record_btn .count {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 25px;
+        height: 25px;
+        transform: translate(-15px, -15px);
+        border-radius: 50px;
+        background: rgb(255, 62, 143);
+    }
     </style>
 
     <?php

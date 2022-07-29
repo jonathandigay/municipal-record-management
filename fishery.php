@@ -113,6 +113,21 @@ require("database/connection.php");
         fill: white;
         display: none;
     }
+
+    .record_btn {
+        position: relative;
+    }
+
+    .record_btn .count {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 25px;
+        height: 25px;
+        transform: translate(-15px, -15px);
+        border-radius: 50px;
+        background: rgb(255, 62, 143);
+    }
     </style>
 
 
@@ -211,7 +226,7 @@ require("./layoutsidebar/sidebar.php");
                 <div>
                     <div class="header position-sticky top-0 shadow">
                         <div class="title text-center  py-2" style="background:black;color:white;">
-                        <h4 class="m-0 py-3 page_title">ECONOMIC DEVELOPMENT SECTOR / FISHERY</h>
+                            <h4 class="m-0 py-3 page_title">ECONOMIC DEVELOPMENT SECTOR / FISHERY</h>
                         </div>
 
                         <?php require("./layout/soc_dev_header.php"); ?>
